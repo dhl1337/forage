@@ -10,7 +10,9 @@
         console.log('controller loading');
         var vm = this;
         vm.initMap = initMap;
-
+        var refreshTimeout = null;
+        var map = null;
+        var infowindow = null;
         vm.foodtrucks = currentFoodtruck;
         console.log(vm.foodtrucks);
 
@@ -38,7 +40,7 @@
 
         console.log('USER: ', vm.user);
 
-        var map;
+
         function initMap() {
             map = new google.maps.Map(document.getElementById('homeMap'), {
                 center: {lat: 37.09024, lng: -95.712891},
@@ -52,7 +54,7 @@
         }
 
         vm.initLocation = initLocation;
-        var refreshTimeout = null;
+
         function initLocation () {
             var infoWindow = new google.maps.InfoWindow({map: map});
 
@@ -162,7 +164,7 @@
                     // Create a marker for the new user
                     var marker = new google.maps.Marker({ map:map });
                     google.maps.event.addListener(marker, 'click', function() {
-                        infowindow.setContent(marker.getTitle())
+                        infowindow.setContent(marker.getTitle());
                         infowindow.open(map, marker);
                     });
                     userInfo.marker = marker;
