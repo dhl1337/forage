@@ -38,13 +38,13 @@
                     }
                 }
             })
-            .state('profile', {
+            .state('home.profile', {
                 url: '/profile/:id',
                 templateUrl: '../views/user/profile/user.html',
                 controller: 'ProfileController',
                 controllerAs: 'profile'
             })
-            .state('foodtruck', {
+            .state('home.foodtruck', {
                 url: '/foodtruck/:id',
                 templateUrl: '../views/foodtruck/profile/foodtruck.html',
                 controller: 'FoodtruckController',

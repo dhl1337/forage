@@ -1,38 +1,71 @@
-<div class="background-color">
-    <top-nav-bar></top-nav-bar>
-    <div id="homeMap"></div>
-    <div class="ui stackable grid">
-        <div class="column"></div>
-        <div class="three wide column">
-            <h2 class="main-title">Foodtrucks</h2>
-            <div class="ui vertical secondary menu">
-                <a class="item">DAILY SPECIALS</a>
-                <a class="item">START YOUR ORDER</a>
-                <a class="item">FAVORITE'S</a>
-                <a class="item" ng-click="home.initLocation()">
-                    <i class="location arrow icon"></i>
-                    CURRENT LOCATION
-                </a>
-            </div>
-        </div>
-        <div class="eleven wide column">
-            <h2>Latest in the map area</h2>
-            <div class="ui four column doubling stackable grid container">
-                <div class="column" ng-repeat="foodtruck in home.foodtrucks">
-                    <div class="ui card">
-                        <div class="image">
-                            <img ng-src="{{foodtruck.photo}}">
-                        </div>
-                        <div class="content">
-                            <div class="header">
-                                {{foodtruck.cuisine}}
-                            </div>
-                            <div class="description">
-                                at <a ui-sref="foodtruck.reviews({id: foodtruck._id})">{{foodtruck.name}}</a>
-                            </div>
-                        </div>
+<div class="ui left wide sidebar ui segment" id="sidemenu">
+    <div class="fluid container">
+        <ui-view></ui-view>
+    </div>
+</div>
+
+<div id="homeMap"></div>
+<div class="ui large vertical menu" id="splash-menu" ng-hide="showme">
+    <div class="disabled item">
+        <h2>Forage</h2>
+    </div>
+    <div class="item" ng-click="home.loginModal()" ng-hide="home.user">SIGN IN</div>
+    <div class="item" ng-hide="home.user === undefined" ng-click="home.openSideBar()" ui-sref="home.profile({id: home.user._id})">
+        <img class="ui avatar image" ng-src="{{home.user.facebook.photo}}" alt="">
+        {{home.user.facebook.name}}
+    </div>
+    <div class="item" ui-sref="ftsignup.about" ng-hide="home.user === undefined">BECOME A FOOD TRUCK OWNER</div>
+    <div class="item" ng-show="home.user.foodTruck" ui-sref="home.foodtruck({id: home.user.foodTruck})" ng-click="home.openSideBar()">
+        <img class="ui avatar image" ng-src="{{home.openTruck.photo}}">
+        {{home.openTruck.name}}
+    </div>
+    <div class="item" ng-click="home.initLocation()">CURRENT LOCATION</div>
+    <div class="item">DAILY SPECIALS</div>
+    <div class="item">START YOUR ORDER</div>
+    <div class="item">FAVORITES</div>
+    <a class="item" href="/auth/logout" ng-hide="home.user === undefined">LOG OUT</a>
+</div>
+    <!--<div class="ui large vertical menu" ng-show="showme">-->
+        <!--<div class="disabled item">-->
+            <!--<h2>Forage</h2>-->
+        <!--</div>-->
+        <!--<div class="item" ng-click="home.loginModal()" ng-hide="home.user">SIGN IN</div>-->
+        <!--<div class="item">-->
+            <!--<img class="ui avatar image" ng-src="{{home.user.facebook.photo}}" alt="">-->
+        <!--</div>-->
+        <!--<div class="item" ng-click="home.initLocation()">DAILY SPECIALS</div>-->
+        <!--<div class="item">START YOUR ORDER</div>-->
+        <!--<div class="item">FAVORITES</div>-->
+    <!--</div>-->
+<div class="ui small modal" id="loginModal">
+    <i class="close icon"></i>
+    <div class="header">Sign in to your Forage account.</div>
+    <div class="content">
+        <div class="ui basic segment" id="signupModalContent">
+            <div class="ui form">
+                <div class="field">
+                    <div class="ui input">
+                        <input type="text" placeholder="Email">
                     </div>
                 </div>
+                <div class="field">
+                    <div class="ui input">
+                        <input type="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="ui blue submit button" id="signinBtn">Sign in</div>
+                <div class="signupSection">
+                    <label>Don't have an account? </label> <a ui-sref="signup">Sign up</a>
+                </div>
+            </div>
+            <div class="ui horizontal divider">
+                Or
+            </div>
+            <div class="center aligned column" style="text-align: center">
+                <a class="ui facebook button" href="/auth/facebook" ng-click="topNavBar.gettingCurrentMap()">
+                    <i class="facebook icon"></i>
+                    Sign in with Facebook
+                </a>
             </div>
         </div>
     </div>

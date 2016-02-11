@@ -14,7 +14,21 @@
         var map = null;
         var infowindow = null;
         vm.foodtrucks = currentFoodtruck;
-        console.log(vm.foodtrucks);
+        vm.loginModal = loginModal;
+        vm.openSideBar = openSideBar;
+
+        function loginModal () {
+            $('#loginModal')
+                .modal('show')
+            ;
+        }
+
+        function openSideBar () {
+            $('#sidemenu')
+                .sidebar('setting', 'push')
+                .sidebar('toggle')
+        }
+        //console.log("this is the current food truck",vm.currentFoodtruck);
 
         //FoodtruckService.getFoodtruck().then(function(foodtruck){
         //    vm.foodtrucks = foodtruck;
@@ -42,20 +56,32 @@
 
 
         function initMap() {
+            var styles = [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#46bcec"},{"visibility":"on"}]}]
+            var styledMap = new google.maps.StyledMapType(styles,
+                {name: "Styled Map"});
+
+
+
             map = new google.maps.Map(document.getElementById('homeMap'), {
                 center: {lat: 37.09024, lng: -95.712891},
-                zoom: 5
+                zoom: 5,
+                mapTypeControlOptions: {
+                    mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+                }
             });
             infowindow = new google.maps.InfoWindow({map: map});
             google.maps.event.addListener(map, 'click', function() {
                 infowindow.close(map);
             });
+            map.mapTypes.set('map_style', styledMap);
+            map.setMapTypeId('map_style');
             refreshMarkers();
         }
 
         vm.initLocation = initLocation;
 
         function initLocation () {
+            //console.log('im clicked');
             var infoWindow = new google.maps.InfoWindow({map: map});
 
             if (navigator.geolocation) {

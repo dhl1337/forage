@@ -26,6 +26,8 @@
             vm.currentUser = user;
         });
 
+        console.log("this is the current user",vm.currentUser);
+
 
 
         function addReview (title, description) {
@@ -46,6 +48,7 @@
         }
 
         function reviewModal () {
+            console.log('im getting clicky clickey');
             $('#reviewModal')
                 .modal('show')
             ;
@@ -72,8 +75,9 @@
             vm.priceMax = truck.price.max;
             vm.heathScore = truck.healthScore;
             vm.menuItems = truck.menu;
-            vm.reviews = truck.reviews
+            vm.reviews = truck.reviews;
         });
+
 
 
         function settings (address, zip, phone, website, sunday, monday, tuesday, wednesday, thursday, friday, saturday, priceMin, priceMax, heathScore, menu, state, city) {

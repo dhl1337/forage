@@ -1,86 +1,211 @@
-<top-nav-bar></top-nav-bar>
-<div class="ui container" id="foodtruckContainer">
-    <div class="ui stackable grid">
-        <div class="five wide column">
-            <div class="ui fluid card">
-                <div class="image">
-                    <img ng-src="{{foodtruck.foodtruckUser[0].photo}}" alt="">
-                </div>
-                <div class="content">
-                    <div class="header">{{foodtruck.foodtruckUser[0].name}}</div>
-                    <div class="ui large star rating" data-rating="3"></div> 0 reviews
-                    <div class="description">{{foodtruck.foodtruckUser[0].cuisine}}</div>
-                </div>
-                <div class="content">
-                    <div class="description"><i class="marker icon"></i>{{foodtruck.foodtruckUser[0].address}}, {{foodtruck.foodtruckUser[0].city}}, {{foodtruck.foodtruckUser[0].state}} {{foodtruck.foodtruckUser[0].zip}}</div>
-                    <div class="description">
-                        <i class="phone icon"></i> {{foodtruck.foodtruckUser[0].phone}}
-                        <br>
-                        <i class="world icon"></i> {{foodtruck.foodtruckUser[0].website}}
-                    </div>
+<div class="ui grid">
+    <div class="sixteen wide column" id="foodtruckImageHeader">
+        <img class="ui fluid image" ng-src="{{foodtruck.foodtruckUser[0].photo}}" alt="">
+    </div>
+    <div class="sixteen wide column" id="foodtruckInfo">
+        <div class="ui list" style="background-color: #46bcec" id="foodtruckInfoList">
+            <div class="item">
+                <div class="header">{{foodtruck.foodtruckUser[0].name}}</div>
+            </div>
+            <div class="item">
+                <div class="ui large star rating" data-rating="3"></div> 0 reviews
+            </div>
+            <div class="item">
+                <div class="description">{{foodtruck.foodtruckUser[0].cuisine}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="sixteen wide column">
+        <div class="ui list">
+            <div class="item">
+                <i class="large marker icon"></i>
+                <div class="middle aligned content">
+                {{foodtruck.foodtruckUser[0].address}}, {{foodtruck.foodtruckUser[0].city}}, {{foodtruck.foodtruckUser[0].state}} {{foodtruck.foodtruckUser[0].zip}}
                 </div>
             </div>
-            <div class="ui segment">
-                <div class="ui list">
-                    <div class="item" ui-sref="foodtruck.reviews">
-                        <i class="large star icon"></i>
-                        <div class="middle aligned content">Reviews</div>
-                    </div>
-                    <div class="item" ui-sref="foodtruck.menu">
-                        <i class="large food icon"></i>
-                        <div class="middle aligned content">Full Menu</div>
-                    </div>
-                    <div class="item">
-                        <i class="large wait icon"></i>
-                        <div class="middle aligned content">
-                            <div class="ui accordion" ng-click="foodtruck.hoursAccordion()">
-                                <div class="title">
-                                    Today 5:00pm - 10:30pm
-                                    <i class="caret down icon"></i>
+            <div class="item">
+                <i class="large phone icon"></i>
+                <div class="middle aligned content">{{foodtruck.foodtruckUser[0].phone}}</div>
+            </div>
+            <div class="item">
+                <i class="large world icon"></i>
+                <div class="middle aligned content">{{foodtruck.foodtruckUser[0].website}}</div>
+            </div>
+            <div class="item" ui-sref="foodtruck.reviews">
+                <i class="large star icon"></i>
+                <div class="middle aligned content">Reviews</div>
+            </div>
+            <div class="item" ui-sref="foodtruck.menu">
+                <i class="large food icon"></i>
+                <div class="middle aligned content">Full Menu</div>
+            </div>
+            <div class="item">
+                <i class="large wait icon"></i>
+                <div class="middle aligned content">
+                    <div class="ui accordion" ng-click="foodtruck.hoursAccordion()">
+                        <div class="title">
+                            Today 5:00pm - 10:30pm
+                            <i class="caret down icon"></i>
+                        </div>
+                        <div class="content">
+                            <div class="ui fluid grid">
+                                <div class="six wide column" style="margin-top: -15px">
+                                    <div class="ui list">
+                                        <div class="item">Sunday</div>
+                                        <div class="item">Monday</div>
+                                        <div class="item">Tuesday</div>
+                                        <div class="item">Wednesday</div>
+                                        <div class="item">Thursday</div>
+                                        <div class="item">Friday</div>
+                                        <div class="item">Saturday</div>
+                                    </div>
                                 </div>
-                                <div class="content">
-                                    <div class="ui fluid grid">
-                                        <div class="six wide column" style="margin-top: -15px">
-                                            <div class="ui list">
-                                                <div class="item">Sunday</div>
-                                                <div class="item">Monday</div>
-                                                <div class="item">Tuesday</div>
-                                                <div class="item">Wednesday</div>
-                                                <div class="item">Thursday</div>
-                                                <div class="item">Friday</div>
-                                                <div class="item">Saturday</div>
-                                            </div>
-                                        </div>
-                                        <div class="ten wide column" style="margin-top: -15px">
-                                            <div class="ui list">
-                                                <div class="item">{{foodtruck.foodtruckUser[0].hours.sunday}}</div>
-                                                <div class="item">{{foodtruck.foodtruckUser[0].hours.monday}}</div>
-                                                <div class="item">{{foodtruck.foodtruckUser[0].hours.tuesday}}</div>
-                                                <div class="item">{{foodtruck.foodtruckUser[0].hours.wednesday}}</div>
-                                                <div class="item">{{foodtruck.foodtruckUser[0].hours.thursday}}</div>
-                                                <div class="item">{{foodtruck.foodtruckUser[0].hours.friday}}</div>
-                                                <div class="item">{{foodtruck.foodtruckUser[0].hours.saturday}}</div>
-                                            </div>
-                                        </div>
+                                <div class="ten wide column" style="margin-top: -15px">
+                                    <div class="ui list">
+                                        <div class="item">{{foodtruck.foodtruckUser[0].hours.sunday}}</div>
+                                        <div class="item">{{foodtruck.foodtruckUser[0].hours.monday}}</div>
+                                        <div class="item">{{foodtruck.foodtruckUser[0].hours.tuesday}}</div>
+                                        <div class="item">{{foodtruck.foodtruckUser[0].hours.wednesday}}</div>
+                                        <div class="item">{{foodtruck.foodtruckUser[0].hours.thursday}}</div>
+                                        <div class="item">{{foodtruck.foodtruckUser[0].hours.friday}}</div>
+                                        <div class="item">{{foodtruck.foodtruckUser[0].hours.saturday}}</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                    </div>
-                    <div class="item">
-                        <i class="large dollar icon"></i>
-                        <div class="middle aligned content">Price range {{foodtruck.foodtruckUser[0].price.min | currency:"$"}} -  {{foodtruck.foodtruckUser[0].price.max | currency:"$"}}</div>
-                    </div>
-                    <div class="item">
-                        <i class="large h icon"></i>
-                        <div class="middle aligned content">Health score {{foodtruck.foodtruckUser[0].healthScore}} out of 100</div>
                     </div>
                 </div>
+
             </div>
-        </div>
-        <div class="eleven wide column">
-            <ui-view></ui-view>
+            <div class="item">
+                <i class="large dollar icon"></i>
+                <div class="middle aligned content">Price range {{foodtruck.foodtruckUser[0].price.min | currency:"$"}} -  {{foodtruck.foodtruckUser[0].price.max | currency:"$"}}</div>
+            </div>
+            <div class="item">
+                <i class="large h icon"></i>
+                <div class="middle aligned content">Health score {{foodtruck.foodtruckUser[0].healthScore}} out of 100</div>
+            </div>
         </div>
     </div>
 </div>
+<div class="ui divider">
+    <h3>Review summary</h3>
+    <div class="ui grid" ng-repeat="review in foodtruck.reviews">
+        <div class="three wide column">
+            {{review.userId.facebook.name}}
+        </div>
+        <div class="thirteen wide column">
+            {{review.description}}
+        </div>
+    </div>
+</div>
+
+<a ng-click="foodtruck.reviewModal()">WRITE A REVIEW</a>
+<div class="ui modal" id="reviewModal">
+    <div class="header">Rate & Review</div>
+    <div class="content">
+        <div class="ui form">
+            <img ng-src="{{foodtruck.currentUser.facebook.photo}}" alt="">
+            {{foodtruck.currentUser.facebook.name}}
+            <div class="field">
+                <div class="ui medium star rating" data-rating="3" ng-model="ratingReview"></div>
+            </div>
+            <div class="field">
+                <textarea ng-model="descriptionReview" placeholder="Describe your experience"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="actions">
+        <div class="ui approve button" ng-click="foodtruck.addReview(descriptionReview)">Approve</div>
+    </div>
+</div>
+
+
+
+
+
+<!--<div class="ui container" id="foodtruckContainer">-->
+    <!--<div class="ui stackable grid">-->
+        <!--<div class="five wide column">-->
+            <!--<div class="ui fluid card">-->
+                <!--<div class="image">-->
+                    <!--<img ng-src="{{foodtruck.foodtruckUser[0].photo}}" alt="">-->
+                <!--</div>-->
+                <!--<div class="content">-->
+                    <!--<div class="header">{{foodtruck.foodtruckUser[0].name}}</div>-->
+                    <!--<div class="ui large star rating" data-rating="3"></div> 0 reviews-->
+                    <!--<div class="description">{{foodtruck.foodtruckUser[0].cuisine}}</div>-->
+                <!--</div>-->
+                <!--<div class="content">-->
+                    <!--<div class="description"><i class="marker icon"></i>{{foodtruck.foodtruckUser[0].address}}, {{foodtruck.foodtruckUser[0].city}}, {{foodtruck.foodtruckUser[0].state}} {{foodtruck.foodtruckUser[0].zip}}</div>-->
+                    <!--<div class="description">-->
+                        <!--<i class="phone icon"></i> {{foodtruck.foodtruckUser[0].phone}}-->
+                        <!--<br>-->
+                        <!--<i class="world icon"></i> {{foodtruck.foodtruckUser[0].website}}-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="ui segment">-->
+                <!--<div class="ui list">-->
+                    <!--<div class="item" ui-sref="foodtruck.reviews">-->
+                        <!--<i class="large star icon"></i>-->
+                        <!--<div class="middle aligned content">Reviews</div>-->
+                    <!--</div>-->
+                    <!--<div class="item" ui-sref="foodtruck.menu">-->
+                        <!--<i class="large food icon"></i>-->
+                        <!--<div class="middle aligned content">Full Menu</div>-->
+                    <!--</div>-->
+                    <!--<div class="item">-->
+                        <!--<i class="large wait icon"></i>-->
+                        <!--<div class="middle aligned content">-->
+                            <!--<div class="ui accordion" ng-click="foodtruck.hoursAccordion()">-->
+                                <!--<div class="title">-->
+                                    <!--Today 5:00pm - 10:30pm-->
+                                    <!--<i class="caret down icon"></i>-->
+                                <!--</div>-->
+                                <!--<div class="content">-->
+                                    <!--<div class="ui fluid grid">-->
+                                        <!--<div class="six wide column" style="margin-top: -15px">-->
+                                            <!--<div class="ui list">-->
+                                                <!--<div class="item">Sunday</div>-->
+                                                <!--<div class="item">Monday</div>-->
+                                                <!--<div class="item">Tuesday</div>-->
+                                                <!--<div class="item">Wednesday</div>-->
+                                                <!--<div class="item">Thursday</div>-->
+                                                <!--<div class="item">Friday</div>-->
+                                                <!--<div class="item">Saturday</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="ten wide column" style="margin-top: -15px">-->
+                                            <!--<div class="ui list">-->
+                                                <!--<div class="item">{{foodtruck.foodtruckUser[0].hours.sunday}}</div>-->
+                                                <!--<div class="item">{{foodtruck.foodtruckUser[0].hours.monday}}</div>-->
+                                                <!--<div class="item">{{foodtruck.foodtruckUser[0].hours.tuesday}}</div>-->
+                                                <!--<div class="item">{{foodtruck.foodtruckUser[0].hours.wednesday}}</div>-->
+                                                <!--<div class="item">{{foodtruck.foodtruckUser[0].hours.thursday}}</div>-->
+                                                <!--<div class="item">{{foodtruck.foodtruckUser[0].hours.friday}}</div>-->
+                                                <!--<div class="item">{{foodtruck.foodtruckUser[0].hours.saturday}}</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                    <!--</div>-->
+                    <!--<div class="item">-->
+                        <!--<i class="large dollar icon"></i>-->
+                        <!--<div class="middle aligned content">Price range {{foodtruck.foodtruckUser[0].price.min | currency:"$"}} -  {{foodtruck.foodtruckUser[0].price.max | currency:"$"}}</div>-->
+                    <!--</div>-->
+                    <!--<div class="item">-->
+                        <!--<i class="large h icon"></i>-->
+                        <!--<div class="middle aligned content">Health score {{foodtruck.foodtruckUser[0].healthScore}} out of 100</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="eleven wide column">-->
+            <!--<ui-view></ui-view>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->

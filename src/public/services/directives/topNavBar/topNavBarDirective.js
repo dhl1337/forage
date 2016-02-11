@@ -37,11 +37,6 @@
                 ;
             }
 
-            function loginModal () {
-                $('#loginModal')
-                    .modal('show')
-                ;
-            }
         }
         return directive;
     }

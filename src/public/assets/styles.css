@@ -16,17 +16,11 @@ body, html {
     padding-left: 20%;
 }
 #homeMap {
-    height: 500px;
+    min-height: 100vh;
     width: 100%;
-    margin-bottom: 20px;
 }
 userlogin {
     margin-top: 8px;
-}
-.background-color {
-    /*background-color: #FAEFD4;*/
-    min-height: 100vh;
-    padding-bottom: 30px;
 }
 .main-content {
     background-color: #F0EFF0;
@@ -53,10 +47,7 @@ userlogin {
 .signupSection {
     text-align: center;
 }
-#navbarSignin {
-    font-size: 15px;
-    color: #FFFFFF;
-}
+
 
 /* profile */
 
@@ -128,10 +119,6 @@ a, a:hover {
     color: #FFFFFF;
 }
 
-#foodtruckMap {
-    height: 200px;
-    width: 100%;
-}
 #foodtruckContainer {
     margin-top: 20px;
 }
@@ -148,12 +135,47 @@ a, a:hover {
 #menuPrice {
     text-align: right;
 }
-.user-favorite-foodtrucks {
-    margin-bottom: 200px;
-}
 #user-list {
     margin-bottom: 30px;
 }
 .foodtruck-filter {
     margin-bottom: 40px;
+}
+#main-menu, #splash-menu {
+    position: absolute;
+    top: 10%;
+    left: 7%;
+    opacity: 0.8;
+    background-color: black;
+    color: white;
+}
+.ui.menu .active.item {
+    color: white;
+}
+.ui.menu .item {
+    color: white;
+}
+.ui.menu .item:hover {
+    background-color: #46bcec;
+    opacity: 1;
+}
+.ui.menu .item.disabled  {
+    color: white;
+}
+.ui.menu .item.disabled:hover {
+    color: white;
+}
+a:hover {
+    border-bottom: 3px solid #46bcec;
+}
+#userProfileHeader {
+    text-align: center;
+    background-color: #46bcec;
+}
+#foodtruckImageHeader, #foodtruckInfo {
+    margin: 0;
+    padding: 0;
+}
+#foodtruckInfoList {
+    padding: 1rem;
 }
