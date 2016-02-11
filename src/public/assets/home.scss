@@ -1,0 +1,57 @@
+body, html {
+  margin: 0 auto;
+  padding: 0 auto;
+}
+#topNavBar {
+  height: 75px;
+  margin-bottom: 20px;
+  width: 100%;
+  box-shadow: 1px 1px 2px #888888;
+  background-color: #F0EFEA;
+}
+#signupModalContent {
+  padding-right: 20%;
+  padding-left: 20%;
+}
+#map {
+  height: 500px;
+  width: 100%;
+}
+userlogin {
+  margin-top: 8px;
+}
+.background-color {
+  background-color: #F0EFEA;
+  padding-top: 90px;
+  min-height: 100vh;
+}
+.main-content {
+  background-color: #FFFFFF;
+  padding: 30px;
+  min-height: 100vh;
+  border-radius: 7px;
+}
+.ui.secondary.menu .header.item {
+  padding: 0;
+  margin-left: 0;
+}
+#topNavHeader {
+  font-size: 30px;
+}
+.ui.facebook.button {
+  width: 100%;
+}
+#signinBtn {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.signupSection {
+  text-align: center;
+}
+#navbarSignin {
+  font-size: 15px;
+}
+.main-title {
+  font-size: 50px;
+}

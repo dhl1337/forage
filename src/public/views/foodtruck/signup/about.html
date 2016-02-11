@@ -1,0 +1,57 @@
+<div class="ui fluid card" id="signupCard">
+    <div class="content">
+        <div class="header">
+            Set up
+        </div>
+    </div>
+    <div class="content" id="signupCardContent">
+        <div class="ui fluid steps">
+            <div class="active step">
+                <i class="truck icon"></i>
+                <div class="content">
+                    <div class="title">About</div>
+                    <div class="description">Let the people know about your Food truck</div>
+                </div>
+            </div>
+            <div class="disabled step">
+                <i class="photo icon"></i>
+                <div class="content">
+                    <div class="title">Profile Picture</div>
+                    <div class="description">Let the people know what your food truck look like</div>
+                </div>
+            </div>
+            <div class="disabled step">
+                <i class="info icon"></i>
+                <div class="content">
+                    <div class="title">Confirm Registration Details</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content" id="foodtruckInfo">
+        <div class="ui form">
+            <div class="field">
+                <label>What's your Food truck name?</label>
+                <div class="ui input" id="foodtruckName">
+                    <input type="text" ng-model="foodtruck.user.name" required>
+                </div>
+            </div>
+            <div class="field">
+                <label>What type of cuisine is your food truck?</label>
+                <div class="ui input" id="cuisineInput">
+                    <input type="text" placeholder="ex: Chinese, Korean, Italian" ng-model="foodtruck.user.cuisine">
+                </div>
+            </div>
+            <div class="field">
+                <label>Add a few sentences to tell people what your Food truck is about. This will help it show up in the right search results!</label>
+                <textarea rows="2" placeholder="Tell people what your Food truck is about..." ng-model="foodtruck.user.description"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="extra content">
+        <span class="right floated">
+            <button class="ui button" ui-sref="ftsignup.picture">Next</button>
+        </span>
+    </div>
+</div>
+

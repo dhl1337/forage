@@ -1,0 +1,39 @@
+<div class="background-color">
+    <top-nav-bar></top-nav-bar>
+    <div id="homeMap"></div>
+    <div class="ui stackable grid">
+        <div class="column"></div>
+        <div class="three wide column">
+            <h2 class="main-title">Foodtrucks</h2>
+            <div class="ui vertical secondary menu">
+                <a class="item">DAILY SPECIALS</a>
+                <a class="item">START YOUR ORDER</a>
+                <a class="item">FAVORITE'S</a>
+                <a class="item" ng-click="home.initLocation()">
+                    <i class="location arrow icon"></i>
+                    CURRENT LOCATION
+                </a>
+            </div>
+        </div>
+        <div class="eleven wide column">
+            <h2>Latest in the map area</h2>
+            <div class="ui four column doubling stackable grid container">
+                <div class="column" ng-repeat="foodtruck in home.foodtrucks">
+                    <div class="ui card">
+                        <div class="image">
+                            <img ng-src="{{foodtruck.photo}}">
+                        </div>
+                        <div class="content">
+                            <div class="header">
+                                {{foodtruck.cuisine}}
+                            </div>
+                            <div class="description">
+                                at <a ui-sref="foodtruck.reviews({id: foodtruck._id})">{{foodtruck.name}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

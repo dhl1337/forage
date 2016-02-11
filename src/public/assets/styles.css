@@ -1,0 +1,159 @@
+body, html {
+    padding: 0 auto;
+    margin: 0 auto;
+    background-color: #F0EFF0;
+}
+.ui.secondary.menu {
+    margin-left: 0;
+}
+#topNavBar {
+    height: 75px;
+    width: 100%;
+    background-color: #88A550;
+}
+#signupModalContent {
+    padding-right: 20%;
+    padding-left: 20%;
+}
+#homeMap {
+    height: 500px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+userlogin {
+    margin-top: 8px;
+}
+.background-color {
+    /*background-color: #FAEFD4;*/
+    min-height: 100vh;
+    padding-bottom: 30px;
+}
+.main-content {
+    background-color: #F0EFF0;
+    padding: 20px;
+    min-height: 100vh;
+    border-radius: 7px;
+}
+.ui.secondary.menu .header.item {
+    padding: 0;
+    margin-left: 0;
+    color: #FFFFFF;
+}
+#topNavHeader {
+    font-size: 30px;
+    margin-left: 20px;
+}
+.ui.facebook.button {
+    width: 100%;
+}
+#signinBtn, #signupBtn {
+    text-align: center;
+    width: 100%;
+}
+.signupSection {
+    text-align: center;
+}
+#navbarSignin {
+    font-size: 15px;
+    color: #FFFFFF;
+}
+
+/* profile */
+
+#user-image {
+    margin-top: 50px;
+}
+#user-activites {
+    margin-top: 25px;
+}
+#user-info {
+    margin-top: 10%;
+}
+#user-edit {
+    margin-top: 15%;
+    border-left: 1px solid;
+    margin-bottom: 30px;
+}
+#user-about {
+    margin-top: 3%;
+    border-left: 1px solid;
+    margin-bottom: 10%;
+}
+h3 {
+    margin-top: 10px;
+    padding: 0;
+}
+#user-about-list .item {
+    margin-bottom: 15px;
+}
+#user-edit-list .item {
+    margin-bottom: 10px;
+}
+
+.user-location {
+    margin-top: -10px;
+}
+a, a:hover {
+    color: black;
+}
+
+/* signup */
+#signupForm {
+    margin-top: 100px;
+}
+
+
+/* top nav bar */
+#navbarPhoto, #navbarFoodTruckPhoto {
+    margin-right: 10px;
+}
+#navbar-dropdown, #navbar-foodTruck-dropdown {
+    padding-top: 5px;
+}
+
+/* foodtruck signup */
+#signupCard {
+    margin: 20px;
+}
+#signupCardContent {
+    text-align: center;
+}
+#cuisineInput, #foodtruckName {
+    width: 100%;
+}
+.center.aligned.column {
+    margin-top: 17%;
+}
+#dropdownIcon, .profileName, .profileName:hover, .dropdown.icon{
+    color: #FFFFFF;
+}
+
+#foodtruckMap {
+    height: 200px;
+    width: 100%;
+}
+#foodtruckContainer {
+    margin-top: 20px;
+}
+#foodtruckuser-settings {
+    margin: 20px;
+}
+#addItems {
+    margin-top: 10px;
+}
+#menuHeader {
+    text-align: center;
+    margin-bottom: 30px;
+}
+#menuPrice {
+    text-align: right;
+}
+.user-favorite-foodtrucks {
+    margin-bottom: 200px;
+}
+#user-list {
+    margin-bottom: 30px;
+}
+.foodtruck-filter {
+    margin-bottom: 40px;
+}

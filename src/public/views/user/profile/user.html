@@ -1,0 +1,44 @@
+<top-nav-bar></top-nav-bar>
+<div class="ui container">
+    <div class="ui stackable grid">
+        <div class="five wide column">
+            <div class="image">
+                <img class="ui medium rounded image" id="user-image" ng-src="{{profile.user[0].facebook.photo}}" alt="">
+            </div>
+        </div>
+        <div class="eleven wide column" id="user-info">
+            <h1 class="user-fullname">Hey, I'm {{profile.user[0].facebook.name}}!</h1>
+            <div class="ui list" id="user-list">
+                <div class="item">
+                    <i class="users icon"></i>0 Friends
+                </div>
+                <div class="item">
+                    <i class="star icon"></i>0 Reviews
+                </div>
+                <div class="item">
+                    Member since {{profile.user[0].facebook.created |date:'MMMM yyyy'}}
+                </div>
+            </div>
+        </div>
+        <div class="five wide column">
+            <div class="user-favorite-foodtrucks">
+                <h1>Favorite Foodtrucks</h1>
+
+            </div>
+        </div>
+        <div class="eleven wide column">
+            <div class="user-reviews" >
+                <h1>Reviews</h1>
+                <div ng-repeat="review in profile.user.foodTruck">
+                    <ul >
+                        <li>{{review.foodTruck._id}}</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
