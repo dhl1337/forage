@@ -92,7 +92,6 @@
                         lng: position.coords.longitude
                     };
                     infoWindow.setPosition(pos);
-                    infoWindow.setContent('Searching for food!');
                     map.setCenter(pos);
                     map.setZoom(map.getZoom() + 10);
                 }, function() {

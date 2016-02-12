@@ -32,9 +32,9 @@
             var obj = {
                 userId: vm.currentUser._id,
                 description: description,
-                date: new Date.now()
+                date: Date.now()
             };
-            //console.log(vm.currentUser._id);
+            //console.log("add review",vm.currentUser._id, obj);
             FoodtruckService.addReview(currentFoodtruckId, obj)
         }
 
