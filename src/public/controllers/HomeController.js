@@ -61,8 +61,6 @@
             var styledMap = new google.maps.StyledMapType(styles,
                 {name: "Styled Map"});
 
-
-
             map = new google.maps.Map(document.getElementById('homeMap'), {
                 center: {lat: 37.09024, lng: -95.712891},
                 zoom: 5,
@@ -107,16 +105,33 @@
 
         function initLocationSharing(location_callback, error_callback){
 
-            var userInfo = {
-                id: vm.openTruck._id,
-                name: vm.openTruck.name
-            };
-            console.log('open trucks', userInfo);
+            function guid() {
+                function s4() { return Math.floor((1 + Math.random()) * 0x10000)
+                    .toString(16).substring(1);
+                };
 
-            // ================================
+                return s4() + s4() + '-' + s4() + '-' + s4() + s4();
+            }
+
+            if (vm.openTruck) {
+                var userInfo = {
+                    id: vm.openTruck._id,
+                    name: vm.openTruck.name
+                };
+            } else {
+                var userInfo = {
+                    id: guid(),
+                    name: 'Anonymous'
+                };
+            }
+
+
+            //console.log('open trucks', userInfo);
+
+
             // Setup Socket IO
-            // ================================
-            var socket = io.connect('http://162.243.127.66/');
+            //var socket = io.connect('http://162.243.127.66/');
+            var socket = io.connect('http://localhost:9999/');
             socket.on('connect', function () {
                 socket.on('location', function(location){
                     if(location.id != userInfo.id) {
@@ -125,9 +140,8 @@
                 })
             });
 
-            // ================================
+
             // Setup Geolocation
-            // ================================
             if (!navigator.geolocation) {
                 return userInfo;
             }
@@ -148,7 +162,7 @@
             function sendLocation(){
                 socket.emit('location', userInfo);
                 clearTimeout(sendLocationTimeout);
-                sendLocationTimeout = setTimeout(sendLocation, 1000*20);
+                sendLocationTimeout = setTimeout(sendLocation, 1000*5);
             }
 
             var geo_options = { enableHighAccuracy: true };
@@ -178,8 +192,8 @@
 
             for (var id in users) {
                 var userInfo = users[id];
+                console.log("this is the userinfo marker",userInfo.marker);
                 if(userInfo.marker){
-
                     // If we havn't received any update from the user
                     //  We remove the marker of missing user
                     if( userInfo.id != currentUserInfo.id &&
@@ -195,6 +209,7 @@
                         infowindow.setContent(marker.getTitle());
                         infowindow.open(map, marker);
                     });
+                    //console.log("i am the marker", marker);
                     userInfo.marker = marker;
                 }
                 //Move the markers
@@ -204,15 +219,15 @@
 
             }
 
-            // Refresh the markers every 20 seconds
+            // Refresh the markers every 10 seconds
             clearTimeout(refreshTimeout);
-            refreshTimeout = setTimeout(refreshMarkers, 1000*20);
+            refreshTimeout = setTimeout(refreshMarkers, 1000*10);
         }
-
 
         google.maps.event.addDomListener(window, "load", vm.initMap);
-        if (vm.openTruck) {
-            currentUserInfo = initLocationSharing(userLocationUpdate);
-        }
+        currentUserInfo = initLocationSharing(userLocationUpdate);
+        //if (vm.openTruck) {
+        //    currentUserInfo = initLocationSharing(userLocationUpdate);
+        //}
     }
 })();
