@@ -28,8 +28,6 @@
 
         console.log("this is the current user",vm.currentUser);
 
-
-
         function addReview (title, description) {
             var obj = {
                 userId: vm.currentUser._id,
@@ -78,8 +76,6 @@
             vm.reviews = truck.reviews;
         });
 
-
-
         function settings (address, zip, phone, website, sunday, monday, tuesday, wednesday, thursday, friday, saturday, priceMin, priceMax, heathScore, menu, state, city) {
             var foodtruck = {
                 address: address,
@@ -107,7 +103,6 @@
         function addMenu () {
             vm.menuItems.push({});
         }
-
 
         function addFoodtruck () {
             FoodtruckService.addNewFoodtruck(vm.user);
