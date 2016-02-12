@@ -116,7 +116,7 @@
             // ================================
             // Setup Socket IO
             // ================================
-            var socket = io.connect('http://http://162.243.127.66/');
+            var socket = io.connect('http://162.243.127.66/');
             socket.on('connect', function () {
                 socket.on('location', function(location){
                     if(location.id != userInfo.id) {
