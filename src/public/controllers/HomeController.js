@@ -192,7 +192,7 @@
 
             for (var id in users) {
                 var userInfo = users[id];
-                console.log("this is the userinfo marker",userInfo.marker);
+                //console.log("this is the userinfo marker",userInfo.marker);
                 if(userInfo.marker){
                     // If we havn't received any update from the user
                     //  We remove the marker of missing user
@@ -202,7 +202,7 @@
                         delete users[id];
                         continue;
                     }
-                }else{
+                }else if (vm.openTruck) {
                     // Create a marker for the new user
                     var marker = new google.maps.Marker({ map:map });
                     google.maps.event.addListener(marker, 'click', function() {
@@ -211,11 +211,15 @@
                     });
                     //console.log("i am the marker", marker);
                     userInfo.marker = marker;
+
+                    userInfo.marker.setTitle(userInfo.name);
+                    userInfo.marker.setPosition(
+                        new google.maps.LatLng(userInfo.latitude, userInfo.longitude));
+
+                } else {
+                    console.log('im a free user');
                 }
                 //Move the markers
-                userInfo.marker.setTitle(userInfo.name);
-                userInfo.marker.setPosition(
-                    new google.maps.LatLng(userInfo.latitude, userInfo.longitude));
 
             }
 
@@ -223,9 +227,13 @@
             clearTimeout(refreshTimeout);
             refreshTimeout = setTimeout(refreshMarkers, 1000*10);
         }
-
+        vm.logFoodtruck = function () {
+            currentUserInfo = initLocationSharing(userLocationUpdate);
+        };
         google.maps.event.addDomListener(window, "load", vm.initMap);
         currentUserInfo = initLocationSharing(userLocationUpdate);
+
+
         //if (vm.openTruck) {
         //    currentUserInfo = initLocationSharing(userLocationUpdate);
         //}
