@@ -28,12 +28,10 @@
 
         console.log("this is the current user",vm.currentUser);
 
-        function addReview (title, description) {
+        function addReview (description) {
             var obj = {
                 userId: vm.currentUser._id,
-                title: title,
-                description: description,
-                date: Date.now()
+                description: description
             };
             //console.log(vm.currentUser._id);
             FoodtruckService.addReview(currentFoodtruckId, obj)
@@ -74,6 +72,7 @@
             vm.heathScore = truck.healthScore;
             vm.menuItems = truck.menu;
             vm.reviews = truck.reviews;
+            console.log(vm.reviews);
         });
 
         function settings (address, zip, phone, website, sunday, monday, tuesday, wednesday, thursday, friday, saturday, priceMin, priceMax, heathScore, menu, state, city) {

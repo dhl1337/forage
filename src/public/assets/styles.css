@@ -179,3 +179,6 @@ a:hover {
 #foodtruckInfoList {
     padding: 1rem;
 }
+#hIcon, #dollarIcon, #clockIcon, #foodIcon, #worldIcon, #phoneIcon, #makerIcon, .writeReview {
+    color: #46bcec
+}

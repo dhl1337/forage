@@ -3,44 +3,40 @@
         <img class="ui fluid image" ng-src="{{foodtruck.foodtruckUser[0].photo}}" alt="">
     </div>
     <div class="sixteen wide column" id="foodtruckInfo">
-        <div class="ui list" style="background-color: #46bcec" id="foodtruckInfoList">
+        <div class="ui list" style="background-color: #46bcec; color: white" id="foodtruckInfoList">
             <div class="item">
-                <div class="header">{{foodtruck.foodtruckUser[0].name}}</div>
+                <div class="header" style="color: white">{{foodtruck.foodtruckUser[0].name}}</div>
             </div>
             <div class="item">
-                <div class="ui large star rating" data-rating="3"></div> 0 reviews
+                <div class="ui large star rating" data-rating="3"></div> {{foodtruck.foodtruckUser[0].reviews.length}} reviews
             </div>
             <div class="item">
-                <div class="description">{{foodtruck.foodtruckUser[0].cuisine}}</div>
+                {{foodtruck.foodtruckUser[0].cuisine}}
             </div>
         </div>
     </div>
     <div class="sixteen wide column">
         <div class="ui list">
             <div class="item">
-                <i class="large marker icon"></i>
+                <i class="large marker icon" id="makerIcon"></i>
                 <div class="middle aligned content">
                 {{foodtruck.foodtruckUser[0].address}}, {{foodtruck.foodtruckUser[0].city}}, {{foodtruck.foodtruckUser[0].state}} {{foodtruck.foodtruckUser[0].zip}}
                 </div>
             </div>
             <div class="item">
-                <i class="large phone icon"></i>
+                <i class="large phone icon" id="phoneIcon"></i>
                 <div class="middle aligned content">{{foodtruck.foodtruckUser[0].phone}}</div>
             </div>
             <div class="item">
-                <i class="large world icon"></i>
+                <i class="large world icon" id="worldIcon"></i>
                 <div class="middle aligned content">{{foodtruck.foodtruckUser[0].website}}</div>
             </div>
-            <div class="item" ui-sref="foodtruck.reviews">
-                <i class="large star icon"></i>
-                <div class="middle aligned content">Reviews</div>
-            </div>
             <div class="item" ui-sref="foodtruck.menu">
-                <i class="large food icon"></i>
+                <i class="large food icon" id="foodIcon"></i>
                 <div class="middle aligned content">Full Menu</div>
             </div>
             <div class="item">
-                <i class="large wait icon"></i>
+                <i class="large wait icon" id="clockIcon"></i>
                 <div class="middle aligned content">
                     <div class="ui accordion" ng-click="foodtruck.hoursAccordion()">
                         <div class="title">
@@ -78,49 +74,75 @@
 
             </div>
             <div class="item">
-                <i class="large dollar icon"></i>
+                <i class="large dollar icon" id="dollarIcon"></i>
                 <div class="middle aligned content">Price range {{foodtruck.foodtruckUser[0].price.min | currency:"$"}} -  {{foodtruck.foodtruckUser[0].price.max | currency:"$"}}</div>
             </div>
             <div class="item">
-                <i class="large h icon"></i>
+                <i class="large h icon" id="hIcon"></i>
                 <div class="middle aligned content">Health score {{foodtruck.foodtruckUser[0].healthScore}} out of 100</div>
             </div>
         </div>
     </div>
 </div>
 <div class="ui divider">
-    <h3>Review summary</h3>
+    <div class="header" style="margin-top: 10px; margin-bottom: 10px">
+        <h3>Review summary</h3>
+    </div>
     <div class="ui grid" ng-repeat="review in foodtruck.reviews">
         <div class="three wide column">
-            {{review.userId.facebook.name}}
+            <img class="ui medium circular image" ng-src="{{review.userId.facebook.photo}}" alt="">
         </div>
-        <div class="thirteen wide column">
-            {{review.description}}
+        <div class="thirteen wide column" style="margin-top: 5px">
+            "{{review.description}}"
         </div>
     </div>
+    <div class="review-section" style="margin-top: 20px; margin-bottom: 20px;" ng-click="foodtruck.reviewModal()">
+        <a class="writeReview" >WRITE A REVIEW</a>
+    </div>
+
 </div>
 
-<a ng-click="foodtruck.reviewModal()">WRITE A REVIEW</a>
 <div class="ui modal" id="reviewModal">
-    <div class="header">Rate & Review</div>
-    <div class="content">
-        <div class="ui form">
-            <img ng-src="{{foodtruck.currentUser.facebook.photo}}" alt="">
-            {{foodtruck.currentUser.facebook.name}}
-            <div class="field">
-                <div class="ui medium star rating" data-rating="3" ng-model="ratingReview"></div>
-            </div>
-            <div class="field">
-                <textarea ng-model="descriptionReview" placeholder="Describe your experience"></textarea>
+    <div class="content" style="background-color: #46bcec; color: white">
+        <div class="ui grid">
+            <div class="two wide column"></div>
+            <div class="fourteen wide column">
+                <h2>Rate & Review</h2>
             </div>
         </div>
     </div>
-    <div class="actions">
-        <div class="ui approve button" ng-click="foodtruck.addReview(descriptionReview)">Approve</div>
+    <div class="content">
+        <div class="ui grid">
+            <div class="two wide column">
+                <img class="ui fluid small circular image" ng-src="{{foodtruck.currentUser.facebook.photo}}" alt="">
+            </div>
+            <div class="fourteen wide column">
+                <h2>
+                    {{foodtruck.currentUser.facebook.name}}
+                </h2>
+                <p>Your review will be posted publicly on the web.</p>
+                <div class="ui form">
+                    <div class="field">
+                        <div class="ui massive star rating" data-rating="5" ng-model="ratingReview"></div>
+                    </div>
+                    <div class="field">
+                        <textarea ng-model="descriptionReview" placeholder="Describe your experience"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="sixteen wide column">
+                <div class="ui horizontal right floated list">
+                    <div class="actions">
+                        <div class="ui approve button" style="color: #46bcec">
+                            <strong>CANCEL</strong></div>
+                        <div class="ui approve button" style="color: #46bcec" ng-click="foodtruck.addReview(descriptionReview)">
+                            <strong>POST</strong></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-
 
 
 
