@@ -111,11 +111,12 @@
                 id: vm.openTruck._id,
                 name: vm.openTruck.name
             };
+            console.log('open trucks', userInfo);
 
             // ================================
             // Setup Socket IO
             // ================================
-            var socket = io();
+            var socket = io.connect('http://http://162.243.127.66/');
             socket.on('connect', function () {
                 socket.on('location', function(location){
                     if(location.id != userInfo.id) {
@@ -200,6 +201,7 @@
                 userInfo.marker.setTitle(userInfo.name);
                 userInfo.marker.setPosition(
                     new google.maps.LatLng(userInfo.latitude, userInfo.longitude));
+
             }
 
             // Refresh the markers every 20 seconds

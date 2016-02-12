@@ -31,7 +31,8 @@
         function addReview (description) {
             var obj = {
                 userId: vm.currentUser._id,
-                description: description
+                description: description,
+                date: new Date.now()
             };
             //console.log(vm.currentUser._id);
             FoodtruckService.addReview(currentFoodtruckId, obj)
