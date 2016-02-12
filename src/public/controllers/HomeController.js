@@ -74,6 +74,8 @@
             });
             map.mapTypes.set('map_style', styledMap);
             map.setMapTypeId('map_style');
+            google.maps.event.trigger(map, "resize");
+
             refreshMarkers();
         }
 
@@ -227,6 +229,7 @@
             currentUserInfo = initLocationSharing(userLocationUpdate);
         };
         google.maps.event.addDomListener(window, "load", vm.initMap);
+
         currentUserInfo = initLocationSharing(userLocationUpdate);
 
 
