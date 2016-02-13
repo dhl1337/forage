@@ -46,8 +46,13 @@
         };
 
 
-        $('.ui.rating')
-            .rating()
+        $('#foodtruckRating')
+            .rating({
+                initialRating: 0,
+                maxRating: 5,
+                clearable: false,
+                interactive: false
+            })
         ;
 
         HomeService.getCurrentuser().then(function (user){
