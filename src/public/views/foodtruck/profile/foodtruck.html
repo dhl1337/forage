@@ -27,12 +27,25 @@
             </div>
             <div class="item" ui-sref="foodtruck.menu">
                 <i class="large food icon" id="foodIcon"></i>
-                <div class="middle aligned content">Full Menu</div>
+                <div class="middle aligned content">
+                    <div class="ui accordion" id="menuAccordion" ng-click="foodtruck.menuAccordion()">
+                        <div class="title">
+                            Full Menu
+                            <i class="caret down icon"></i>
+                        </div>
+                        <div class="content">
+                            <div class="ui two column grid" ng-repeat="item in foodtruck.menuItems">
+                                <div class="column">{{item.name | uppercase}}</div>
+                                <div class="column">{{item.price | currency:"$"}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="item">
                 <i class="large wait icon" id="clockIcon"></i>
                 <div class="middle aligned content">
-                    <div class="ui accordion" ng-click="foodtruck.hoursAccordion()">
+                    <div class="ui accordion" id="hoursAccordion" ng-click="foodtruck.hoursAccordion()">
                         <div class="title">
                             Today 5:00pm - 10:30pm
                             <i class="caret down icon"></i>
@@ -129,7 +142,7 @@
                     <div class="actions">
                         <div class="ui approve button" style="color: #46bcec">
                             <strong>CANCEL</strong></div>
-                        <div class="ui approve button" style="color: #46bcec" ng-click="foodtruck.addReview(descriptionReview)">
+                        <div class="ui approve button" style="color: #46bcec" ng-click="foodtruck.addReview(descriptionReview)" ui-sref="home">
                             <strong>POST</strong></div>
                     </div>
                 </div>

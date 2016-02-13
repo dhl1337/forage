@@ -13,6 +13,7 @@
         vm.addMenu = addMenu;
         vm.settings = settings;
         vm.hoursAccordion = hoursAccordion;
+        vm.menuAccordion = menuAccordion;
         vm.reviewModal = reviewModal;
         vm.addReview = addReview;
         vm.addFoodtruck = addFoodtruck;
@@ -65,8 +66,14 @@
             FoodtruckService.addReview(currentFoodtruckId, obj)
         }
 
+        function menuAccordion () {
+            $('#menuAccordion')
+                .accordion()
+            ;
+        }
+
         function hoursAccordion () {
-            $('.ui.accordion')
+            $('#hoursAccordion')
                 .accordion()
             ;
         }
