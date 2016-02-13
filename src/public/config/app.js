@@ -50,36 +50,6 @@
                 controller: 'FoodtruckController',
                 controllerAs: 'foodtruck'
             })
-            .state('foodtruck.reviews', {
-                url: '/reviews',
-                templateUrl: '../views/foodtruck/profile/review.html',
-                controller: 'FoodtruckController',
-                controllerAs: 'foodtruck'
-            })
-            .state('foodtruck.menu',{
-                url: '/menu',
-                templateUrl: '../views/foodtruck/profile/menu.html',
-                controller: 'FoodtruckController',
-                controllerAs: 'foodtruck'
-            })
-            .state('ftsignup', {
-                url: '/getting_started',
-                templateUrl: '../views/foodtruck/signup/signup.html',
-                controller: 'FoodtruckController',
-                controllerAs: 'foodtruck'
-            })
-            .state('ftsignup.about', {
-                url: '/about',
-                templateUrl: '../views/foodtruck/signup/about.html'
-            })
-            .state('ftsignup.picture', {
-                url: '/picture',
-                templateUrl: '../views/foodtruck/signup/picture.html'
-            })
-            .state('ftsignup.confirm', {
-                url: '/confirm',
-                templateUrl: '../views/foodtruck/signup/confirm.html'
-            })
             .state('usersettings', {
                 url: '/user_settings/:id',
                 templateUrl: '../views/user/settings/setting.html'
