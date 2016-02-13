@@ -1,44 +1,3 @@
-<!--<top-nav-bar></top-nav-bar>-->
-<!--<div class="ui container">-->
-    <!--<div class="ui stackable grid">-->
-        <!--<div class="five wide column">-->
-            <!--<div class="image">-->
-                <!--<img class="ui medium rounded image" id="user-image" ng-src="{{profile.user[0].facebook.photo}}" alt="">-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="eleven wide column" id="user-info">-->
-            <!--<h1 class="user-fullname">Hey, I'm {{profile.user[0].facebook.name}}!</h1>-->
-            <!--<div class="ui list" id="user-list">-->
-                <!--<div class="item">-->
-                    <!--<i class="users icon"></i>0 Friends-->
-                <!--</div>-->
-                <!--<div class="item">-->
-                    <!--<i class="star icon"></i>0 Reviews-->
-                <!--</div>-->
-                <!--<div class="item">-->
-                    <!--Member since {{profile.user[0].facebook.created |date:'MMMM yyyy'}}-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="five wide column">-->
-            <!--<div class="user-favorite-foodtrucks">-->
-                <!--<h1>Favorite Foodtrucks</h1>-->
-
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div class="eleven wide column">-->
-            <!--<div class="user-reviews" >-->
-                <!--<h1>Reviews</h1>-->
-                <!--<div ng-repeat="review in profile.user.foodTruck">-->
-                    <!--<ul >-->
-                        <!--<li>{{review.foodTruck._id}}</li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
 <div class="ui grid">
     <div class="sixteen wide column" id="userProfileHeader">
         <div class="image">
@@ -48,14 +7,19 @@
     </div>
     <a class="eight wide column" style="text-align: center">REVIEWS</a>
     <a class="eight wide column" style="text-align: center">FAVORITES</a>
-    <div class="sixteen wide column">
-        <div class="ui grid" ng-repeat="foodtruck in profile.review">
-            <div class="three wide column">
-                <img class="ui medium circular image" ng-src="{{foodtruck.photo}}">
-            </div>
-            <div class="twelve wide column">
-                {{foodtruck.name}}
-                {{foodtruck.reviews}}
+    <div class="one wide column"></div>
+    <div class="fifteen wide column">
+        <div class="ui comments" ng-repeat="foodtruck in profile.review track by $index">
+            <div class="comment">
+                <a class="avatar">
+                    <img ng-src="{{foodtruck.photo}}">
+                </a>
+                <div class="content">
+                    <a class="author">{{foodtruck.name}}</a>
+                    <div class="text">
+                        {{foodtruck.reviews[$index].description}}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
