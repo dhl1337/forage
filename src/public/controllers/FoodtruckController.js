@@ -15,8 +15,35 @@
         vm.hoursAccordion = hoursAccordion;
         vm.reviewModal = reviewModal;
         vm.addReview = addReview;
+        vm.addFoodtruck = addFoodtruck;
         vm.menuItems = [];
-        vm.user  = {};
+
+        function addFoodtruck (name, cuisine, photo, phone, website, sunday, monday, tuesday, wednesday, thursday, friday, saturday, priceMin, priceMax, heathScore, menu) {
+            var foodtruckUser = {
+                name: name,
+                cuisine: cuisine,
+                photo: photo,
+                phone: phone,
+                website: website,
+                hours: {
+                    sunday: sunday,
+                    monday: monday,
+                    tuesday: tuesday,
+                    wednesday: wednesday,
+                    thursday: thursday,
+                    friday: friday,
+                    saturday: saturday
+                },
+                price: {
+                    min: priceMin,
+                    max: priceMax
+                },
+                healthScore: heathScore,
+                menu: menu
+            };
+            FoodtruckService.addNewFoodtruck(foodtruckUser);
+        };
+
 
         $('.ui.rating')
             .rating()
@@ -26,7 +53,7 @@
             vm.currentUser = user;
         });
 
-        console.log("this is the current user",vm.currentUser);
+        //console.log("this is the current user",vm.currentUser);
 
         function addReview (description) {
             var obj = {
@@ -73,7 +100,7 @@
             vm.heathScore = truck.healthScore;
             vm.menuItems = truck.menu;
             vm.reviews = truck.reviews;
-            console.log(vm.reviews);
+            console.log('this is reviews',vm.reviews);
         });
 
         function settings (address, zip, phone, website, sunday, monday, tuesday, wednesday, thursday, friday, saturday, priceMin, priceMax, heathScore, menu, state, city) {
@@ -104,9 +131,7 @@
             vm.menuItems.push({});
         }
 
-        function addFoodtruck () {
-            FoodtruckService.addNewFoodtruck(vm.user);
-        }
+
 
     }
 })();

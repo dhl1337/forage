@@ -18,7 +18,7 @@
         <img class="ui avatar image" ng-src="{{home.user.facebook.photo}}" alt="">
         {{home.user.facebook.name}}
     </div>
-    <div class="item" ui-sref="ftsignup.about" ng-hide="home.user === undefined">BECOME A FOOD TRUCK OWNER</div>
+    <div class="item" ui-sref="foodtrucksignup" ng-hide="home.user === undefined">BECOME A FOOD TRUCK OWNER</div>
     <!--this is for the footruck user-->
     <!--ng-click="home.openSideBar(); sideDisplay='foodtruck'"-->
     <div class="item" ng-click="home.openSideBar()" ng-show="home.user.foodTruck" ui-sref="home.foodtruck({id: home.user.foodTruck})">

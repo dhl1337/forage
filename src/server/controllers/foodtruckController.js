@@ -32,7 +32,7 @@ module.exports = {
             })
     },
     delete: function (req, res) {
-        var idToDelete = ObjectId(req.params.id);
+        var idToDelete = req.params.id;
         Foodtruck.remove({_id: idToDelete}, function (err, result) {
             if (err) {
                 res.status(500).send('failed to delete');

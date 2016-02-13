@@ -20,19 +20,19 @@
                 resolve: {
                     currentFoodtruck: function (FoodtruckService) {
                         return FoodtruckService.getFoodtruck().then(function(res) {
-                            console.log('resolve truck success');
+                            //console.log('resolve truck success');
                             return res;
                         }).catch(function(err) {
-                            console.error('resolve truck err');
+                            //console.error('resolve truck err');
                             return null;
                         })
                     },
                     currentUser: function (HomeService) {
                         return HomeService.getCurrentuser(false).then(function(res) {
-                            console.log('Resolve User success');
+                            //console.log('Resolve User success');
                             return res;
                         }).catch(function(err) {
-                            console.log('resolve user failed');
+                            //console.log('resolve user failed');
                             return null;
                         })
                     }
@@ -87,6 +87,12 @@
             .state('foodtrucksettings', {
                 url: '/foodtruck_settings/:id',
                 templateUrl: '../views/foodtruck/settings/setting.html',
+                controller: 'FoodtruckController',
+                controllerAs: 'foodtruck'
+            })
+            .state('foodtrucksignup', {
+                url:'/foodtruck_setting',
+                templateUrl: '../views/foodtruck/signup/index.html',
                 controller: 'FoodtruckController',
                 controllerAs: 'foodtruck'
             });

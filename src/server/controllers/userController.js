@@ -11,8 +11,8 @@ module.exports = {
         })
     },
     delete: function (req, res) {
-        var idToDelete = ObjectId(req.params.id);
-        User.remove({_id: idToDelete}, function (err, result) {
+        //var idToDelete = ObjectId(req.params.id);
+        User.remove({_id: req.params.id}, function (err, result) {
             if (err) {
                 res.status(500).send('failed to delete');
             }

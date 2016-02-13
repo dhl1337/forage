@@ -5,23 +5,9 @@ var mongoose = require('mongoose');
 var foodtruckSchema = mongoose.Schema({
     name: {type: String},
     cuisine: {type: String},
-    description: {type: String},
     photo: {type: String},
-    address: {type: String},
-    city: {type: String},
-    healthScore: {type: String},
-    menu: [{
-        name: {type: String},
-        price: {type: Number}
-    }],
     phone: {type: String},
-    price: {
-        min: {type: Number},
-        max: {type: Number}
-    },
     website: {type: String},
-    zip: {type: Number},
-    state: {type: String},
     hours: {
         sunday: {type: String},
         monday: {type: String},
@@ -31,6 +17,15 @@ var foodtruckSchema = mongoose.Schema({
         friday: {type: String},
         saturday: {type: String}
     },
+    price: {
+        min: {type: Number},
+        max: {type: Number}
+    },
+    healthScore: {type: String},
+    menu: [{
+        name: {type: String},
+        price: {type: Number}
+    }],
     reviews: [{
         userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
         description: {type: String},

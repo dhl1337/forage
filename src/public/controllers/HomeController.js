@@ -7,7 +7,7 @@
         .controller('HomeController', ['FoodtruckService', 'HomeService', 'currentFoodtruck', 'currentUser', '$state',HomeController]);
 
     function HomeController (FoodtruckService, HomeService, currentFoodtruck, currentUser, $state) {
-        console.log('controller loading');
+        //console.log('controller loading');
         var vm = this;
         vm.initMap = initMap;
         var refreshTimeout = null;
@@ -53,7 +53,7 @@
         //});
 
 
-        console.log('USER: ', vm.user);
+        //console.log('USER: ', vm.user);
 
 
         function initMap() {
@@ -190,10 +190,10 @@
             refreshMarkers();
         }
         function refreshMarkers(){
-            console.log('CURRENT MARKERS: ', users);
+            //console.log('CURRENT MARKERS: ', users);
             for (var id in users) {
                 var userInfo = users[id];
-                console.log("this is the userinfo marker",userInfo.marker);
+                //console.log("this is the userinfo marker",userInfo.marker);
                 if(userInfo.marker){
                     // If we havn't received any update from the user
                     //  We remove the marker of missing user
@@ -211,9 +211,6 @@
                     userInfo.marker.setTitle(userInfo.name);
                     userInfo.marker.setPosition(
                         new google.maps.LatLng(userInfo.latitude, userInfo.longitude));
-
-
-
 
                 } else {
                     // Create a marker for the new user
@@ -246,9 +243,5 @@
 
         currentUserInfo = initLocationSharing(userLocationUpdate);
 
-
-        //if (vm.openTruck) {
-        //    currentUserInfo = initLocationSharing(userLocationUpdate);
-        //}
     }
 })();
