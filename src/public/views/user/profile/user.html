@@ -49,9 +49,13 @@
     <a class="eight wide column" style="text-align: center">REVIEWS</a>
     <a class="eight wide column" style="text-align: center">FAVORITES</a>
     <div class="sixteen wide column">
-        <div class="ui relaxed divided list" ng-repeat="review in profile.user[0].foodTruck track by $index">
-            <div class="item">
-                {{review.foodTruck._id}}
+        <div class="ui grid" ng-repeat="foodtruck in profile.review">
+            <div class="three wide column">
+                <img class="ui medium circular image" ng-src="{{foodtruck.photo}}">
+            </div>
+            <div class="twelve wide column">
+                {{foodtruck.name}}
+                {{foodtruck.reviews}}
             </div>
         </div>
     </div>

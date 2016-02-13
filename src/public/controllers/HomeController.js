@@ -43,7 +43,7 @@
             for(var i = 0; i <vm.foodtrucks.length; i++) {
                 if (vm.user.foodTruck == vm.foodtrucks[i]._id) {
                     vm.openTruck = vm.foodtrucks[i];
-                    console.log(vm.openTruck);
+                    //console.log(vm.openTruck);
                 }
             }
         }
@@ -79,29 +79,29 @@
             refreshMarkers();
         }
 
-        vm.initLocation = initLocation;
-
-        function initLocation () {
-            //console.log('im clicked');
-            var infoWindow = new google.maps.InfoWindow({map: map});
-
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    var pos = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-                    infoWindow.setPosition(pos);
-                    map.setCenter(pos);
-                    map.setZoom(map.getZoom() + 10);
-                }, function() {
-                    handleLocationError(true, infoWindow, map.getCenter());
-                });
-            } else {
-                // Browser doesn't support Geolocation
-                handleLocationError(false, infoWindow, map.getCenter());
-            }
-        }
+        //vm.initLocation = initLocation;
+        //
+        //function initLocation () {
+        //    //console.log('im clicked');
+        //    var infoWindow = new google.maps.InfoWindow({map: map});
+        //
+        //    if (navigator.geolocation) {
+        //        navigator.geolocation.getCurrentPosition(function(position) {
+        //            var pos = {
+        //                lat: position.coords.latitude,
+        //                lng: position.coords.longitude
+        //            };
+        //            infoWindow.setPosition(pos);
+        //            map.setCenter(pos);
+        //            map.setZoom(map.getZoom() + 10);
+        //        }, function() {
+        //            handleLocationError(true, infoWindow, map.getCenter());
+        //        });
+        //    } else {
+        //        // Browser doesn't support Geolocation
+        //        handleLocationError(false, infoWindow, map.getCenter());
+        //    }
+        //}
         //google.maps.event.addDomListener(window, "load", vm.initLocation);
 
         function initLocationSharing(location_callback, error_callback){
@@ -220,6 +220,8 @@
                         google.maps.event.addListener(marker, 'click', function() {
                             infowindow.setContent(marker.getTitle());
                             infowindow.open(map, marker);
+                            map.setZoom(map.getZoom() + 10);
+                            map.setCenter(marker.getPosition());
                             //console.log('this is the awesome marker',marker);
                             vm.openSideBar();
                             $state.go('home.foodtruck', {id:userInfo.id});
