@@ -50,11 +50,21 @@
         this.addReview = function (id, obj) {
             return $http({
                 method: 'POST',
-                url: '/api/foodtrucks/reviews/'+id,
+                url: '/api/reviews/'+id,
                 data: obj
             }).then(function (response) {
                 return response.data
             })
         };
+        this.addFavorite = function (currentUserId, foodtruckId) {
+            return $http({
+                method: 'POST',
+                url: '/api/users/favorite/' + currentUserId,
+                data: foodtruckId
+            }).then(function (response){
+                return response.data;
+            })
+        };
+
     }
 })();

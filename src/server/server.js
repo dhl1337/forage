@@ -50,6 +50,9 @@ require('./routes/userRoutes.js')(app);
 // Foodtruck Endpoints
 require('./routes/foodtruckRoutes.js')(app);
 
+// Reviews
+require('./routes/reviewRoutes.js')(app);
+
 // Connections
 var port = config.port;
 http.listen(port, function () {

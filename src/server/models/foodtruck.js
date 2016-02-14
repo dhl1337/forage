@@ -28,9 +28,9 @@ var foodtruckSchema = mongoose.Schema({
     }],
     reviews: [{
         userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+        rating: {type: Number},
         description: {type: String},
         date: {type: Date}
-        //rating: {type: String}
     }]
 });
 

@@ -141,19 +141,19 @@ a, a:hover {
 .foodtruck-filter {
     margin-bottom: 40px;
 }
-#main-menu, #splash-menu {
+#splash-menu {
     position: absolute;
-    top: 10%;
-    left: 7%;
+    top: 3%;
+    right: 2%;
     opacity: 0.8;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
 }
 .ui.menu .active.item {
-    color: white;
+    color: black;
 }
 .ui.menu .item {
-    color: white;
+    color: black;
 }
 .ui.menu .item:hover {
     background-color: #46bcec;
@@ -171,6 +171,7 @@ a:hover {
 #userProfileHeader {
     text-align: center;
     background-color: #46bcec;
+    padding-top: 30px;
 }
 #foodtruckImageHeader, #foodtruckInfo {
     margin: 0;
@@ -181,4 +182,12 @@ a:hover {
 }
 #hIcon, #dollarIcon, #clockIcon, #foodIcon, #worldIcon, #phoneIcon, #makerIcon, .writeReview {
     color: #46bcec
+}
+.ui.grid > #routingSide:not(.row) {
+    padding-left: 2rem;
+    padding-bottom: 0;
+}
+.ui.grid > #mapSide:not(.row) {
+    padding-left: 0;
+    padding-bottom: 0;
 }

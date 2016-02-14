@@ -4,9 +4,9 @@
 (function () {
     angular
         .module('forageApp')
-        .controller('FoodtruckController', ['FoodtruckService', '$stateParams', 'HomeService', FoodtruckController]);
+        .controller('FoodtruckController', ['FoodtruckService', '$stateParams', 'HomeService', '$state', FoodtruckController]);
 
-    function FoodtruckController (FoodtruckService, $stateParams, HomeService) {
+    function FoodtruckController (FoodtruckService, $stateParams, HomeService, $state) {
         var vm = this;
         var currentFoodtruckId = $stateParams.id;
         vm.addFoodtruck = addFoodtruck;
@@ -17,7 +17,11 @@
         vm.reviewModal = reviewModal;
         vm.addReview = addReview;
         vm.addFoodtruck = addFoodtruck;
+        vm.addFavorite = addFavorite;
         vm.menuItems = [];
+
+
+        HomeService.getCurrentuser().then(function (user){vm.currentUser = user;});
 
         function addFoodtruck (name, cuisine, photo, phone, website, sunday, monday, tuesday, wednesday, thursday, friday, saturday, priceMin, priceMax, heathScore, menu) {
             var foodtruckUser = {
@@ -46,29 +50,19 @@
         };
 
 
-        $('#foodtruckRating')
-            .rating({
-                initialRating: 0,
-                maxRating: 5,
-                clearable: false,
-                interactive: false
-            })
-        ;
-
-        HomeService.getCurrentuser().then(function (user){
-            vm.currentUser = user;
-        });
-
         //console.log("this is the current user",vm.currentUser);
 
         function addReview (description) {
             var obj = {
                 userId: vm.currentUser._id,
+                rating: vm.rating,
                 description: description,
                 date: Date.now()
             };
             //console.log("add review",vm.currentUser._id, obj);
-            FoodtruckService.addReview(currentFoodtruckId, obj)
+            //console.log('this should be maryID',currentFoodtruckId);
+            FoodtruckService.addReview(currentFoodtruckId, obj);
+            $state.go('home.foodtruck', {id:currentFoodtruckId});
         }
 
         function menuAccordion () {
@@ -143,7 +137,26 @@
             vm.menuItems.push({});
         }
 
+        function addFavorite () {
+            //console.log('adding currentuser',vm.currentUser._id);
+            //console.log('adding current foodtruck',currentFoodtruckId);
+            var obj = {
+                foodtruckId: currentFoodtruckId
+            };
+            FoodtruckService.addFavorite(vm.currentUser._id, obj);
+        };
+
+        $('#asdf')
+            .rating('enable');
 
 
+        $('#foodtruckRating')
+            .rating('disable');
+
+        $('#userRating')
+            .rating('setting', 'onRate', function (value) {
+                vm.rating = value;
+                //console.log(vm.rating);
+            })
     }
 })();

@@ -1,47 +1,30 @@
-<div class="ui left wide sidebar ui segment" id="sidemenu">
-    <div class="fluid container">
-        <!--<user ng-show="sideDisplay=='user'"></user>-->
-        <!--<foodtruck ng-show="sideDisplay=='foodtruck'"></foodtruck>-->
+<div class="ui stackable grid">
+    <div class="four wide column" id="routingSide">
         <ui-view></ui-view>
     </div>
+    <div class="twelve wide column" id="mapSide">
+        <div id="homeMap"></div>
+        <div class="ui vertical compact menu" id="splash-menu">
+            <div class="item" ng-click="home.loginModal()" ng-hide="home.user">SIGN IN</div>
+            <!--this is for the facebook user-->
+            <!--ng-click="home.openSideBar();sideDisplay='user'"-->
+            <div class="item" ui-sref="home.profile({id: home.user._id})" ng-hide="home.user === undefined" ng-click="home.openSideBar()" >
+                <img class="ui avatar image" ng-src="{{home.user.facebook.photo}}" alt="">
+                {{home.user.facebook.name}}
+            </div>
+            <div class="item" ui-sref="foodtrucksignup" ng-hide="home.user === undefined || home.user.foodTruck">BECOME A FOOD TRUCK OWNER</div>
+            <!--this is for the footruck user-->
+            <!--ng-click="home.openSideBar(); sideDisplay='foodtruck'"-->
+            <div class="item" ng-click="home.openSideBar()" ng-show="home.user.foodTruck" ui-sref="home.foodtruck({id: home.user.foodTruck})">
+                <img class="ui avatar image" ng-src="{{home.openTruck.photo}}">
+                {{home.openTruck.name}}
+            </div>
+            <div class="item">FAVORITES</div>
+            <div class="item"  ng-hide="home.user === undefined">
+                <a href="/auth/logout">LOG OUT</a></div>
+        </div>
+    </div>
 </div>
-
-<div id="homeMap"></div>
-<div class="ui large vertical menu" id="splash-menu">
-    <div class="disabled item" ui-sref="home">
-        <h2>Forage</h2>
-    </div>
-    <div class="item" ng-click="home.loginModal()" ng-hide="home.user">SIGN IN</div>
-    <!--this is for the facebook user-->
-    <!--ng-click="home.openSideBar();sideDisplay='user'"-->
-    <div class="item" ui-sref="home.profile({id: home.user._id})" ng-hide="home.user === undefined" ng-click="home.openSideBar()" >
-        <img class="ui avatar image" ng-src="{{home.user.facebook.photo}}" alt="">
-        {{home.user.facebook.name}}
-    </div>
-    <div class="item" ui-sref="foodtrucksignup" ng-hide="home.user === undefined || home.user.foodTruck">BECOME A FOOD TRUCK OWNER</div>
-    <!--this is for the footruck user-->
-    <!--ng-click="home.openSideBar(); sideDisplay='foodtruck'"-->
-    <div class="item" ng-click="home.openSideBar()" ng-show="home.user.foodTruck" ui-sref="home.foodtruck({id: home.user.foodTruck})">
-        <img class="ui avatar image" ng-src="{{home.openTruck.photo}}">
-        {{home.openTruck.name}}
-    </div>
-    <div class="item">DAILY SPECIALS</div>
-    <div class="item">START YOUR ORDER</div>
-    <div class="item">FAVORITES</div>
-    <a class="item" href="/auth/logout" ng-hide="home.user === undefined">LOG OUT</a>
-</div>
-    <!--<div class="ui large vertical menu" ng-show="showme">-->
-        <!--<div class="disabled item">-->
-            <!--<h2>Forage</h2>-->
-        <!--</div>-->
-        <!--<div class="item" ng-click="home.loginModal()" ng-hide="home.user">SIGN IN</div>-->
-        <!--<div class="item">-->
-            <!--<img class="ui avatar image" ng-src="{{home.user.facebook.photo}}" alt="">-->
-        <!--</div>-->
-        <!--<div class="item" ng-click="home.initLocation()">DAILY SPECIALS</div>-->
-        <!--<div class="item">START YOUR ORDER</div>-->
-        <!--<div class="item">FAVORITES</div>-->
-    <!--</div>-->
 <div class="ui small modal" id="loginModal">
     <i class="close icon"></i>
     <div class="header" style="color: white; background-color: #00ACED">Sign in to your Forage account.</div>

@@ -5,19 +5,25 @@
         </div>
         <h3 style="color: white">{{profile.user[0].facebook.name}}</h3>
     </div>
-    <a class="active item eight wide column" style="text-align: center">REVIEWS</a>
-    <a class="item eight wide column" style="text-align: center">FAVORITES</a>
+    <a class="active item eight wide column" style="text-align: center" ui-sref="home.profile.reviews({id: profile.currentUserId})">REVIEWS</a>
+    <a class="item eight wide column" style="text-align: center" ui-sref="home.profile.favorites" ng-click="profile.getFavorites()">FAVORITES</a>
     <div class="sixteen wide column">
-        <div class="ui comments" ng-repeat="foodtruck in profile.review track by $index">
-            <div class="comment">
-                <div class="avatar"><img ng-src="{{foodtruck.photo}}"></div>
-                <div class="content">
-                    <a class="author">{{foodtruck.name}}</a>
-                    <div class="text">{{foodtruck.reviews[$index].description}}</div>
-                </div>
-            </div>
-        </div>
+        <ui-view></ui-view>
+        <!--<div class="ui comments" ng-repeat="foodtruck in profile.data">-->
+            <!--<div class="comment">-->
+                <!--<div class="avatar"><img ng-src="{{foodtruck.photo}}"></div>-->
+                <!--<div class="content">-->
+                    <!--{{foodtruck.foodtruckId}}-->
+                    <!--<a class="author">{{foodtruck.name}}</a>-->
+                    <!--<div class="text" ng-repeat="review in profile.foundReview">-->
+                        <!--{{review.description}}-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
 </div>
+
+
 
 

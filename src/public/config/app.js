@@ -38,9 +38,25 @@
                     }
                 }
             })
+            .state('home.splash', {
+                url: '/index',
+                templateUrl: '../views/splash/index.html'
+            })
             .state('home.profile', {
                 url: '/profile/:id',
                 templateUrl: '../views/user/profile/user.html',
+                controller: 'ProfileController',
+                controllerAs: 'profile'
+            })
+            .state('home.profile.reviews', {
+                url: '/reviews/:id',
+                templateUrl: '../views/user/reviews/review.html',
+                controller: 'ProfileController',
+                controllerAs: 'profile'
+            })
+            .state('home.profile.favorites', {
+                url: '/favorites',
+                templateUrl: '../views/user/favorites/favorite.html',
                 controller: 'ProfileController',
                 controllerAs: 'profile'
             })
@@ -66,6 +82,6 @@
                 controller: 'FoodtruckController',
                 controllerAs: 'foodtruck'
             });
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/home/index');
     }
 })();

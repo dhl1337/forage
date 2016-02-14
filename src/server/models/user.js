@@ -17,7 +17,10 @@ var userSchema = new Schema({
     foodTruck: {
         type: mongoose.Schema.Types.ObjectId, ref: 'foodtruck',
         ft: foodtruckSchema
-    }
+    },
+    favorites: [{
+        foodtruckId: {type: String}
+    }]
 });
 
 module.exports = mongoose.model('User', userSchema);

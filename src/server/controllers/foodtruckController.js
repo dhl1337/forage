@@ -3,7 +3,7 @@
  */
 var Foodtruck = require('./../models/foodtruck.js');
 var User = require('./../models/user.js');
-var ObjectId = require('mongoose').ObjectId;
+//var ObjectId = require('mongoose').ObjectId;
 
 module.exports = {
     create: function (req, res) {
@@ -33,7 +33,8 @@ module.exports = {
     },
     delete: function (req, res) {
         var idToDelete = req.params.id;
-        Foodtruck.remove({_id: idToDelete}, function (err, result) {
+        Foodtruck
+            .remove({_id: idToDelete}, function (err, result) {
             if (err) {
                 res.status(500).send('failed to delete');
             }
@@ -41,7 +42,10 @@ module.exports = {
         })
     },
     current: function (req, res) {
-        Foodtruck.find({_id: req.params.id}).populate('reviews.userId').exec(function(err, result){
+        Foodtruck
+            .find({_id: req.params.id})
+            .populate('reviews.userId')
+            .exec(function(err, result){
             if(err) {
                 res.status(500).send('failed to find');
             } else {
@@ -51,24 +55,13 @@ module.exports = {
     },
     updateFoodtruck: function (req, res) {
         //console.log(req.body);
-        Foodtruck.findByIdAndUpdate(req.user.foodTruck, {$set: req.body}, function (err, result) {
+        Foodtruck
+            .findByIdAndUpdate(req.user.foodTruck, {$set: req.body}, function (err, result) {
             if (err) {
                 res.status(500).send();
             } else {
                 res.json(result);
             }
-        })
-    },
-    addReview: function (req, res) {
-        //console.log(req.user);
-        Foodtruck
-            .update(req.query, {$push: {'reviews': req.body}})
-            .exec(function (err, result) {
-                if (err) {
-                    res.status(500).send(err);
-                } else {
-                    res.json(result);
-                }
         })
     }
 };

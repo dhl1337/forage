@@ -79,6 +79,7 @@
             refreshMarkers();
         }
 
+
         //vm.initLocation = initLocation;
         //
         //function initLocation () {
@@ -195,17 +196,6 @@
                 var userInfo = users[id];
                 //console.log("this is the userinfo marker",userInfo.marker);
                 if(userInfo.marker){
-                    // If we havn't received any update from the user
-                    //  We remove the marker of missing user
-                    //console.log("this is current user info",currentUserInfo.id);
-                    //console.log("this is userInfo.id", userInfo.id);
-                    //JUST IN CASE TIM DON"T KNOW NUTHIN
-                    //if( userInfo.id != currentUserInfo.id &&
-                    //    userInfo.timestamp + 1000*30 < new Date().getTime() ){
-                    //    userInfo.marker.setMap(null);
-                    //    delete users[id];
-                    //    continue;
-                    //}
 
                     //Move the markers
                     userInfo.marker.setTitle(userInfo.name);
