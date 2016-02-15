@@ -19,7 +19,10 @@ var userSchema = new Schema({
         ft: foodtruckSchema
     },
     favorites: [{
-        foodtruckId: {type: String}
+        foodtruckId: {type: String},
+        name: {type: String},
+        photo: {type: String},
+        cuisine: {type: String}
     }]
 });
 

@@ -1,11 +1,17 @@
-<div class="ui comments" ng-repeat="foodtruck in profile.favorites">
-    <div class="comment">
-        <div class="avatar"><img ng-src="{{foodtruck.photo}}"></div>
-        <div class="content">
-            {{foodtruck.name}}
-            <a class="author" ui-sref="home.foodtruck({id: {{foodtruck._id}}})">{{foodtruck.name}}</a>
+<div class="ui grid" ng-repeat="favoriteFoodtruck in profile.user[0].favorites" style="margin-top: 5px">
+    <div class="three wide column">
+        <img class="ui large circular image" ng-src="{{favoriteFoodtruck.photo}}" alt="">
+    </div>
+    <div class="ten wide column">
+        <div class="ui list">
+            <div class="item" ui-sref="home.foodtruck({id: favoriteFoodtruck.foodtruckId})">
+                <div class="content">
+                    <div class="header">
+                        {{favoriteFoodtruck.name}}
+                    </div>
+                    {{favoriteFoodtruck.cuisine}}
+                </div>
+            </div>
         </div>
     </div>
 </div>
-this is the foodtruck name
-{{profile.favoritesFoodtruck}}

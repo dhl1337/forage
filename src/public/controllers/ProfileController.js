@@ -25,16 +25,21 @@
         });
 
         vm.foodtrucksFavorite = function () {
+            vm.arr = [];
             for (var i = 0; i < vm.user.length; i++) {
-                console.log('boo', vm.user[i]);
-                for (var j = 0; j < vm.user[i].favorites; i++) {
-                    console.log('asdf',vm.user[i].favorites[j]);
-                }
-                FoodtruckService.getFoodtruckId(vm.user[i].favorites[j].foodtruckId).then(function (data){
-                    vm.favoritesFoodtruck = data;
-                })
-            }
+                console.log('boo', vm.user[i].favorites);
+                for (var key in vm.user[i].favorites) {
+                    console.log('work?',vm.user[i].favorites[key]['foodtruckId']);
 
+                    vm.arr.push(vm.user[i].favorites[key]['foodtruckId']);
+
+                }
+            }
+            console.log('arr of favorites?',vm.arr);
+            //FoodtruckService.getFoodtruckId(vm.user[i].favorites[key]['foodtruckId']).then(function (data){
+            //    vm.favoritesFoodtruck = data;
+            //    console.log('this is favorite food truck',vm.favoritesFoodtruck);
+            //})
         };
 
         //vm.favorites = [];

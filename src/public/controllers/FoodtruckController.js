@@ -141,8 +141,12 @@
             //console.log('adding currentuser',vm.currentUser._id);
             //console.log('adding current foodtruck',currentFoodtruckId);
             var obj = {
-                foodtruckId: currentFoodtruckId
+                foodtruckId: currentFoodtruckId,
+                name: vm.foodtruckUser[0].name,
+                photo: vm.foodtruckUser[0].photo,
+                cuisine: vm.foodtruckUser[0].cuisine
             };
+            console.log(obj);
             FoodtruckService.addFavorite(vm.currentUser._id, obj);
         };
 
