@@ -49,7 +49,7 @@
                 controllerAs: 'profile'
             })
             .state('home.profile.reviews', {
-                url: '/reviews/:id',
+                url: '/reviews',
                 templateUrl: '../views/user/reviews/review.html',
                 controller: 'ProfileController',
                 controllerAs: 'profile'

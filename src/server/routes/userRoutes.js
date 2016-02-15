@@ -10,5 +10,7 @@ module.exports = function (app) {
 
     app.post('/api/users/favorite/:id', userController.addFavorite);
     app.get('/api/users/favorite/:id', userController.getFavorite);
-    app.delete('/api/users/favorite/:id', userController.deleteFavorite)
+    app.delete('/api/users/favorite/:id', userController.deleteFavorite);
+
+    app.post('/api/users/reviews/:id', userController.addReview);
 };

@@ -29,7 +29,17 @@
             }).then(function (response) {
                 return response.data
             });
-        }
+        };
+
+        this.addReview = function (id, obj) {
+            return $http({
+                method: 'POST',
+                url: '/api/users/reviews/' + id,
+                data: obj
+            }).then(function (response) {
+                return response.data
+            })
+        };
 
     }
 })();

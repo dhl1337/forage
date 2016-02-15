@@ -23,6 +23,13 @@ var userSchema = new Schema({
         name: {type: String},
         photo: {type: String},
         cuisine: {type: String}
+    }],
+    reviews: [{
+        foodtruckId: {type: String},
+        name: {type: String},
+        photo: {type: String},
+        description: {type: String},
+        rating: {type: Number}
     }]
 });
 

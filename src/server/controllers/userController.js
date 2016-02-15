@@ -59,5 +59,17 @@ module.exports = {
             }
             res.json('Successfully deleted record');
         })
-    }
+    },
+    addReview: function (req, res) {
+        User
+            .findByIdAndUpdate(req.params.id, {$push: {'reviews': req.body}})
+            .exec(function (err, result) {
+                if (err) {
+                    res.status(500).send(err);
+                } else {
+                    console.log(result);
+                    res.json(result);
+                }
+            })
+    },
 };

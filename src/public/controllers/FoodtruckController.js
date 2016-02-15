@@ -23,6 +23,31 @@
 
         HomeService.getCurrentuser().then(function (user){vm.currentUser = user;});
 
+        FoodtruckService.getFoodtruckId(currentFoodtruckId).then(function(foodtruckUser){
+            var truck = foodtruckUser[0];
+            vm.foodtruckUser = foodtruckUser;
+            //console.log("foodcontroller truck:",truck);
+            vm.foodTruckAddress = truck.address;
+            vm.foodTruckCity = truck.city;
+            vm.foodTruckZip = truck.zip;
+            vm.state = truck.state;
+            vm.foodTruckPhone = truck.phone;
+            vm.foodTruckWebsite = truck.website;
+            vm.foodTruckSunday = truck.hours.sunday;
+            vm.foodTruckMonday = truck.hours.monday;
+            vm.foodTruckTuesday = truck.hours.tuesday;
+            vm.foodTruckWednesday = truck.hours.wednesday;
+            vm.foodTruckThursday = truck.hours.thursday;
+            vm.foodTruckFriday = truck.hours.friday;
+            vm.foodTruckSaturday = truck.hours.saturday;
+            vm.priceMin = truck.price.min;
+            vm.priceMax = truck.price.max;
+            vm.heathScore = truck.healthScore;
+            vm.menuItems = truck.menu;
+            vm.reviews = truck.reviews;
+            console.log('this is reviews',vm.reviews);
+        });
+
         function addFoodtruck (name, cuisine, photo, phone, website, sunday, monday, tuesday, wednesday, thursday, friday, saturday, priceMin, priceMax, heathScore, menu) {
             var foodtruckUser = {
                 name: name,
@@ -49,65 +74,9 @@
             FoodtruckService.addNewFoodtruck(foodtruckUser);
         };
 
-
-        //console.log("this is the current user",vm.currentUser);
-
-        function addReview (description) {
-            var obj = {
-                userId: vm.currentUser._id,
-                rating: vm.rating,
-                description: description,
-                date: Date.now()
-            };
-            //console.log("add review",vm.currentUser._id, obj);
-            //console.log('this should be maryID',currentFoodtruckId);
-            FoodtruckService.addReview(currentFoodtruckId, obj);
-            $state.go('home.foodtruck', {id:currentFoodtruckId});
+        function addMenu () {
+            vm.menuItems.push({});
         }
-
-        function menuAccordion () {
-            $('#menuAccordion')
-                .accordion()
-            ;
-        }
-
-        function hoursAccordion () {
-            $('#hoursAccordion')
-                .accordion()
-            ;
-        }
-
-        function reviewModal () {
-            console.log('im getting clicky clickey');
-            $('#reviewModal')
-                .modal('show')
-            ;
-        }
-
-        FoodtruckService.getFoodtruckId(currentFoodtruckId).then(function(foodtruckUser){
-            var truck = foodtruckUser[0];
-            vm.foodtruckUser = foodtruckUser;
-            //console.log("foodcontroller truck:",truck);
-            vm.foodTruckAddress = truck.address;
-            vm.foodTruckCity = truck.city;
-            vm.foodTruckZip = truck.zip;
-            vm.state = truck.state;
-            vm.foodTruckPhone = truck.phone;
-            vm.foodTruckWebsite = truck.website;
-            vm.foodTruckSunday = truck.hours.sunday;
-            vm.foodTruckMonday = truck.hours.monday;
-            vm.foodTruckTuesday = truck.hours.tuesday;
-            vm.foodTruckWednesday = truck.hours.wednesday;
-            vm.foodTruckThursday = truck.hours.thursday;
-            vm.foodTruckFriday = truck.hours.friday;
-            vm.foodTruckSaturday = truck.hours.saturday;
-            vm.priceMin = truck.price.min;
-            vm.priceMax = truck.price.max;
-            vm.heathScore = truck.healthScore;
-            vm.menuItems = truck.menu;
-            vm.reviews = truck.reviews;
-            console.log('this is reviews',vm.reviews);
-        });
 
         function settings (address, zip, phone, website, sunday, monday, tuesday, wednesday, thursday, friday, saturday, priceMin, priceMax, heathScore, menu, state, city) {
             var foodtruck = {
@@ -133,8 +102,47 @@
             FoodtruckService.updateFoodtruck(currentFoodtruckId, foodtruck)
         }
 
-        function addMenu () {
-            vm.menuItems.push({});
+        //console.log("this is the current user",vm.currentUser);
+
+        function addReview (description) {
+            var obj = {
+                userId: vm.currentUser._id,
+                rating: vm.rating,
+                description: description,
+                date: Date.now()
+            };
+
+            var foodtruckObj = {
+                foodtruckId: currentFoodtruckId,
+                name: vm.foodtruckUser[0].name,
+                photo: vm.foodtruckUser[0].photo,
+                description: description,
+                rating: vm.rating
+            };
+            //console.log("add review",vm.currentUser._id, obj);
+            //console.log('this should be maryID',currentFoodtruckId);
+            FoodtruckService.addReview(currentFoodtruckId, obj);
+            HomeService.addReview(vm.currentUser._id, foodtruckObj);
+            //$state.go('home.foodtruck', {id:currentFoodtruckId});
+        }
+
+        function menuAccordion () {
+            $('#menuAccordion')
+                .accordion()
+            ;
+        }
+
+        function hoursAccordion () {
+            $('#hoursAccordion')
+                .accordion()
+            ;
+        }
+
+        function reviewModal () {
+            console.log('im getting clicky clickey');
+            $('#reviewModal')
+                .modal('show')
+            ;
         }
 
         function addFavorite () {
@@ -148,7 +156,7 @@
             };
             console.log(obj);
             FoodtruckService.addFavorite(vm.currentUser._id, obj);
-        };
+        }
 
         $('#asdf')
             .rating('enable');

@@ -7,26 +7,12 @@
     </div>
     <div class="sixteen wide column" style="padding: 0;">
         <div class="ui fluid two item borderless menu" id="userMenu">
-            <div class="active item">REVIEWS</div>
+            <div class="active item" ui-sref="home.profile.reviews">REVIEWS</div>
             <div class="item" ng-click="profile.foodtrucksFavorite()" ui-sref="home.profile.favorites">FAVORITES</div>
         </div>
     </div>
     <div class="sixteen wide column">
         <ui-view></ui-view>
-        <!--{{profile.favoritesFoodtruck.name}}-->
-        <!--{{profile.favoritesFoodtruck}}-->
-        <!--<div class="ui comments" ng-repeat="foodtruck in profile.data">-->
-            <!--<div class="comment">-->
-                <!--<div class="avatar"><img ng-src="{{foodtruck.photo}}"></div>-->
-                <!--<div class="content">-->
-                    <!--{{foodtruck.foodtruckId}}-->
-                    <!--<a class="author">{{foodtruck.name}}</a>-->
-                    <!--<div class="text" ng-repeat="review in profile.foundReview">-->
-                        <!--{{review.description}}-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
     </div>
 </div>
 
