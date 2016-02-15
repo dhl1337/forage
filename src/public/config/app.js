@@ -40,7 +40,9 @@
             })
             .state('home.splash', {
                 url: '/index',
-                templateUrl: '../views/splash/index.html'
+                templateUrl: '../views/splash/index.html',
+                controller: 'HomeController',
+                controllerAs: 'home',
             })
             .state('home.profile', {
                 url: '/profile/:id',

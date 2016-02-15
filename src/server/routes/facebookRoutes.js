@@ -21,6 +21,6 @@ module.exports = function (app) {
     });
     app.get('/auth/logout', function (req, res) {
         req.logout();
-        res.redirect('/#/home');
+        res.redirect('/#/home/index');
     });
 };
