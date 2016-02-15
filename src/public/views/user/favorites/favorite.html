@@ -1,4 +1,4 @@
-<div class="ui comments" ng-repeat="foodtruck in profile.data">
+<div class="ui comments" ng-repeat="foodtruck in profile.favorites">
     <div class="comment">
         <div class="avatar"><img ng-src="{{foodtruck.photo}}"></div>
         <div class="content">
@@ -7,4 +7,5 @@
         </div>
     </div>
 </div>
-Favorites!
+this is the foodtruck name
+{{profile.favoritesFoodtruck}}

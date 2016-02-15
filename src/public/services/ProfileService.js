@@ -16,14 +16,14 @@
                 return response.data
             })
         };
-        this.getFavorite = function (currentUserid) {
-            return $http({
-                method: 'GET',
-                url: '/api/users/favorite/' + currentUserid
-            }).then(function (response) {
-                return response.data
-            })
-        };
+        //this.getFavorite = function (currentUserid) {
+        //    return $http({
+        //        method: 'GET',
+        //        url: '/api/users/favorite/' + currentUserid
+        //    }).then(function (response) {
+        //        return response.data
+        //    })
+        //};
 
     }
 })();

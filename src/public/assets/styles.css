@@ -144,7 +144,7 @@ a, a:hover {
 #splash-menu {
     position: absolute;
     top: 3%;
-    right: 2%;
+    right: 3%;
     opacity: 0.8;
     background-color: white;
     color: black;
@@ -155,18 +155,16 @@ a, a:hover {
 .ui.menu .item {
     color: black;
 }
-.ui.menu .item:hover {
+#splash-menu .item:hover {
     background-color: #46bcec;
     opacity: 1;
+    color: white;
 }
 .ui.menu .item.disabled  {
     color: white;
 }
 .ui.menu .item.disabled:hover {
     color: white;
-}
-a:hover {
-    border-bottom: 3px solid #46bcec;
 }
 #userProfileHeader {
     text-align: center;
@@ -190,4 +188,13 @@ a:hover {
 .ui.grid > #mapSide:not(.row) {
     padding-left: 0;
     padding-bottom: 0;
+}
+.ui.menu .active.item {
+    border-bottom: 3px solid #00ACED;
+    background: 0;
+    color: #00ACED;
+}
+.ui.menu .active.item:hover {
+    background-color: white;
+    color: #00ACED;
 }

@@ -15,35 +15,84 @@
         google.maps.visualRefresh = true;
         HomeService.getCurrentUserId(vm.currentUserId).then(function(user){
             vm.user = user;
-            //console.log("this is user",vm.user);
+            console.log("this is user",vm.user);
         });
 
         FoodtruckService.getFoodtruck().then(function (foodtruck) {
             vm.foodtruck = foodtruck;
 
+            console.log('foodtrucks', vm.foodtruck)
         });
 
+        vm.foodtrucksFavorite = function () {
+            for (var i = 0; i < vm.user.length; i++) {
+                console.log('boo', vm.user[i]);
+                for (var j = 0; j < vm.user[i].favorites; i++) {
+                    console.log('asdf',vm.user[i].favorites[j]);
+                }
+                FoodtruckService.getFoodtruckId(vm.user[i].favorites[j].foodtruckId).then(function (data){
+                    vm.favoritesFoodtruck = data;
+                })
+            }
+
+        };
+
+        //vm.favorites = [];
+
+
         function getFavorites () {
-            ProfileService.getFavorite(vm.currentUserId).then(function (favorite) {
-                var foodtrucks = favorite;
-                var favorites = [];
+            //// var def = q.defer();
+            //var finalFavorites = [];
+            //ProfileService.getFavorite(vm.currentUserId).then(function (favorite) {
+            //    var foodtrucks = favorite;
+            //    var favorites = [];
+            //
+            //    for (var i = 0; i < foodtrucks.length; i++) {
+            //        for (var j = 0; j < foodtrucks[i].favorites.length; j++) {
+            //            favorites.push(foodtrucks[i].favorites[j].foodtruckId);
+            //        }
+            //        console.log('favs arr', favorites);
+            //    }
+            //
+            //    for (var i = 0; i < favorites.length; i++) {
+            //        console.log("loop",favorites[i]);
+            //        FoodtruckService.getFoodtruckId(favorites[i]).then(function (data) {
+            //            vm.data = data;
+            //            // add all elements in data arr to favorites arr
+            //            //vm.favorites.concat(vm.data);
+            //
+            //            console.log('this is data!',vm.data);
+            //
+            //            data.forEach(function(elem, i, arr) {
+            //                //vm.usersReviewsForTruckArr = [];
+            //                //elem.reviews.forEach(function(elem1, i1, arr1) {
+            //                //   if (elem1.user_id === curr_user_id) {
+            //                //      usersReviewsForTruckArr.push(elem1);
+            //                //   }
+            //                //});
+            //
+            //                vm.finalFavorites.push(elem);
+            //            });
+            //
+            //            //console.log(vm.usersReviewsForTruckArr);
+            //
+            //            console.log('tyler saves the day',vm.favorites);
+            //            // def.resolve(finalFavorites);
+            //        });
+            //    }
+            //});
+            //
+            ////return def.promise;
 
-                for (var i = 0; i < foodtrucks.length; i++) {
-                    for (var j = 0; j < foodtrucks[i].favorites.length; j++) {
-                        favorites.push(foodtrucks[i].favorites[j].foodtruckId);
-                    }
-                    console.log('favs arr', favorites);
-                }
-
-                for (var i = 0; i < favorites.length; i++) {
-                    console.log("loop",favorites[i]);
-                    FoodtruckService.getFoodtruckId(favorites[i]).then(function (data) {
-                        vm.data = data;
-                        console.log('this is data!',vm.data);
-                    });
-                }
-            });
         }
+
+        //getFavorites()
+        //    .then(
+        //        function(response) {
+        //            vm.favorites = response;
+        //        }
+        //    );
+
 
         ProfileService.getReview(vm.currentUserId).then(function (foodtruck) {
             vm.foodtruck = foodtruck;
@@ -57,6 +106,10 @@
                 }
                 //console.log('i found it?',vm.foundReview);
             }
+        });
+
+        $('#userMenu').on('click','div', function(){
+            $(this).addClass('active').siblings().removeClass('active');
         });
     }
 })();

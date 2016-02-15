@@ -5,10 +5,33 @@
         </div>
         <h3 style="color: white">{{profile.user[0].facebook.name}}</h3>
     </div>
-    <a class="active item eight wide column" style="text-align: center" ui-sref="home.profile.reviews({id: profile.currentUserId})">REVIEWS</a>
-    <a class="item eight wide column" style="text-align: center" ui-sref="home.profile.favorites" ng-click="profile.getFavorites()">FAVORITES</a>
+    <div class="sixteen wide column" style="padding: 0;">
+        <div class="ui fluid two item borderless menu" id="userMenu">
+            <div class="active item">REVIEWS</div>
+            <div class="item" ng-click="profile.foodtrucksFavorite()">FAVORITES</div>
+        </div>
+    </div>
     <div class="sixteen wide column">
         <ui-view></ui-view>
+        <div class="ui grid" ng-repeat="favoriteFoodtruck in profile.favoritesFoodtruck" style="margin-top: 5px">
+            <div class="three wide column">
+                <img class="ui large circular image" ng-src="{{favoriteFoodtruck.photo}}" alt="">
+            </div>
+            <div class="ten wide column">
+                <div class="ui list">
+                    <div class="item" ui-sref="home.foodtruck({id: favoriteFoodtruck._id})">
+                        <div class="content">
+                            <div class="header">
+                                {{favoriteFoodtruck.name}}
+                            </div>
+                            {{favoriteFoodtruck.cuisine}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--{{profile.favoritesFoodtruck.name}}-->
+        <!--{{profile.favoritesFoodtruck}}-->
         <!--<div class="ui comments" ng-repeat="foodtruck in profile.data">-->
             <!--<div class="comment">-->
                 <!--<div class="avatar"><img ng-src="{{foodtruck.photo}}"></div>-->
