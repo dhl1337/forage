@@ -4,7 +4,7 @@
 module.exports = {
     logout: function (req, res) {
         req.logout();
-        res.redirect('/#/home');
+        res.redirect('/#/home/index');
     },
     currentUser: function (req, res){
         if(req.isAuthenticated()) {

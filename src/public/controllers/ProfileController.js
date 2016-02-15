@@ -113,6 +113,15 @@
             }
         });
 
+
+        $(function() {
+            $('.ui.rating')
+                .rating()
+            ;
+        });
+
+
+
         $('#userMenu').on('click','div', function(){
             $(this).addClass('active').siblings().removeClass('active');
         });

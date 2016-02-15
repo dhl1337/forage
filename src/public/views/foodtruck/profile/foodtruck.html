@@ -102,7 +102,7 @@
         <div class="header" style="margin-top: 10px; margin-bottom: 10px">
             <h3>Review summary</h3>
         </div>
-        <div class="ui grid" ng-repeat="review in foodtruck.reviews | orderBy:'-date'">
+        <div class="ui grid" ng-repeat="review in foodtruck.reviews | orderBy:'-date'" ui-sref="home.profile.reviews({id: review.userId._id})">
             <div class="three wide column">
                 <img class="ui medium circular image" ng-src="{{review.userId.facebook.photo}}" alt="">
             </div>

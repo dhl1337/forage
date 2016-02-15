@@ -8,7 +8,7 @@
             <div class="item" ng-click="home.loginModal()" ng-hide="home.user">SIGN IN</div>
             <!--this is for the facebook user-->
             <!--ng-click="home.openSideBar();sideDisplay='user'"-->
-            <div class="item" ui-sref="home.profile({id: home.user._id})" ng-hide="home.user === undefined" ng-click="home.openSideBar()" >
+            <div class="item" ui-sref="home.profile.reviews({id: home.user._id})" ng-hide="home.user === undefined" ng-click="home.openSideBar()" >
                 <img class="ui avatar image" ng-src="{{home.user.facebook.photo}}" alt="">
                 {{home.user.facebook.name}}
             </div>
@@ -19,9 +19,9 @@
                 <img class="ui avatar image" ng-src="{{home.openTruck.photo}}">
                 {{home.openTruck.name}}
             </div>
-            <div class="item">FAVORITES</div>
             <div class="item"  ng-hide="home.user === undefined">
-                <a href="/auth/logout">LOG OUT</a></div>
+                <a href="/auth/logout">LOG OUT</a>
+            </div>
         </div>
     </div>
 </div>
