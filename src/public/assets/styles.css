@@ -197,3 +197,16 @@ a, a:hover {
     background-color: white;
     color: #00ACED;
 }
+#homeHeader {
+    background-color: #00ACED;
+    color: white;
+    height: 300px;
+    text-align: center;
+}
+#splashSignInBtn, #splashSignUpBtn {
+    background-color: white;
+    color: #00ACED;
+}
+.forageQues {
+    color: #00ACED;
+}
