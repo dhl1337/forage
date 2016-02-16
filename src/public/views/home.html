@@ -19,13 +19,21 @@
                 <img class="ui avatar image" ng-src="{{home.openTruck.photo}}">
                 {{home.openTruck.name}}
             </div>
+            <div class="item" ui-sref="foodtrucksettings({id: home.user.foodTruck})" ng-show="home.user.foodTruck">
+                <div>
+                    <i class="large setting icon" style="color: #FF4447"></i>
+                    SETTING
+                </div>
+            </div>
             <div class="item" ng-show="home.user.foodTruck">
                 <div class="notifiedModal" ng-click="home.notifiedModal()">
-                    NOTIFY!
+                    <i class="large announcement icon" style="color: #FF4447"></i>
+                    ANNOUNCEMENT
                 </div>
             </div>
             <div class="item"  ng-hide="home.user === undefined">
-                <a href="/auth/logout">LOG OUT</a>
+                <a href="/auth/logout"><i class="large sign out icon" style="color: #FF4447"></i> LOG OUT</a>
+
             </div>
         </div>
     </div>
@@ -69,7 +77,7 @@
             <div class="field">
                 <textarea rows="2" placeholder="Share to your user whats going on today!" ng-model="home.notificationMessage"></textarea>
             </div>
-            <div class="ui submit button" ng-click="home.addMessage(home.notificationMessage)">Submit</div>
+            <div class="ui approve button" ng-click="home.addMessage(home.notificationMessage)">Submit</div>
         </div>
     </div>
 </div>

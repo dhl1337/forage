@@ -1,184 +1,99 @@
-<top-nav-bar></top-nav-bar>
-<div class="ui container" id="foodtruckuser-settings">
-    <div class="ui fluid card">
-        <div class="content">
-            <div class="header">About {{foodtruck.foodtruckUser[0].name}}</div>
-        </div>
-        <div class="content">
-            <div class="ui form">
-                <h3 class="ui dividing header">Contact</h3>
-                <div class="three fields">
-                    <div class="field">
-                        <label>Address</label>
-                        <input type="text" placeholder="Street Address"  ng-model="foodtruck.foodTruckAddress">
-                    </div>
-                    <div class="field">
-                        <label>City</label>
-                        <input type="text" placeholder="forage town"  ng-model="foodtruck.foodTruckCity">
-                    </div>
-                    <div class="field">
-                        <label>Postal Code</label>
-                        <input type="text" placeholder="12345"  ng-model="foodtruck.foodTruckZip">
-                    </div>
-                </div>
-                <div class="two fields">
-                    <div class="field">
-                        <label>State</label>
-                        <select class="ui fluid dropdown"  ng-model="foodtruck.state">
-                            <option value="" ng-model="state">State</option>
-                            <option value="AL">Alabama</option>
-                            <option value="AK">Alaska</option>
-                            <option value="AZ">Arizona</option>
-                            <option value="AR">Arkansas</option>
-                            <option value="CA">California</option>
-                            <option value="CO">Colorado</option>
-                            <option value="CT">Connecticut</option>
-                            <option value="DE">Delaware</option>
-                            <option value="DC">District Of Columbia</option>
-                            <option value="FL">Florida</option>
-                            <option value="GA">Georgia</option>
-                            <option value="HI">Hawaii</option>
-                            <option value="ID">Idaho</option>
-                            <option value="IL">Illinois</option>
-                            <option value="IN">Indiana</option>
-                            <option value="IA">Iowa</option>
-                            <option value="KS">Kansas</option>
-                            <option value="KY">Kentucky</option>
-                            <option value="LA">Louisiana</option>
-                            <option value="ME">Maine</option>
-                            <option value="MD">Maryland</option>
-                            <option value="MA">Massachusetts</option>
-                            <option value="MI">Michigan</option>
-                            <option value="MN">Minnesota</option>
-                            <option value="MS">Mississippi</option>
-                            <option value="MO">Missouri</option>
-                            <option value="MT">Montana</option>
-                            <option value="NE">Nebraska</option>
-                            <option value="NV">Nevada</option>
-                            <option value="NH">New Hampshire</option>
-                            <option value="NJ">New Jersey</option>
-                            <option value="NM">New Mexico</option>
-                            <option value="NY">New York</option>
-                            <option value="NC">North Carolina</option>
-                            <option value="ND">North Dakota</option>
-                            <option value="OH">Ohio</option>
-                            <option value="OK">Oklahoma</option>
-                            <option value="OR">Oregon</option>
-                            <option value="PA">Pennsylvania</option>
-                            <option value="RI">Rhode Island</option>
-                            <option value="SC">South Carolina</option>
-                            <option value="SD">South Dakota</option>
-                            <option value="TN">Tennessee</option>
-                            <option value="TX">Texas</option>
-                            <option value="UT">Utah</option>
-                            <option value="VT">Vermont</option>
-                            <option value="VA">Virginia</option>
-                            <option value="WA">Washington</option>
-                            <option value="WV">West Virginia</option>
-                            <option value="WI">Wisconsin</option>
-                            <option value="WY">Wyoming</option>
-                        </select>
-                    </div>
-                    <div class="field">
-                        <label>Phone Number</label>
-                        <input type="text" placeholder="(123) 345-6789"  ng-model="foodtruck.foodTruckPhone">
-                    </div>
-                </div>
-                <h3 class="ui dividing header">Website</h3>
-                <div class="field">
-                    <label>Name of your website</label>
-                    <input type="text" placeholder="www.forage.com"  ng-model="foodtruck.foodTruckWebsite">
-                </div>
-                <h3 class="ui dividing header">Hours</h3>
-                <div class="seven fields">
-                    <div class="field">
-                        <label>Sunday</label>
-                        <div class="ui input">
-                            <input type="text"  ng-model="foodtruck.foodTruckSunday">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Monday</label>
-                        <div class="ui input">
-                            <input type="text"  ng-model="foodtruck.foodTruckMonday">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Tuesday</label>
-                        <div class="ui input">
-                            <input type="text"  ng-model="foodtruck.foodTruckTuesday">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Wednesday</label>
-                        <div class="ui input">
-                            <input type="text"  ng-model="foodtruck.foodTruckWednesday">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Thursday</label>
-                        <div class="ui input">
-                            <input type="text"  ng-model="foodtruck.foodTruckThursday">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Friday</label>
-                        <div class="ui input">
-                            <input type="text"  ng-model="foodtruck.foodTruckFriday">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Saturday</label>
-                        <div class="ui input">
-                            <input type="text"  ng-model="foodtruck.foodTruckSaturday">
-                        </div>
-                    </div>
-                </div>
-                <h3 class="ui dividing header">Price Range</h3>
-                <div class="fields">
-                    <div class="field">
-                        <label>Minimum</label>
-                        <div class="ui input">
-                            <input type="text" ng-model="foodtruck.priceMin">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Maximum</label>
-                        <div class="ui input">
-                            <input type="text"  ng-model="foodtruck.priceMax">
-                        </div>
-                    </div>
-                </div>
-                <h3 class="ui dividing header">Health Score</h3>
-                <div class="inline field">
-                    <div class="ui input">
-                        <input type="text"  ng-model="foodtruck.heathScore">
-                    </div>
-                    out of 100
-                </div>
-                <h3 class="ui dividing header">Menu</h3>
-                <div id="newFields">
-                    <div class="fields" id="foodtruckMenu" ng-repeat="item in foodtruck.menuItems track by $index">
-                        <div class="field">
-                            <label>Name</label>
-                            <input type="text"  ng-model="foodtruck.menuItems[$index].name">
-                        </div>
-                        <div class="field">
-                            <label>Price</label>
-                            <input type="text"  ng-model="foodtruck.menuItems[$index].price">
-                        </div>
-                    </div>
-                </div>
-                <div class="field">
-                    <button class="ui label icon button" ng-click="foodtruck.addMenu()" id="addItems">
-                        <i class="add circle icon"></i>
-                        Add more items
-                    </button>
-                </div>
-                <div class="right floated">
-                    <button class="ui button" tabindex="0" ng-click="foodtruck.settings(foodtruck.foodTruckAddress, foodtruck.foodTruckZip, foodtruck.foodTruckPhone, foodtruck.foodTruckWebsite, foodtruck.foodTruckSunday, foodtruck.foodTruckMonday, foodtruck.foodTruckTuesday, foodtruck.foodTruckWednesday, foodtruck.foodTruckThursday, foodtruck.foodTruckFriday, foodtruck.foodTruckSaturday, foodtruck.priceMin, foodtruck.priceMax, foodtruck.heathScore, foodtruck.menuItems, foodtruck.state, foodtruck.foodTruckCity)" ui-sref="foodtruck.reviews({id: foodtruck._id})">Save</button>
-                </div>
+<div class="ui stackable grid">
+    <div class="three wide column"></div>
+    <div class="five wide column" style="margin-top: 30px">
+        <div class="ui equal width form">
+            <h3 class="ui dividing header" style="color: #FF4447">FOODTRUCK INFO</h3>
+            <div class="field">
+                <input type="text" placeholder="Food truck name" ng-model="foodtruck.name">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Cuisine" ng-model="foodtruck.cuisine">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Image" ng-model="foodtruck.photo">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Phone" ng-model="foodtruck.phone">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Website" ng-model="foodtruck.website">
+            </div>
+            <h3 class="ui dividing header" style="color: #FF4447">HOURS</h3>
+            <div class="field">
+                <input type="text" placeholder="Sunday" ng-model="foodtruck.sunday">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Monday" ng-model="foodtruck.monday">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Tuesday" ng-model="foodtruck.tuesday">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Wednesday" ng-model="foodtruck.wednesday">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Thursday" ng-model="foodtruck.thursday">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Friday" ng-model="foodtruck.friday">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Saturday" ng-model="foodtruck.saturday">
             </div>
         </div>
     </div>
+    <div class="five wide column" style="margin-top: 30px">
+        <div class="ui equal width form">
+            <h3 class="ui dividing header" style="color: #FF4447">MISCELLANEOUS</h3>
+            <div class="two fields">
+                <div class="field">
+                    <div class="ui right labeled input">
+                        <div class="ui label">$</div>
+                        <input type="text" placeholder="Price min" ng-model="foodtruck.priceMin">
+                        <div class="ui basic label">.00</div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui right labeled input">
+                        <div class="ui label">$</div>
+                        <input type="text" placeholder="Price max" ng-model="foodtruck.priceMax">
+                        <div class="ui basic label">.00</div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Health Score" ng-model="foodtruck.heathScore">
+            </div>
+            <h3 class="ui dividing header" style="color: #FF4447">MENU</h3>
+            <div id="newFields">
+                <div class="two fields" id="foodtruckMenu" ng-repeat="item in foodtruck.menuItems track by $index">
+                    <div class="field">
+                        <input type="text"  ng-model="foodtruck.menuItems[$index].name" placeholder="Name">
+                    </div>
+                    <div class="field">
+                        <div class="ui right labeled input">
+                            <div class="ui label">$</div>
+                            <input type="text"  ng-model="foodtruck.menuItems[$index].price" placeholder="Price">
+                            <div class="ui basic label">.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <button class="ui label icon button" ng-click="foodtruck.addMenu()" id="addItems" style="background-color: #FF4447; color: white; width: 100%;">
+                    <i class="add circle icon"></i>
+                    Add more items
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="three wide column"></div>
+    <div class="three wide column"></div>
+    <div class="five wide column"></div>
+    <div class="five wide column">
+        <div class="field">
+            <button class="ui button" style="width: 100%; background-color: #FF4447; color: white;" ng-click="foodtruck.settings(foodtruck.name, foodtruck.cuisine, foodtruck.photo, foodtruck.phone, foodtruck.website, foodtruck.sunday, foodtruck.monday, foodtruck.tuesday, foodtruck.wednesday, foodtruck.thursday, foodtruck.friday, foodtruck.saturday, foodtruck.priceMin, foodtruck.priceMax, foodtruck.heathScore, foodtruck.menuItems)" ui-sref="home.foodtruck({id: foodtruck.currentUser.foodTruck})">SAVE</button>
+        </div>
+    </div>
+    <div class="three wide column"></div>
 </div>

@@ -45,12 +45,20 @@
     <div class="five wide column" style="margin-top: 30px">
         <div class="ui equal width form">
             <h3 class="ui dividing header" style="color: #FF4447">MISCELLANEOUS</h3>
-            <div class="fields">
+            <div class="two fields">
                 <div class="field">
-                    <input type="text" placeholder="Price min" ng-model="foodtruck.priceMin">
+                    <div class="ui right labeled input">
+                        <div class="ui label">$</div>
+                        <input type="text" placeholder="Price min" ng-model="foodtruck.priceMin">
+                        <div class="ui basic label">.00</div>
+                    </div>
                 </div>
                 <div class="field">
+                    <div class="ui right labeled input">
+                        <div class="ui label">$</div>
                     <input type="text" placeholder="Price max" ng-model="foodtruck.priceMax">
+                        <div class="ui basic label">.00</div>
+                        </div>
                 </div>
             </div>
             <div class="field">
@@ -58,12 +66,16 @@
             </div>
             <h3 class="ui dividing header" style="color: #FF4447">MENU</h3>
             <div id="newFields">
-                <div class="fields" id="foodtruckMenu" ng-repeat="item in foodtruck.menuItems track by $index">
+                <div class="two fields" id="foodtruckMenu" ng-repeat="item in foodtruck.menuItems track by $index">
                     <div class="field">
                         <input type="text"  ng-model="foodtruck.menuItems[$index].name" placeholder="Name">
                     </div>
                     <div class="field">
+                        <div class="ui right labeled input">
+                            <div class="ui label">$</div>
                         <input type="text"  ng-model="foodtruck.menuItems[$index].price" placeholder="Price">
+                            <div class="ui basic label">.00</div>
+                            </div>
                     </div>
                 </div>
             </div>

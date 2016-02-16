@@ -45,19 +45,18 @@
             var truck = foodtruckUser[0];
             vm.foodtruckUser = foodtruckUser;
             //console.log("foodcontroller truck:",truck);
-            vm.foodTruckAddress = truck.address;
-            vm.foodTruckCity = truck.city;
-            vm.foodTruckZip = truck.zip;
-            vm.state = truck.state;
-            vm.foodTruckPhone = truck.phone;
-            vm.foodTruckWebsite = truck.website;
-            vm.foodTruckSunday = truck.hours.sunday;
-            vm.foodTruckMonday = truck.hours.monday;
-            vm.foodTruckTuesday = truck.hours.tuesday;
-            vm.foodTruckWednesday = truck.hours.wednesday;
-            vm.foodTruckThursday = truck.hours.thursday;
-            vm.foodTruckFriday = truck.hours.friday;
-            vm.foodTruckSaturday = truck.hours.saturday;
+            vm.name = truck.name
+            vm.cuisine = truck.cuisine;
+            vm.photo = truck.photo;
+            vm.phone = truck.phone;
+            vm.website = truck.website;
+            vm.sunday = truck.hours.sunday;
+            vm.monday = truck.hours.monday;
+            vm.tuesday = truck.hours.tuesday;
+            vm.wednesday = truck.hours.wednesday;
+            vm.thursday = truck.hours.thursday;
+            vm.friday = truck.hours.friday;
+            vm.saturday = truck.hours.saturday;
             vm.priceMin = truck.price.min;
             vm.priceMax = truck.price.max;
             vm.heathScore = truck.healthScore;
@@ -96,28 +95,32 @@
             vm.menuItems.push({});
         }
 
-        function settings (address, zip, phone, website, sunday, monday, tuesday, wednesday, thursday, friday, saturday, priceMin, priceMax, heathScore, menu, state, city) {
+        function settings (name, cuisine, photo, phone, website, sunday, monday, tuesday, wednesday, thursday, friday, saturday, priceMin, priceMax, heathScore, menu) {
             var foodtruck = {
-                address: address,
-                zip: zip,
-                city: city,
+                name: name,
+                cuisine: cuisine,
+                photo: photo,
                 phone: phone,
                 website: website,
                 hours: {
-                    sunday:sunday,
-                    monday:monday,
-                    tuesday:tuesday,
+                    sunday: sunday,
+                    monday: monday,
+                    tuesday: tuesday,
                     wednesday: wednesday,
                     thursday: thursday,
                     friday: friday,
                     saturday: saturday
                 },
-                price: {min: priceMin, max: priceMax},
-                menu: menu,
+                price: {
+                    min: priceMin,
+                    max: priceMax
+                },
                 healthScore: heathScore,
-                state: state
+                menu: menu
             };
-            FoodtruckService.updateFoodtruck(currentFoodtruckId, foodtruck)
+            console.log('currentFoodtruckId', currentFoodtruckId);
+            console.log('foodtruck stuff', foodtruck);
+            FoodtruckService.updateFoodtruck(currentFoodtruckId, foodtruck);
         }
 
         //console.log("this is the current user",vm.currentUser);
