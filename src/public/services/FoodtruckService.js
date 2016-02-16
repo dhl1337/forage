@@ -65,6 +65,16 @@
                 return response.data;
             })
         };
+        this.sendTextMessage = function (data) {
+            //console.log('foodtruck service', data);
+            return $http({
+                method: 'POST',
+                url: '/api/twilio',
+                data: data
+            }).then(function (response){
+                return response.data;
+            })
+        };
 
     }
 })();

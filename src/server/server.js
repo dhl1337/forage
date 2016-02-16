@@ -8,7 +8,7 @@ var bodyParser = require('body-parser'),
     db = require('./config/database.js'),
     mongoose = require('mongoose'),
     passport = require('passport'),
-    config = require('./config/config.js');
+    config = require('./config/config.js')
 
 // Express
 var app = express();
@@ -52,6 +52,9 @@ require('./routes/foodtruckRoutes.js')(app);
 
 // Reviews
 require('./routes/reviewRoutes.js')(app);
+
+// Twilio
+require('./routes/twilioRoutes.js')(app);
 
 // Connections
 var port = config.port;

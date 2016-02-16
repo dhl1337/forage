@@ -42,7 +42,13 @@
                 url: '/index',
                 templateUrl: '../views/splash/index.html',
                 controller: 'HomeController',
-                controllerAs: 'home',
+                controllerAs: 'home'
+            })
+            .state('home.user', {
+                url: '/user',
+                templateUrl: '../views/splash/user.html',
+                controller: 'ProfileController',
+                controllerAs: 'profile'
             })
             .state('home.profile', {
                 url: '/profile/:id',

@@ -3,6 +3,7 @@
  */
 var mongoose = require('mongoose');
 var foodtruckSchema = mongoose.Schema({
+    notification: {type: String},
     name: {type: String},
     cuisine: {type: String},
     photo: {type: String},

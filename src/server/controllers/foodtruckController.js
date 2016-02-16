@@ -11,7 +11,8 @@ module.exports = {
         newFoodtruck.save(function(err, result) {
             if (err) return res.status(500).send(err);
             else {
-                User.findByIdAndUpdate(req.user._id, {$set: {'foodTruck': result._id}},
+                User
+                    .findByIdAndUpdate(req.user._id, {$set: {'foodTruck': result._id}},
                     function (err, updateResult) {
                         if (err) {
                             return res.status(500).send(err);

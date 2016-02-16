@@ -18,6 +18,8 @@
         vm.openSideBar = openSideBar;
 
 
+
+
         function loginModal () {
             $('#loginModal')
                 .modal('show')

@@ -95,6 +95,11 @@
                     <i class="large h icon" id="hIcon"></i>
                     <div class="middle aligned content">Health score {{foodtruck.foodtruckUser[0].healthScore}} out of 100</div>
                 </div>
+                <div class="item">
+                    <div class="notifiedModal" ng-click="foodtruck.notifiedModal()">
+                        heyyy
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -165,6 +170,18 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<div class="ui small modal" id="notifiedModal">
+    <i class="close icon"></i>
+    <div class="header" style="color: white; background-color: #00ACED">Notification</div>
+    <div class="content">
+        <div class="ui form">
+            <div class="field">
+                <textarea rows="2" placeholder="Share to your user whats going on today!" ng-model="home.notificationMessage"></textarea>
+            </div>
+            <div class="ui submit button" ng-click="foodtruck.addMessage(home.notificationMessage)">Submit</div>
         </div>
     </div>
 </div>

@@ -9,4 +9,5 @@ module.exports = function (app) {
     app.post('/api/foodtrucks', foodtruckController.create);
     app.delete('/api/foodtrucks/:id', foodtruckController.delete);
     app.put('/api/foodtrucks/:id', foodtruckController.updateFoodtruck);
+
 };

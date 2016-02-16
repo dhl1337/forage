@@ -18,8 +18,26 @@
         vm.addReview = addReview;
         vm.addFoodtruck = addFoodtruck;
         vm.addFavorite = addFavorite;
+        vm.notifiedModal = notifiedModal;
+
         vm.menuItems = [];
 
+        vm.addMessage = addMessage;
+
+        function addMessage (message) {
+            var text = {
+                message: message
+            };
+            //console.log('this is text buddy!',text);
+            //console.log('foodtruck controller',message);
+            FoodtruckService.sendTextMessage(text);
+        }
+
+        function notifiedModal () {
+            $('#notifiedModal')
+                .modal('show')
+            ;
+        }
 
         HomeService.getCurrentuser().then(function (user){vm.currentUser = user;});
 
