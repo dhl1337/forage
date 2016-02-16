@@ -1,15 +1,10 @@
 body, html {
     padding: 0 auto;
     margin: 0 auto;
-
+    font-family: 'Raleway', sans-serif;
 }
 .ui.secondary.menu {
     margin-left: 0;
-}
-#topNavBar {
-    height: 75px;
-    width: 100%;
-    background-color: #88A550;
 }
 #signupModalContent {
     padding-right: 20%;
@@ -155,7 +150,7 @@ a, a:hover {
     color: black;
 }
 #splash-menu .item:hover {
-    background-color: #46bcec;
+    background-color: #FF4447;
     opacity: 1;
     color: white;
 }
@@ -167,7 +162,7 @@ a, a:hover {
 }
 #userProfileHeader {
     text-align: center;
-    background-color: #46bcec;
+    background-color: #FF4447;
     padding-top: 30px;
 }
 #foodtruckImageHeader, #foodtruckInfo {
@@ -178,7 +173,7 @@ a, a:hover {
     padding: 1rem;
 }
 #hIcon, #dollarIcon, #clockIcon, #foodIcon, #worldIcon, #phoneIcon, #makerIcon, .writeReview {
-    color: #46bcec
+    color: #FF4447
 }
 .ui.grid > #routingSide:not(.row) {
     padding-left: 2rem;
@@ -189,26 +184,26 @@ a, a:hover {
     padding-bottom: 0;
 }
 .ui.menu .active.item {
-    border-bottom: 3px solid #00ACED;
+    border-bottom: 3px solid #FF4447;
     background: 0;
-    color: #00ACED;
+    color: #FF4447;
 }
 .ui.menu .active.item:hover {
     background-color: white;
-    color: #00ACED;
+    color: #FF4447;
 }
 #homeHeader {
-    background-color: #00ACED;
+    background-color: #FF4447;
     color: white;
     height: 300px;
     text-align: center;
 }
 #splashSignInBtn, #splashSignUpBtn {
     background-color: white;
-    color: #00ACED;
+    color: #FF4447;
 }
 .forageQues {
-    color: #00ACED;
+    color: #FF4447;
 }
 #checkboxy,  #checkboxy1, #checkboxy2, #checkboxy3, #checkboxy4 {
     font-size: 25px;

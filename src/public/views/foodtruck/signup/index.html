@@ -1,8 +1,8 @@
 <div class="ui stackable grid">
     <div class="three wide column"></div>
-    <div class="five wide column" style="margin-top: 15px">
+    <div class="five wide column" style="margin-top: 30px">
         <div class="ui equal width form">
-            <h3 class="ui dividing header" style="color: #00ACED">FOODTRUCK INFO</h3>
+            <h3 class="ui dividing header" style="color: #FF4447">FOODTRUCK INFO</h3>
             <div class="field">
                 <input type="text" placeholder="Food truck name" ng-model="foodtruck.name">
             </div>
@@ -18,7 +18,7 @@
             <div class="field">
                 <input type="text" placeholder="Website" ng-model="foodtruck.website">
             </div>
-            <h3 class="ui dividing header" style="color: #00ACED">HOURS</h3>
+            <h3 class="ui dividing header" style="color: #FF4447">HOURS</h3>
             <div class="field">
                 <input type="text" placeholder="Sunday" ng-model="foodtruck.sunday">
             </div>
@@ -42,9 +42,9 @@
             </div>
         </div>
     </div>
-    <div class="five wide column" style="margin-top: 15px">
+    <div class="five wide column" style="margin-top: 30px">
         <div class="ui equal width form">
-            <h3 class="ui dividing header" style="color: #00ACED">MISCELLANEOUS</h3>
+            <h3 class="ui dividing header" style="color: #FF4447">MISCELLANEOUS</h3>
             <div class="fields">
                 <div class="field">
                     <input type="text" placeholder="Price min" ng-model="foodtruck.priceMin">
@@ -56,7 +56,7 @@
             <div class="field">
                 <input type="text" placeholder="Health Score" ng-model="foodtruck.heathScore">
             </div>
-            <h3 class="ui dividing header" style="color: #00ACED">MENU</h3>
+            <h3 class="ui dividing header" style="color: #FF4447">MENU</h3>
             <div id="newFields">
                 <div class="fields" id="foodtruckMenu" ng-repeat="item in foodtruck.menuItems track by $index">
                     <div class="field">
@@ -68,7 +68,7 @@
                 </div>
             </div>
             <div class="field">
-                <button class="ui label icon button" ng-click="foodtruck.addMenu()" id="addItems" style="background-color: #00ACED; color: white; width: 100%;">
+                <button class="ui label icon button" ng-click="foodtruck.addMenu()" id="addItems" style="background-color: #FF4447; color: white; width: 100%;">
                     <i class="add circle icon"></i>
                     Add more items
                 </button>
@@ -80,7 +80,7 @@
     <div class="five wide column"></div>
     <div class="five wide column">
         <div class="field">
-            <button class="ui button" style="width: 100%; background-color: #00ACED; color: white;" ng-click="foodtruck.addFoodtruck(foodtruck.name, foodtruck.cuisine, foodtruck.photo, foodtruck.phone, foodtruck.website, foodtruck.sunday, foodtruck.monday, foodtruck.tuesday, foodtruck.wednesday, foodtruck.thursday, foodtruck.friday, foodtruck.saturday, foodtruck.priceMin, foodtruck.priceMax, foodtruck.heathScore, foodtruck.menuItems)" ui-sref="home">SAVE</button>
+            <button class="ui button" style="width: 100%; background-color: #FF4447; color: white;" ng-click="foodtruck.addFoodtruck(foodtruck.name, foodtruck.cuisine, foodtruck.photo, foodtruck.phone, foodtruck.website, foodtruck.sunday, foodtruck.monday, foodtruck.tuesday, foodtruck.wednesday, foodtruck.thursday, foodtruck.friday, foodtruck.saturday, foodtruck.priceMin, foodtruck.priceMax, foodtruck.heathScore, foodtruck.menuItems)" ui-sref="home.foodtruck({id: home.user.foodTruck})">SAVE</button>
         </div>
     </div>
     <div class="three wide column"></div>

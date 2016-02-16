@@ -19,6 +19,11 @@
                 <img class="ui avatar image" ng-src="{{home.openTruck.photo}}">
                 {{home.openTruck.name}}
             </div>
+            <div class="item" ng-show="home.user.foodTruck">
+                <div class="notifiedModal" ng-click="home.notifiedModal()">
+                    NOTIFY!
+                </div>
+            </div>
             <div class="item"  ng-hide="home.user === undefined">
                 <a href="/auth/logout">LOG OUT</a>
             </div>
@@ -27,7 +32,7 @@
 </div>
 <div class="ui small modal" id="loginModal">
     <i class="close icon"></i>
-    <div class="header" style="color: white; background-color: #00ACED">Sign in to your Forage account.</div>
+    <div class="header" style="color: white; background-color: #FF4447">Sign in to your Forage account.</div>
     <div class="content">
         <div class="ui basic segment" id="signupModalContent">
             <div class="ui form">
@@ -41,7 +46,7 @@
                         <input type="password" placeholder="Password">
                     </div>
                 </div>
-                <div class="ui submit button" style="background-color: #00ACED; color:white; margin-bottom: 10px" id="signinBtn">Sign in</div>
+                <div class="ui submit button" style="background-color: #FF4447; color:white; margin-bottom: 10px" id="signinBtn">Sign in</div>
                 <div class="signupSection">
                     <label>Don't have an account? </label> <a ui-sref="signup">Sign up</a>
                 </div>
@@ -53,6 +58,18 @@
                 <i class="facebook icon"></i>
                 Sign in with Facebook
             </a>
+        </div>
+    </div>
+</div>
+<div class="ui small modal" id="notifiedModal">
+    <i class="close icon"></i>
+    <div class="header" style="color: white; background-color: #FF4447">Notification</div>
+    <div class="content">
+        <div class="ui form">
+            <div class="field">
+                <textarea rows="2" placeholder="Share to your user whats going on today!" ng-model="home.notificationMessage"></textarea>
+            </div>
+            <div class="ui submit button" ng-click="home.addMessage(home.notificationMessage)">Submit</div>
         </div>
     </div>
 </div>

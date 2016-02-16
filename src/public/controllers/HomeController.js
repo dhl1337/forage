@@ -16,8 +16,24 @@
         vm.foodtrucks = currentFoodtruck;
         vm.loginModal = loginModal;
         vm.openSideBar = openSideBar;
+        vm.notifiedModal = notifiedModal;
 
+        vm.addMessage = addMessage;
 
+        function addMessage (message) {
+            var text = {
+                message: message
+            };
+            //console.log('this is text buddy!',text);
+            //console.log('foodtruck controller',message);
+            FoodtruckService.sendTextMessage(text);
+        }
+
+        function notifiedModal () {
+            $('#notifiedModal')
+                .modal('show')
+            ;
+        }
 
 
         function loginModal () {
