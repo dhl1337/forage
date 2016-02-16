@@ -11,7 +11,7 @@ module.exports = {
         //console.log('body?', req.body.message);
         //console.log('this is req body', req.body);
         client.sendMessage({
-            to: '+12282298475',
+            to: '+12282829088',
             from: '+12282224994',
             body: req.body.message
         }, function (err, data) {
