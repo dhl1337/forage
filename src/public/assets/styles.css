@@ -209,3 +209,33 @@ a, a:hover {
     font-size: 25px;
     padding-bottom: 10px;
 }
+#page1 {
+    background: url("https://images.unsplash.com/reserve/EnF7DhHROS8OMEp2pCkx_Dufer%20food%20overhead%20hig%20res.jpg?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=3c19ae5da71204726943a09436fb1737") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 800px;
+}
+#page1Header {
+    position: fixed;
+    margin-top: 15%;
+}
+#introPage1 {
+    font-size: 55px;
+    color: white;
+}
+#page2 {
+
+    height: 100px;
+}
+#pageContainer {
+    margin-bottom: 0;
+}
+#ques {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#facebookBtn {
+    margin-top: 25%;
+}

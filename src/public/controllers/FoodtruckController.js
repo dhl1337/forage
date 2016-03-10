@@ -45,7 +45,7 @@
             var truck = foodtruckUser[0];
             vm.foodtruckUser = foodtruckUser;
             //console.log("foodcontroller truck:",truck);
-            vm.name = truck.name
+            vm.name = truck.name;
             vm.cuisine = truck.cuisine;
             vm.photo = truck.photo;
             vm.phone = truck.phone;

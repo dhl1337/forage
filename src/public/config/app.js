@@ -38,8 +38,8 @@
                     }
                 }
             })
-            .state('home.splash', {
-                url: '/index',
+            .state('splash', {
+                url: '/welcome',
                 templateUrl: '../views/splash/index.html',
                 controller: 'HomeController',
                 controllerAs: 'home'
@@ -90,6 +90,6 @@
                 controller: 'FoodtruckController',
                 controllerAs: 'foodtruck'
             });
-        $urlRouterProvider.otherwise('/home/index');
+        $urlRouterProvider.otherwise('/welcome');
     }
 })();
