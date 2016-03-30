@@ -151,7 +151,7 @@
 
             // Setup Socket IO
             //var socket = io.connect('http://162.243.127.66/');
-            var socket = io.connect('http://localhost:9999/');
+            var socket = io.connect('http://104.236.199.135/');
             socket.on('connect', function () {
                 socket.on('location', function(location){
                     if(location.id != userInfo.id) {
