@@ -24,7 +24,7 @@ module.exports = {
     'facebookAuth' : {
         clientID: 'FACEBOOK_APP_ID',
         clientSecret: 'FACEBOOK_APP_SECRET',
-        callbackURL: "http://127.0.0.1:8080/auth/facebook/callback"
+        callbackURL: "http://localhost:9999/auth/facebook/callback"
     }
 };
 ```
@@ -59,7 +59,7 @@ Here is the Twilio tutorial to get it. `https://www.youtube.com/watch?v=REyT7DUM
 ## Usage
 Once the dependencies are installed, you can run `mongod` and then `nodemon` to start the application. 
 
-You will then be able to access it at `127.0.0.1:9999`
+You will then be able to access it at `http://localhost:9999/`
 
 ## Known Issues
 * Google Map is not shown on hosted server.
