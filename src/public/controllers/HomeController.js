@@ -1,6 +1,3 @@
-/**
- * Created by danle on 1/29/16.
- */
 (function () {
     angular
         .module('forageApp')
@@ -24,8 +21,7 @@
             var text = {
                 message: message
             };
-            //console.log('this is text buddy!',text);
-            //console.log('foodtruck controller',message);
+
             FoodtruckService.sendTextMessage(text);
         }
 
@@ -47,12 +43,6 @@
                 .sidebar('setting', 'push')
                 .sidebar('toggle')
         }
-        //console.log("this is the current food truck",vm.currentFoodtruck);
-
-        //FoodtruckService.getFoodtruck().then(function(foodtruck){
-        //    vm.foodtrucks = foodtruck;
-        //    console.log('vm:', vm.foodtrucks);
-        //});
 
         vm.user = currentUser;
 
@@ -65,13 +55,6 @@
                 }
             }
         }
-
-        //HomeService.getCurrentuser().then(function (user) {
-        //    vm.user = user;
-        //});
-
-
-        //console.log('USER: ', vm.user);
 
 
         function initMap() {
@@ -97,32 +80,6 @@
             refreshMarkers();
         }
 
-
-        //vm.initLocation = initLocation;
-        //
-        //function initLocation () {
-        //    //console.log('im clicked');
-        //    var infoWindow = new google.maps.InfoWindow({map: map});
-        //
-        //    if (navigator.geolocation) {
-        //        navigator.geolocation.getCurrentPosition(function(position) {
-        //            var pos = {
-        //                lat: position.coords.latitude,
-        //                lng: position.coords.longitude
-        //            };
-        //            infoWindow.setPosition(pos);
-        //            map.setCenter(pos);
-        //            map.setZoom(map.getZoom() + 10);
-        //        }, function() {
-        //            handleLocationError(true, infoWindow, map.getCenter());
-        //        });
-        //    } else {
-        //        // Browser doesn't support Geolocation
-        //        handleLocationError(false, infoWindow, map.getCenter());
-        //    }
-        //}
-        //google.maps.event.addDomListener(window, "load", vm.initLocation);
-
         function initLocationSharing(location_callback, error_callback){
 
             function guid() {
@@ -145,13 +102,9 @@
                 };
             }
 
-
-            //console.log('open trucks', userInfo);
-
-
             // Setup Socket IO
-            //var socket = io.connect('http://162.243.127.66/');
-            var socket = io.connect('http://104.236.199.135/');
+            var socket = io.connect('http://localhost:9999/');
+            //var socket = io.connect('http://104.236.199.135/');
             socket.on('connect', function () {
                 socket.on('location', function(location){
                     if(location.id != userInfo.id) {
@@ -167,7 +120,6 @@
             }
 
             function geo_success(position) {
-                var longitude = position.coords.longitude;
                 userInfo.latitude  = position.coords.latitude;
                 userInfo.longitude = position.coords.longitude;
                 location_callback(userInfo);
@@ -191,7 +143,6 @@
 
             return userInfo;
         }
-        //google.maps.event.addDomListener(window, "load", initLocationSharing);
 
         // User Infomation
         var currentUserInfo = null;
@@ -205,14 +156,12 @@
             users[userInfo.id].latitude  = userInfo.latitude;
             users[userInfo.id].longitude = userInfo.longitude;
             users[userInfo.id].timestamp = new Date().getTime();
-            //console.log("this is userinfo",userInfo);
             refreshMarkers();
         }
         function refreshMarkers(){
-            //console.log('CURRENT MARKERS: ', users);
             for (var id in users) {
                 var userInfo = users[id];
-                //console.log("this is the userinfo marker",userInfo.marker);
+
                 if(userInfo.marker){
 
                     //Move the markers
@@ -230,12 +179,12 @@
                             infowindow.open(map, marker);
                             map.setZoom(map.getZoom() + 10);
                             map.setCenter(marker.getPosition());
-                            //console.log('this is the awesome marker',marker);
+
                             vm.openSideBar();
-                            $state.go('home.foodtruck', {id:userInfo.id});
-                            //window.location = 'profile/' + marker.id;
+                            $state.go('home.foodtruck', {id: userInfo.id});
+
                         });
-                        //console.log("i am the marker", marker);
+
                         userInfo.marker = marker;
                     }
                 }

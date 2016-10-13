@@ -1,6 +1,3 @@
-/**
- * Created by danle on 1/29/16.
- */
 (function () {
     angular
         .module('forageApp',['ui.router'])
@@ -48,7 +45,18 @@
                 url: '/user',
                 templateUrl: '../views/splash/user.html',
                 controller: 'ProfileController',
-                controllerAs: 'profile'
+                controllerAs: 'profile',
+                resolve: {
+                    currentUser: function (HomeService) {
+                        return HomeService.getCurrentuser(false).then(function(res) {
+                            //console.log('Resolve User success');
+                            return res;
+                        }).catch(function(err) {
+                            //console.log('resolve user failed');
+                            return null;
+                        })
+                    }
+                }
             })
             .state('home.profile', {
                 url: '/profile/:id',
@@ -72,7 +80,16 @@
                 url: '/foodtruck/:id',
                 templateUrl: '../views/foodtruck/profile/foodtruck.html',
                 controller: 'FoodtruckController',
-                controllerAs: 'foodtruck'
+                controllerAs: 'foodtruck',
+                currentFoodtruck: function (FoodtruckService) {
+                    return FoodtruckService.getFoodtruck().then(function(res) {
+                        //console.log('resolve truck success');
+                        return res;
+                    }).catch(function(err) {
+                        //console.error('resolve truck err');
+                        return null;
+                    })
+                }
             })
             .state('usersettings', {
                 url: '/user_settings/:id',

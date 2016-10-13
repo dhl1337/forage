@@ -4,11 +4,12 @@
 (function () {
     angular
         .module('forageApp')
-        .controller('FoodtruckController', ['FoodtruckService', '$stateParams', 'HomeService', '$state', FoodtruckController]);
+        .controller('FoodtruckController', ['FoodtruckService', '$stateParams', 'HomeService', FoodtruckController]);
 
-    function FoodtruckController (FoodtruckService, $stateParams, HomeService, $state) {
+    function FoodtruckController (FoodtruckService, $stateParams, HomeService) {
         var vm = this;
         var currentFoodtruckId = $stateParams.id;
+
         vm.addFoodtruck = addFoodtruck;
         vm.addMenu = addMenu;
         vm.settings = settings;
@@ -20,31 +21,28 @@
         vm.addFavorite = addFavorite;
         vm.notifiedModal = notifiedModal;
 
+        google.maps.visualRefresh = true;
+
         vm.menuItems = [];
 
         vm.addMessage = addMessage;
 
         function addMessage (message) {
-            var text = {
-                message: message
-            };
-            //console.log('this is text buddy!',text);
-            //console.log('foodtruck controller',message);
+            var text = { message: message };
             FoodtruckService.sendTextMessage(text);
         }
 
         function notifiedModal () {
-            $('#notifiedModal')
-                .modal('show')
-            ;
+            $('#notifiedModal').modal('show');
         }
 
-        HomeService.getCurrentuser().then(function (user){vm.currentUser = user;});
+        HomeService.getCurrentuser().then(function (user){
+            vm.currentUser = user;
+        });
 
         FoodtruckService.getFoodtruckId(currentFoodtruckId).then(function(foodtruckUser){
             var truck = foodtruckUser[0];
             vm.foodtruckUser = foodtruckUser;
-            //console.log("foodcontroller truck:",truck);
             vm.name = truck.name;
             vm.cuisine = truck.cuisine;
             vm.photo = truck.photo;
@@ -62,7 +60,6 @@
             vm.heathScore = truck.healthScore;
             vm.menuItems = truck.menu;
             vm.reviews = truck.reviews;
-            console.log('this is reviews',vm.reviews);
         });
 
         function addFoodtruck (name, cuisine, photo, phone, website, sunday, monday, tuesday, wednesday, thursday, friday, saturday, priceMin, priceMax, heathScore, menu) {
@@ -89,7 +86,7 @@
                 menu: menu
             };
             FoodtruckService.addNewFoodtruck(foodtruckUser);
-        };
+        }
 
         function addMenu () {
             vm.menuItems.push({});
@@ -123,7 +120,6 @@
             FoodtruckService.updateFoodtruck(currentFoodtruckId, foodtruck);
         }
 
-        //console.log("this is the current user",vm.currentUser);
 
         function addReview (description) {
             var obj = {
@@ -140,54 +136,40 @@
                 description: description,
                 rating: vm.rating
             };
-            //console.log("add review",vm.currentUser._id, obj);
-            //console.log('this should be maryID',currentFoodtruckId);
             FoodtruckService.addReview(currentFoodtruckId, obj);
             HomeService.addReview(vm.currentUser._id, foodtruckObj);
-            //$state.go('home.foodtruck', {id:currentFoodtruckId});
         }
 
         function menuAccordion () {
-            $('#menuAccordion')
-                .accordion()
-            ;
+            $('#menuAccordion').accordion();
         }
 
         function hoursAccordion () {
-            $('#hoursAccordion')
-                .accordion()
-            ;
+            $('#hoursAccordion').accordion();
         }
 
         function reviewModal () {
-            console.log('im getting clicky clickey');
-            $('#reviewModal')
-                .modal('show')
-            ;
+            $('#reviewModal').modal('show');
         }
 
         function addFavorite () {
-            //console.log('adding currentuser',vm.currentUser._id);
-            //console.log('adding current foodtruck',currentFoodtruckId);
+
             var obj = {
                 foodtruckId: currentFoodtruckId,
                 name: vm.foodtruckUser[0].name,
                 photo: vm.foodtruckUser[0].photo,
                 cuisine: vm.foodtruckUser[0].cuisine
             };
-            console.log(obj);
+
             FoodtruckService.addFavorite(vm.currentUser._id, obj);
         }
 
-        $('#asdf')
-            .rating('enable');
+        $('#asdf').rating('enable');
 
 
-        $('#foodtruckRating')
-            .rating('disable');
+        $('#foodtruckRating').rating('disable');
 
-        $('#userRating')
-            .rating('setting', 'onRate', function (value) {
+        $('#userRating').rating('setting', 'onRate', function (value) {
                 vm.rating = value;
                 //console.log(vm.rating);
             })
