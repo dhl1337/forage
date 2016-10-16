@@ -46,9 +46,6 @@ require('./foodtruck/FoodtruckRoute')(app);
 // Reviews
 require('./review/ReviewRoute')(app);
 
-// Twilio
-require('./twilio/TwilioRoute')(app);
-
 // Connections
 let port = config.port;
 http.listen(port, () => console.log('listening on port ' + port));
