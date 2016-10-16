@@ -9,9 +9,6 @@
                     <div class="item">
                         <div class="header" style="color: white; font-size: 20px; margin-bottom: 2%">{{foodtruck.foodtruckUser[0].name}}</div>
                     </div>
-                    <!--<div class="item">-->
-                        <!--<div class="ui large star rating" id="foodtruckRating" data-rating="0" data-max-rating="5"></div> {{foodtruck.foodtruckUser[0].reviews.length}} reviews-->
-                    <!--</div>-->
                     <div class="item" ng-click="foodtruck.addFavorite()">
                         <div class="right floated">
                             <i class="heart icon"></i>
@@ -110,9 +107,6 @@
                 <div class="ui list">
                     <div class="item">
                         <div class="content">
-                            <!--<div class="header">-->
-                                <!--<div class="ui small star rating" id="asdf" data-rating="5" data-max-rating="5"></div>-->
-                            <!--</div>-->
                             {{review.description}}
                         </div>
                     </div>
@@ -166,18 +160,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="ui small modal" id="notifiedModal">
-    <i class="close icon"></i>
-    <div class="header" style="color: white; background-color: #FF4447">Notification</div>
-    <div class="content">
-        <div class="ui form">
-            <div class="field">
-                <textarea rows="2" placeholder="Share to your user whats going on today!" ng-model="home.notificationMessage"></textarea>
-            </div>
-            <div class="ui submit button" ng-click="foodtruck.addMessage(home.notificationMessage)">Submit</div>
         </div>
     </div>
 </div>

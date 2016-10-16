@@ -13,18 +13,6 @@
         vm.foodtrucks = currentFoodtruck;
         vm.loginModal = loginModal;
         vm.openSideBar = openSideBar;
-        vm.notifiedModal = notifiedModal;
-
-        vm.addMessage = addMessage;
-
-        function addMessage (message) {
-            var text = { message: message };
-            FoodtruckService.sendTextMessage(text);
-        }
-
-        function notifiedModal () {
-            $('#notifiedModal').modal('show');
-        }
 
 
         function loginModal () {
