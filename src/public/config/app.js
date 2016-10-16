@@ -17,19 +17,15 @@
                 resolve: {
                     currentFoodtruck: function (FoodtruckService) {
                         return FoodtruckService.getFoodtruck().then(function(res) {
-                            //console.log('resolve truck success');
                             return res;
                         }).catch(function(err) {
-                            //console.error('resolve truck err');
                             return null;
                         })
                     },
                     currentUser: function (HomeService) {
                         return HomeService.getCurrentuser(false).then(function(res) {
-                            //console.log('Resolve User success');
                             return res;
                         }).catch(function(err) {
-                            //console.log('resolve user failed');
                             return null;
                         })
                     }
@@ -37,9 +33,7 @@
             })
             .state('splash', {
                 url: '/welcome',
-                templateUrl: '../views/splash/index.html',
-                controller: 'HomeController',
-                controllerAs: 'home'
+                templateUrl: '../views/splash/index.html'
             })
             .state('home.user', {
                 url: '/user',
@@ -49,10 +43,8 @@
                 resolve: {
                     currentUser: function (HomeService) {
                         return HomeService.getCurrentuser(false).then(function(res) {
-                            //console.log('Resolve User success');
                             return res;
                         }).catch(function(err) {
-                            //console.log('resolve user failed');
                             return null;
                         })
                     }
@@ -83,10 +75,8 @@
                 controllerAs: 'foodtruck',
                 currentFoodtruck: function (FoodtruckService) {
                     return FoodtruckService.getFoodtruck().then(function(res) {
-                        //console.log('resolve truck success');
                         return res;
                     }).catch(function(err) {
-                        //console.error('resolve truck err');
                         return null;
                     })
                 }

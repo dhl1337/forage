@@ -1,9 +1,9 @@
 (function () {
     angular
         .module('forageApp')
-        .controller('HomeController', ['FoodtruckService', 'HomeService', 'currentFoodtruck', 'currentUser', '$state',HomeController]);
+        .controller('HomeController', ['FoodtruckService', 'currentFoodtruck', 'currentUser', '$state', HomeController]);
 
-    function HomeController (FoodtruckService, HomeService, currentFoodtruck, currentUser, $state) {
+    function HomeController (FoodtruckService, currentFoodtruck, currentUser, $state) {
         //console.log('controller loading');
         var vm = this;
         vm.initMap = initMap;
@@ -18,24 +18,17 @@
         vm.addMessage = addMessage;
 
         function addMessage (message) {
-            var text = {
-                message: message
-            };
-
+            var text = { message: message };
             FoodtruckService.sendTextMessage(text);
         }
 
         function notifiedModal () {
-            $('#notifiedModal')
-                .modal('show')
-            ;
+            $('#notifiedModal').modal('show');
         }
 
 
         function loginModal () {
-            $('#loginModal')
-                .modal('show')
-            ;
+            $('#loginModal').modal('show');
         }
 
         function openSideBar () {
@@ -51,7 +44,6 @@
             for(var i = 0; i <vm.foodtrucks.length; i++) {
                 if (vm.user.foodTruck == vm.foodtrucks[i]._id) {
                     vm.openTruck = vm.foodtrucks[i];
-                    //console.log(vm.openTruck);
                 }
             }
         }
@@ -85,7 +77,7 @@
             function guid() {
                 function s4() { return Math.floor((1 + Math.random()) * 0x10000)
                     .toString(16).substring(1);
-                };
+                }
 
                 return s4() + s4() + '-' + s4() + '-' + s4() + s4();
             }

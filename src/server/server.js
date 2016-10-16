@@ -1,25 +1,19 @@
-/**
- * Created by danle on 1/29/16.
- */
+'use strict';
 // Dependencies
-var bodyParser = require('body-parser'),
-    express = require('express'),
-    expressSession = require('express-session'),
-    db = require('./config/database.js'),
-    mongoose = require('mongoose'),
-    passport = require('passport'),
-    config = require('./config/config.js')
+import bodyParser from 'body-parser';
+import express from 'express';
+import expressSession from 'express-session';
+import mongoose from 'mongoose';
+import passport from 'passport';
+import config from './configs/config'
 
 // Express
-var app = express();
+let app = express();
 
+mongoose.connect(config.url);
+mongoose.connection.once('open', () => console.log("Successfully connected to mongodb"));
 
-mongoose.connect(db.url);
-mongoose.connection.once('open', function () {
-    console.log("Successfully connected to mongodb")
-});
-
-require('./config/passport.js')(passport);
+require('./configs/passport.js')(passport);
 
 // Express Middleware
 app.use(expressSession(config.session));
@@ -30,35 +24,31 @@ app.use(express.static(__dirname + '/../public'));
 
 
 // Socket.io connection
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+let http = require('http').Server(app);
+let io = require('socket.io')(http);
 
 
-io.on('connection', function (socket) {
-    socket.on('location', function (data) {
-        //console.log("location data",data);
+io.on('connection', socket => {
+    socket.on('location', data => {
         io.sockets.emit('location', data)
     })
 });
 
 // Facebook Authentication Endpoints
-require('./routes/facebookRoutes.js')(app);
+require('./facebook/FacebookRoute')(app);
 
 // User Endpoints
-require('./routes/userRoutes.js')(app);
+require('./user/UserRoute')(app);
 
 // Foodtruck Endpoints
-require('./routes/foodtruckRoutes.js')(app);
+require('./foodtruck/FoodtruckRoute')(app);
 
 // Reviews
-require('./routes/reviewRoutes.js')(app);
+require('./review/ReviewRoute')(app);
 
 // Twilio
-require('./routes/twilioRoutes.js')(app);
+require('./twilio/TwilioRoute')(app);
 
 // Connections
-var port = config.port;
-http.listen(port, function () {
-    console.log('listening on port ' + port);
-});
-
+let port = config.port;
+http.listen(port, () => console.log('listening on port ' + port));

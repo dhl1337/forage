@@ -1,45 +1,44 @@
-/**
- * Created by danle on 1/29/16.
- */
-var gulp = require('gulp'),
-    concat = require('gulp-concat'),
-    uglify = require('gulp-uglify'),
-    sass = require('gulp-sass'),
-    prefix = require('gulp-autoprefixer');
+const gulp = require('gulp');
+const babel = require('gulp-babel');
+const uglify = require('gulp-uglify');
+const concat = require('gulp-concat');
 
-gulp.task('JSTask', function () {
+gulp.task('public', () => {
     return gulp
-        .src('./src/public/**/*.js')
+        .src('./src/public/app/**/*.js')
+        .pipe(babel({
+            presets: ['es2015']
+        }))
         .pipe(concat('build.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./build/public'))
 });
 
-gulp.task('SassTask', function () {
-    return gulp
-        .src('./src/public/assets/*.scss')
-        .pipe(concat('styles.scss'))
-        .pipe(sass().on('error', sass.logError))
-        .pipe(prefix({browsers: ['last 2 version', '>5%']}))
-        .pipe(gulp.dest('./build/public'))
-});
-//gulp auto prefixer
-gulp.task('CopyHtml', function () {
+gulp.task('html', () => {
     return gulp
         .src('./src/public/**/*.html')
-        .pipe(gulp.dest('./build/public'));
+        .pipe(gulp.dest('./build/public'))
 });
 
-gulp.task('JServerTask', function () {
+gulp.task('css', () => {
+    return gulp
+        .src('./src/public/assets/**/*.css')
+        .pipe(gulp.dest('./build/public'))
+});
+
+gulp.task('server', () => {
     return gulp
         .src('./src/server/**/*.js')
+        .pipe(babel({
+            presets: ['es2015']
+        }))
         .pipe(gulp.dest('./build/server'))
 });
 
-gulp.task('Build', ['JSTask', 'SassTask', 'CopyHtml', 'JServerTask'], function () {
-    console.log('building all the stuff');
+gulp.task('Build', ['public', 'html', 'css', 'server'], () => {
+    console.log('Building all the stuff');
 });
 
-gulp.task('default', function () {
+gulp.task('default', () => {
     gulp.watch(['./src/**/*'], ['Build']);
 });
