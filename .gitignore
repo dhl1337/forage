@@ -1,5 +1,5 @@
 build
 node_modules
-config.js
+config
 .idea
 auth.js
