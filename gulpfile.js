@@ -5,7 +5,7 @@ const concat = require('gulp-concat');
 
 gulp.task('public', () => {
     return gulp
-        .src('./src/public/app/**/*.js')
+        .src('./src/public/**/*.js')
         .pipe(babel({
             presets: ['es2015']
         }))
