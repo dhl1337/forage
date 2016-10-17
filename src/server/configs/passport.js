@@ -1,9 +1,6 @@
-/**
- * Created by danle on 1/29/16.
- */
-var FacebookStrategy = require('passport-facebook').Strategy,
-    User = require('./../models/user.js'),
-    configAuth = require('./auth');
+import {Strategy} from 'passport-facebook';
+import User from '../user/UserModel';
+import {facebookAuth} from './auth';
 
 module.exports = function (passport) {
     passport.serializeUser(function(user, done) {
@@ -16,10 +13,10 @@ module.exports = function (passport) {
         });
     });
 
-    passport.use(new FacebookStrategy({
-        clientID: configAuth.facebookAuth.clientID,
-        clientSecret: configAuth.facebookAuth.clientSecret,
-        callbackURL: configAuth.facebookAuth.callbackURL,
+    passport.use(new Strategy({
+        clientID: facebookAuth.clientID,
+        clientSecret: facebookAuth.clientSecret,
+        callbackURL: facebookAuth.callbackURL,
         profileFields: ['emails', 'photos', 'name', 'location']
     },
         function(accessToken, refreshToken, profile, done) {
