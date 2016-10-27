@@ -20,7 +20,6 @@ module.exports = function (passport) {
         profileFields: ['emails', 'photos', 'name', 'location']
     },
         function(accessToken, refreshToken, profile, done) {
-            //console.log(profile);
             process.nextTick(function () {
                 User.findOne({'facebook.id' : profile.id}, function (err, user) {
                     if (err)
@@ -48,8 +47,7 @@ module.exports = function (passport) {
                             return done(null, newUser);
                         });
                     }
-                })
-                //console.log("the button one", profile);
+                });
             });
         }
     ));
