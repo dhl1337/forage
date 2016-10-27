@@ -1,8 +1,5 @@
-/**
- * Created by danle on 1/29/16.
- */
-'use strict';
 (function () {
+    'use strict';
     angular
         .module('forageApp')
         .directive('topNavBar', topNavBar);

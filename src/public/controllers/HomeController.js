@@ -4,7 +4,6 @@
         .controller('HomeController', ['FoodtruckService', 'currentFoodtruck', 'currentUser', '$state', HomeController]);
 
     function HomeController (FoodtruckService, currentFoodtruck, currentUser, $state) {
-        //console.log('controller loading');
         var vm = this;
         vm.initMap = initMap;
         var refreshTimeout = null;

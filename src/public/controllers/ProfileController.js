@@ -4,6 +4,7 @@
         .controller('ProfileController', ['HomeService', 'FoodtruckService', 'ProfileService', 'currentUser', ProfileController]);
 
     function ProfileController (HomeService, FoodtruckService, ProfileService, currentUser) {
+        console.log('hello');
         var vm = this;
         vm.currentUserId = currentUser._id;
 

@@ -1,6 +1,3 @@
-/**
- * Created by danle on 2/3/16.
- */
 (function () {
     angular
         .module('forageApp')
