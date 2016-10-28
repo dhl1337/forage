@@ -22,16 +22,13 @@
 
         vm.menuItems = [];
 
-        vm.addMessage = addMessage;
 
-        function addMessage (message) {
+        vm.addMessage = (message) => {
             var text = { message: message };
             FoodtruckService.sendTextMessage(text);
-        }
+        };
 
-        function notifiedModal () {
-            $('#notifiedModal').modal('show');
-        }
+        vm.notifiedModal = () => $('#notifiedModal').modal('show');
 
         HomeService.getCurrentuser().then(function (user){
             vm.currentUser = user;

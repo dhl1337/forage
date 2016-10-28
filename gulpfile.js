@@ -9,8 +9,6 @@ gulp.task('public', () => {
         .pipe(babel({
             presets: ['es2015']
         }))
-        .pipe(concat('build.js'))
-        .pipe(uglify())
         .pipe(gulp.dest('./build/public'))
 });
 
