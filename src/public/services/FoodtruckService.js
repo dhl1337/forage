@@ -1,77 +1,21 @@
-(function () {
+(() => {
     angular
         .module('forageApp')
         .service('FoodtruckService', FoodtruckService);
 
     function FoodtruckService ($http) {
-        this.getFoodtruck = function () {
-            return $http({
-                method: 'GET',
-                url: '/api/foodtrucks'
-            }).then(function (response) {
-                return response.data
-            }).catch(function(err) {
-                console.error(err);
-                debugger;
-            })
-        };
-        this.addNewFoodtruck = function (foodtruck) {
-            return $http({
-                method: 'POST',
-                url: '/api/foodtrucks',
-                data: foodtruck
-            }).then(function (response){
-                return response.data
-            });
-        };
-        this.getFoodtruckId = function (id) {
-            //console.log("foodtruckId: ",id);
-            return $http({
-                method: 'GET',
-                url: '/api/foodtrucks/' + id
-            }).then(function (response){
-                //console.log("foodtruck response: ",response.data);
-                return response.data
-            })
-        };
-        this.updateFoodtruck = function (id, obj) {
-            return $http({
-                method: 'PUT',
-                url: '/api/foodtrucks/' + id,
-                data: obj
-            }).then(function (response) {
-                console.log("this is the update response data: ",response.data);
-                return response.data
-            })
-        };
-        this.addReview = function (id, obj) {
-            return $http({
-                method: 'POST',
-                url: '/api/reviews/'+id,
-                data: obj
-            }).then(function (response) {
-                return response.data
-            })
-        };
-        this.addFavorite = function (currentUserId, foodtruckId) {
-            return $http({
-                method: 'POST',
-                url: '/api/users/favorite/' + currentUserId,
-                data: foodtruckId
-            }).then(function (response){
-                return response.data;
-            })
-        };
-        this.sendTextMessage = function (data) {
-            //console.log('foodtruck service', data);
-            return $http({
-                method: 'POST',
-                url: '/api/twilio',
-                data: data
-            }).then(function (response){
-                return response.data;
-            })
-        };
+
+        this.getFoodtruck = () => $http.get(`/api/foodtrucks`).then(response => response.data);
+
+        this.addNewFoodtruck = foodtruck => $http.post(`/api/foodtrucks`, foodtruck).then(response => response.data);
+
+        this.getFoodtruckId = id => $http.get(`/api/foodtrucks/${id}`).then(response => response.data);
+
+        this.updateFoodtruck = (id, obj) => $http.put(`/api/foodtrucks/${id}`, obj).then(response => response.data);
+
+        this.addReview = (id, obj) => $http.post(`/api/reviews/${id}`, obj).then(response => response.data);
+
+        this.addFavorite = (currentUserId, foodtruckId) => $http.post(`/api/users/favorite/${currentUserId}`, foodtruckId).then(response => response.data);
 
     }
 })();

@@ -25,12 +25,6 @@
                     SETTING
                 </div>
             </div>
-            <div class="item" ng-show="home.user.foodTruck">
-                <div class="notifiedModal" ng-click="home.notifiedModal()">
-                    <i class="large announcement icon" style="color: #FF4447"></i>
-                    ANNOUNCEMENT
-                </div>
-            </div>
             <div class="item"  ng-hide="home.user === undefined">
                 <a href="/auth/logout"><i class="large sign out icon" style="color: #FF4447"></i> LOG OUT</a>
             </div>
@@ -68,16 +62,5 @@
         </div>
     </div>
 </div>
-<div class="ui small modal" id="notifiedModal">
-    <i class="close icon"></i>
-    <div class="header" style="color: white; background-color: #FF4447">Notification</div>
-    <div class="content">
-        <div class="ui form">
-            <div class="field">
-                <textarea rows="2" placeholder="Share to your user whats going on today!" ng-model="home.notificationMessage"></textarea>
-            </div>
-            <div class="ui approve button" ng-click="home.addMessage(home.notificationMessage)">Submit</div>
-        </div>
-    </div>
-</div>
+
 

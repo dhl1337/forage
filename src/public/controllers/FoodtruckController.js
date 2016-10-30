@@ -7,18 +7,9 @@
         const vm = this;
         const currentFoodtruckId = $stateParams.id;
 
-        vm.notifiedModal = notifiedModal;
-
         google.maps.visualRefresh = true;
 
         vm.menuItems = [];
-
-        vm.addMessage = (message) => {
-            const text = {message: message};
-            FoodtruckService.sendTextMessage(text);
-        };
-
-        vm.notifiedModal = () => $('#notifiedModal').modal('show');
 
         HomeService.getCurrentuser().then(function (user) {
             vm.currentUser = user;
