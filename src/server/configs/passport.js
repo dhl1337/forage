@@ -2,15 +2,11 @@ import {Strategy} from 'passport-facebook';
 import User from '../user/UserModel';
 import {facebookAuth} from './auth';
 
-module.exports = function (passport) {
-    passport.serializeUser(function(user, done) {
-        done(null, user.id);
-    });
+module.exports = passport = () => {
+    passport.serializeUser((user, done) => done(null, user.id));
 
-    passport.deserializeUser(function(id, done) {
-        User.findById(id, function(err, user) {
-            done(err, user);
-        });
+    passport.deserializeUser((id, done) => {
+        User.findById(id, (err, user) => done(err, user));
     });
 
     passport.use(new Strategy({
@@ -35,11 +31,9 @@ module.exports = function (passport) {
                         newUser.facebook.email = profile.emails[0].value;
                         newUser.facebook.photo = profile.photos[0].value;
                         newUser.facebook.created = new Date().getTime();
-                        console.log(profile._json.location);
-
 
                         // save our user to the database
-                        newUser.save(function(err) {
+                        newUser.save(err => {
                             if (err)
                                 throw err;
 

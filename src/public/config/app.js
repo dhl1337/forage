@@ -1,4 +1,4 @@
-(function () {
+(() => {
     angular
         .module('forageApp', ['ui.router'])
         .config(['$stateProvider', '$urlRouterProvider', config]);
@@ -15,19 +15,15 @@
                 controller: 'HomeController',
                 controllerAs: 'home',
                 resolve: {
-                    currentFoodtruck: function (FoodtruckService) {
-                        return FoodtruckService.getFoodtruck().then(function (res) {
-                            return res;
-                        }).catch(function (err) {
-                            return null;
-                        })
+                    currentFoodtruck(FoodtruckService) {
+                        return FoodtruckService.getFoodtruck()
+                            .then(res => res)
+                            .catch(err => null)
                     },
-                    currentUser: function (HomeService) {
-                        return HomeService.getCurrentuser(false).then(function (res) {
-                            return res;
-                        }).catch(function (err) {
-                            return null;
-                        })
+                    currentUser(HomeService) {
+                        return HomeService.getCurrentuser(false)
+                            .then(res => res)
+                            .catch(err => null)
                     }
                 }
             })
@@ -41,12 +37,10 @@
                 controller: 'ProfileController',
                 controllerAs: 'profile',
                 resolve: {
-                    currentUser: function (HomeService) {
-                        return HomeService.getCurrentuser(false).then(function (res) {
-                            return res;
-                        }).catch(function (err) {
-                            return null;
-                        })
+                    currentUser(HomeService) {
+                        return HomeService.getCurrentuser(false)
+                            .then(res => res)
+                            .catch(err => null)
                     }
                 }
             })
@@ -73,12 +67,10 @@
                 templateUrl: '../views/foodtruck/profile/foodtruck.html',
                 controller: 'FoodtruckController',
                 controllerAs: 'foodtruck',
-                currentFoodtruck: function (FoodtruckService) {
-                    return FoodtruckService.getFoodtruck().then(function (res) {
-                        return res;
-                    }).catch(function (err) {
-                        return null;
-                    })
+                currentFoodtruck(FoodtruckService) {
+                    return FoodtruckService.getFoodtruck()
+                        .then(res => res)
+                        .catch(err => null)
                 }
             })
             .state('usersettings', {
