@@ -26,17 +26,16 @@
   },
   "scripts": {
     "dev": "nodemon --exec babel-node src/server/server.js",
-    "prestart": "babel src --out-dir dist",
     "start": "node build/server/server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dhl1337/foodtruck-app.git"
+    "url": "git+https://github.com/dhl1337/forage.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dhl1337/foodtruck-app/issues"
+    "url": "https://github.com/dhl1337/forage/issues"
   },
-  "homepage": "https://github.com/dhl1337/foodtruck-app#readme"
+  "homepage": "https://github.com/dhl1337/forage#readme"
 }
