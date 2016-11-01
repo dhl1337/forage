@@ -27,7 +27,7 @@
   "scripts": {
     "dev": "nodemon --exec babel-node src/server/server.js",
     "prestart": "babel src --out-dir dist",
-    "start": "node dist/server/server.js"
+    "start": "node build/server/server.js"
   },
   "repository": {
     "type": "git",
