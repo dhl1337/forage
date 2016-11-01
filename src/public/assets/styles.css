@@ -139,7 +139,6 @@ a, a:hover {
     position: absolute;
     top: 7%;
     right: 5%;
-    opacity: 0.8;
     background-color: white;
     color: black;
 }
@@ -151,7 +150,6 @@ a, a:hover {
 }
 #splash-menu .item:hover {
     background-color: #FF4447;
-    opacity: 1;
     color: white;
 }
 .ui.menu .item.disabled  {

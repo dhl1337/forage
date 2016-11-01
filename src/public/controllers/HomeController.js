@@ -10,6 +10,8 @@
         let map = null;
         let infowindow = null;
 
+        google.maps.visualRefresh = true;
+
         vm.foodtrucks = currentFoodtruck;
         vm.user = currentUser;
 
@@ -201,7 +203,6 @@
         };
 
         vm.logFoodtruck = () => currentUserInfo = initLocationSharing(userLocationUpdate);
-
 
         google.maps.event.addDomListener(window, "load", vm.initMap);
 
