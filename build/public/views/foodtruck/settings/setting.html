@@ -1,0 +1,99 @@
+<div class="ui stackable grid">
+    <div class="three wide column"></div>
+    <div class="five wide column" style="margin-top: 30px">
+        <div class="ui equal width form">
+            <h3 class="ui dividing header" style="color: #FF4447">FOODTRUCK INFO</h3>
+            <div class="field">
+                <input type="text" placeholder="Food truck name" ng-model="foodtruck.name">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Cuisine" ng-model="foodtruck.cuisine">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Image" ng-model="foodtruck.photo">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Phone" ng-model="foodtruck.phone">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Website" ng-model="foodtruck.website">
+            </div>
+            <h3 class="ui dividing header" style="color: #FF4447">HOURS</h3>
+            <div class="field">
+                <input type="text" placeholder="Sunday" ng-model="foodtruck.sunday">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Monday" ng-model="foodtruck.monday">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Tuesday" ng-model="foodtruck.tuesday">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Wednesday" ng-model="foodtruck.wednesday">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Thursday" ng-model="foodtruck.thursday">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Friday" ng-model="foodtruck.friday">
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Saturday" ng-model="foodtruck.saturday">
+            </div>
+        </div>
+    </div>
+    <div class="five wide column" style="margin-top: 30px">
+        <div class="ui equal width form">
+            <h3 class="ui dividing header" style="color: #FF4447">MISCELLANEOUS</h3>
+            <div class="two fields">
+                <div class="field">
+                    <div class="ui right labeled input">
+                        <div class="ui label">$</div>
+                        <input type="text" placeholder="Price min" ng-model="foodtruck.priceMin">
+                        <div class="ui basic label">.00</div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui right labeled input">
+                        <div class="ui label">$</div>
+                        <input type="text" placeholder="Price max" ng-model="foodtruck.priceMax">
+                        <div class="ui basic label">.00</div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <input type="text" placeholder="Health Score" ng-model="foodtruck.heathScore">
+            </div>
+            <h3 class="ui dividing header" style="color: #FF4447">MENU</h3>
+            <div id="newFields">
+                <div class="two fields" id="foodtruckMenu" ng-repeat="item in foodtruck.menuItems track by $index">
+                    <div class="field">
+                        <input type="text"  ng-model="foodtruck.menuItems[$index].name" placeholder="Name">
+                    </div>
+                    <div class="field">
+                        <div class="ui right labeled input">
+                            <div class="ui label">$</div>
+                            <input type="text"  ng-model="foodtruck.menuItems[$index].price" placeholder="Price">
+                            <div class="ui basic label">.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <button class="ui label icon button" ng-click="foodtruck.addMenu()" id="addItems" style="background-color: #FF4447; color: white; width: 100%;">
+                    <i class="add circle icon"></i>
+                    Add more items
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="three wide column"></div>
+    <div class="three wide column"></div>
+    <div class="five wide column"></div>
+    <div class="five wide column">
+        <div class="field">
+            <button class="ui button" style="width: 100%; background-color: #FF4447; color: white;" ng-click="foodtruck.settings(foodtruck.name, foodtruck.cuisine, foodtruck.photo, foodtruck.phone, foodtruck.website, foodtruck.sunday, foodtruck.monday, foodtruck.tuesday, foodtruck.wednesday, foodtruck.thursday, foodtruck.friday, foodtruck.saturday, foodtruck.priceMin, foodtruck.priceMax, foodtruck.heathScore, foodtruck.menuItems)" ui-sref="home.foodtruck({id: foodtruck.currentUser.foodTruck})">SAVE</button>
+        </div>
+    </div>
+    <div class="three wide column"></div>
+</div>

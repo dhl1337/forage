@@ -1,0 +1,21 @@
+<div class="ui grid">
+    <div class="sixteen wide column" id="userProfileHeader">
+        <div class="image">
+            <img class="ui small centered circular image" ng-src="{{profile.user[0].facebook.photo}}" alt="">
+        </div>
+        <h3 style="color: white">{{profile.user[0].facebook.name}}</h3>
+    </div>
+    <div class="sixteen wide column" style="padding: 0;">
+        <div class="ui fluid two item borderless menu" id="userMenu">
+            <div class="active item" ui-sref="home.profile.reviews">REVIEWS</div>
+            <div class="item" ng-click="profile.foodtrucksFavorite()" ui-sref="home.profile.favorites">FAVORITES</div>
+        </div>
+    </div>
+    <div class="sixteen wide column">
+        <ui-view></ui-view>
+    </div>
+</div>
+
+
+
+

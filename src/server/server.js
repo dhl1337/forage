@@ -12,7 +12,7 @@ import config from './configs/config'
 // Express
 const app = express();
 
-mongoose.connect(config.url);
+mongoose.connect(process.env.MONGOLAB_URI || config.url);
 mongoose.connection.once('open', () => console.log("Successfully connected to mongodb"));
 
 require('./configs/passport.js')(passport);
@@ -47,5 +47,5 @@ require('./foodtruck/FoodtruckRoute')(app);
 require('./review/ReviewRoute')(app);
 
 // Connections
-const port = config.port;
+const port = process.env.PORT || config.port;
 http.listen(port, () => console.log('listening on port ' + port));

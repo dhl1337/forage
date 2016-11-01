@@ -1,0 +1,239 @@
+body, html {
+    padding: 0 auto;
+    margin: 0 auto;
+    font-family: 'Raleway', sans-serif;
+}
+.ui.secondary.menu {
+    margin-left: 0;
+}
+#signupModalContent {
+    padding-right: 20%;
+    padding-left: 20%;
+}
+#homeMap {
+    min-height: 100vh;
+    width: 100%;
+}
+userlogin {
+    margin-top: 8px;
+}
+.main-content {
+    background-color: #F0EFF0;
+    padding: 20px;
+    min-height: 100vh;
+    border-radius: 7px;
+}
+.ui.secondary.menu .header.item {
+    padding: 0;
+    margin-left: 0;
+    color: #FFFFFF;
+}
+#topNavHeader {
+    font-size: 30px;
+    margin-left: 20px;
+}
+.ui.facebook.button {
+    width: 100%;
+}
+#signinBtn, #signupBtn {
+    text-align: center;
+    width: 100%;
+}
+.signupSection {
+    text-align: center;
+}
+
+/* profile */
+
+#user-image {
+    margin-top: 50px;
+}
+#user-activites {
+    margin-top: 25px;
+}
+#user-info {
+    margin-top: 10%;
+}
+#user-edit {
+    margin-top: 15%;
+    border-left: 1px solid;
+    margin-bottom: 30px;
+}
+#user-about {
+    margin-top: 3%;
+    border-left: 1px solid;
+    margin-bottom: 10%;
+}
+h3 {
+    margin-top: 10px;
+    padding: 0;
+}
+#user-about-list .item {
+    margin-bottom: 15px;
+}
+#user-edit-list .item {
+    margin-bottom: 10px;
+}
+
+.user-location {
+    margin-top: -10px;
+}
+a, a:hover {
+    color: black;
+}
+
+/* signup */
+#signupForm {
+    margin-top: 100px;
+}
+
+
+/* top nav bar */
+#navbarPhoto, #navbarFoodTruckPhoto {
+    margin-right: 10px;
+}
+#navbar-dropdown, #navbar-foodTruck-dropdown {
+    padding-top: 5px;
+}
+
+/* foodtruck signup */
+#signupCard {
+    margin: 20px;
+}
+#signupCardContent {
+    text-align: center;
+}
+#cuisineInput, #foodtruckName {
+    width: 100%;
+}
+.center.aligned.column {
+    margin-top: 17%;
+}
+#dropdownIcon, .profileName, .profileName:hover, .dropdown.icon{
+    color: #FFFFFF;
+}
+
+#foodtruckContainer {
+    margin-top: 20px;
+}
+#foodtruckuser-settings {
+    margin: 20px;
+}
+#addItems {
+    margin-top: 10px;
+}
+#menuHeader {
+    text-align: center;
+    margin-bottom: 30px;
+}
+#menuPrice {
+    text-align: right;
+}
+#user-list {
+    margin-bottom: 30px;
+}
+.foodtruck-filter {
+    margin-bottom: 40px;
+}
+#splash-menu {
+    position: absolute;
+    top: 7%;
+    right: 5%;
+    background-color: white;
+    color: black;
+}
+.ui.menu .active.item {
+    color: black;
+}
+.ui.menu .item {
+    color: black;
+}
+#splash-menu .item:hover {
+    background-color: #FF4447;
+    color: white;
+}
+.ui.menu .item.disabled  {
+    color: white;
+}
+.ui.menu .item.disabled:hover {
+    color: white;
+}
+#userProfileHeader {
+    text-align: center;
+    background-color: #FF4447;
+    padding-top: 30px;
+}
+#foodtruckImageHeader, #foodtruckInfo {
+    margin: 0;
+    padding: 0;
+}
+#foodtruckInfoList {
+    padding: 1rem;
+}
+#hIcon, #dollarIcon, #clockIcon, #foodIcon, #worldIcon, #phoneIcon, #makerIcon, .writeReview {
+    color: #FF4447
+}
+.ui.grid > #routingSide:not(.row) {
+    padding-left: 2rem;
+    padding-bottom: 0;
+}
+.ui.grid > #mapSide:not(.row) {
+    padding-left: 0;
+    padding-bottom: 0;
+}
+.ui.menu .active.item {
+    border-bottom: 3px solid #FF4447;
+    background: 0;
+    color: #FF4447;
+}
+.ui.menu .active.item:hover {
+    background-color: white;
+    color: #FF4447;
+}
+#homeHeader {
+    background-color: #FF4447;
+    color: white;
+    height: 300px;
+    text-align: center;
+}
+#splashSignInBtn, #splashSignUpBtn {
+    background-color: white;
+    color: #FF4447;
+}
+.forageQues {
+    color: #FF4447;
+}
+#checkboxy,  #checkboxy1, #checkboxy2, #checkboxy3, #checkboxy4 {
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+#page1 {
+    background: url("https://images.unsplash.com/reserve/EnF7DhHROS8OMEp2pCkx_Dufer%20food%20overhead%20hig%20res.jpg?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=3c19ae5da71204726943a09436fb1737") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 800px;
+}
+#page1Header {
+    position: fixed;
+    margin-top: 15%;
+}
+#introPage1 {
+    font-size: 55px;
+    color: white;
+}
+#page2 {
+
+    height: 100px;
+}
+#pageContainer {
+    margin-bottom: 0;
+}
+#ques {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#facebookBtn {
+    margin-top: 25%;
+}

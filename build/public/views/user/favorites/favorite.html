@@ -1,0 +1,17 @@
+<div class="ui grid" ng-repeat="favoriteFoodtruck in profile.user[0].favorites">
+    <div class="three wide column">
+        <img class="ui large circular image" ng-src="{{favoriteFoodtruck.photo}}" alt="">
+    </div>
+    <div class="ten wide column">
+        <div class="ui list">
+            <div class="item" ui-sref="home.foodtruck({id: favoriteFoodtruck.foodtruckId})">
+                <div class="content">
+                    <div class="header">
+                        {{favoriteFoodtruck.name}}
+                    </div>
+                    {{favoriteFoodtruck.cuisine}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
