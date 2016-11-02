@@ -27,6 +27,7 @@
   "scripts": {
     "build": "gulp default",
     "dev": "nodemon --exec babel-node src/server/server.js",
+    "postinstall": "gulp Build",
     "start": "node build/server/server.js"
   },
   "repository": {

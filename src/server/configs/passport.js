@@ -10,9 +10,9 @@ module.exports = function(passport) {
     });
 
     passport.use(new Strategy({
-            clientID: process.env['FACEBOOK_CLIENT_ID'] || facebookAuth.clientID,
-            clientSecret: process.env['FACEBOOK_CLIENT_SECRET'] || facebookAuth.clientSecret,
-            callbackURL: process.env['FACEBOOK_CALLBACK_URL'] || facebookAuth.callbackURL,
+            clientID: process.env.FACEBOOK_CLIENT_ID || facebookAuth.clientID,
+            clientSecret: process.env.FACEBOOK_CLIENT_SECRET || facebookAuth.clientSecret,
+            callbackURL: process.env.FACEBOOK_CALLBACK_URL || facebookAuth.callbackURL,
             profileFields: ['emails', 'photos', 'name', 'location']
         },
         function (accessToken, refreshToken, profile, done) {
