@@ -21,8 +21,6 @@ module.exports = function (passport) {
         });
     });
 
-    console.log('process', process.evn.FACEBOOK_CLIENT_ID);
-
     passport.use(new _passportFacebook.Strategy({
         clientID: process.env.FACEBOOK_CLIENT_ID || _auth.facebookAuth.clientID,
         clientSecret: process.env.FACEBOOK_CLIENT_SECRET || _auth.facebookAuth.clientSecret,
