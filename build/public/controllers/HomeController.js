@@ -105,8 +105,8 @@
             }
 
             // Setup Socket IO
-            var socket = io.connect('http://localhost:9999/');
-            //var socket = io.connect('http://104.236.199.135/');
+            //const socket = io.connect('http://localhost:9999/');
+            var socket = io.connect('https://forage-beta.herokuapp.com/');
             socket.on('connect', function () {
                 socket.on('location', function (location) {
                     if (location.id != userInfo.id) {
