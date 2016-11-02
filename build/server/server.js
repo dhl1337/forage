@@ -69,6 +69,7 @@ require('./review/ReviewRoute')(app);
 
 // Connections
 var port = process.env.PORT || _config2.default.port;
+console.log(port);
 http.listen(port, function () {
     return console.log('listening on port ' + port);
 });
