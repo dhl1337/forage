@@ -22,9 +22,9 @@ module.exports = function (passport) {
     });
 
     passport.use(new _passportFacebook.Strategy({
-        clientID: process.env.FACEBOOK_CLIENT_ID || _auth.facebookAuth.clientID,
-        clientSecret: process.env.FACEBOOK_CLIENT_SECRET || _auth.facebookAuth.clientSecret,
-        callbackURL: process.env.FACEBOOK_CALLBACK_URL || _auth.facebookAuth.callbackURL,
+        clientID: process.env['FACEBOOK_CLIENT_ID'] || _auth.facebookAuth.clientID,
+        clientSecret: process.env['FACEBOOK_CLIENT_SECRET'] || _auth.facebookAuth.clientSecret,
+        callbackURL: process.env['FACEBOOK_CALLBACK_URL'] || _auth.facebookAuth.callbackURL,
         profileFields: ['emails', 'photos', 'name', 'location']
     }, function (accessToken, refreshToken, profile, done) {
         process.nextTick(function () {

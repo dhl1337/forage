@@ -25,7 +25,7 @@
     "gulp-uglify": "^2.0.0"
   },
   "scripts": {
-    "build": "gulp",
+    "build": "gulp default",
     "dev": "nodemon --exec babel-node src/server/server.js",
     "start": "node build/server/server.js"
   },
