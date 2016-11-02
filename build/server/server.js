@@ -39,7 +39,7 @@ _mongoose2.default.connection.once('open', function () {
 require('./configs/passport.js')(_passport2.default);
 
 // Express Middleware
-app.use((0, _expressSession2.default)(process.env.SESSION_SECRET || _config2.default.session));
+app.use((0, _expressSession2.default)(ENV['SESSION_SECRET'] || _config2.default.session));
 app.use(_passport2.default.initialize());
 app.use(_passport2.default.session());
 app.use(_bodyParser2.default.json());
