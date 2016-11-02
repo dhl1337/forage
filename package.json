@@ -23,7 +23,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "postinstall": "gulp default",
+    "postinstall": "gulp Build",
     "start": "node build/server/server.js"
   },
   "repository": {
