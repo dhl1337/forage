@@ -7,7 +7,7 @@ import express from 'express';
 import expressSession from 'express-session';
 import mongoose from 'mongoose';
 import passport from 'passport';
-import config from './configs/config'
+//import config from './configs/config'
 
 // Express
 const app = express();
