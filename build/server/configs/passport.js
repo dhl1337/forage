@@ -6,9 +6,9 @@ var _UserModel = require('../user/UserModel');
 
 var _UserModel2 = _interopRequireDefault(_UserModel);
 
-var _auth = require('./auth');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//import {facebookAuth} from './auth';
 
 module.exports = function (passport) {
     passport.serializeUser(function (user, done) {
@@ -22,9 +22,9 @@ module.exports = function (passport) {
     });
 
     passport.use(new _passportFacebook.Strategy({
-        clientID: process.env.FACEBOOK_CLIENT_ID || _auth.facebookAuth.clientID,
-        clientSecret: process.env.FACEBOOK_CLIENT_SECRET || _auth.facebookAuth.clientSecret,
-        callbackURL: process.env.FACEBOOK_CALLBACK_URL || _auth.facebookAuth.callbackURL,
+        clientID: process.env.FACEBOOK_CLIENT_ID || facebookAuth.clientID,
+        clientSecret: process.env.FACEBOOK_CLIENT_SECRET || facebookAuth.clientSecret,
+        callbackURL: process.env.FACEBOOK_CALLBACK_URL || facebookAuth.callbackURL,
         profileFields: ['emails', 'photos', 'name', 'location']
     }, function (accessToken, refreshToken, profile, done) {
         process.nextTick(function () {
