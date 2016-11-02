@@ -9,6 +9,8 @@ module.exports = function(passport) {
         User.findById(id, (err, user) => done(err, user));
     });
 
+    console.log('process', process.evn.FACEBOOK_CLIENT_ID);
+
     passport.use(new Strategy({
             clientID: process.env.FACEBOOK_CLIENT_ID || facebookAuth.clientID,
             clientSecret: process.env.FACEBOOK_CLIENT_SECRET || facebookAuth.clientSecret,
