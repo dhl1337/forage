@@ -27,7 +27,7 @@
   "scripts": {
     "build": "gulp",
     "dev": "nodemon --exec babel-node src/server/server.js",
-    "start": "node src/server/server.js"
+    "start": "node build/server/server.js"
   },
   "repository": {
     "type": "git",
