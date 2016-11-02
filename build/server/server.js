@@ -22,14 +22,16 @@ var _passport = require('passport');
 
 var _passport2 = _interopRequireDefault(_passport);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _config = require('./configs/config');
 
-//import config from './configs/config'
+var _config2 = _interopRequireDefault(_config);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Express
 var app = (0, _express2.default)();
 
-_mongoose2.default.connect(process.env.MONGOLAB_URI || config.url);
+_mongoose2.default.connect(process.env.MONGOLAB_URI);
 _mongoose2.default.connection.once('open', function () {
     return console.log("Successfully connected to mongodb");
 });
@@ -37,7 +39,7 @@ _mongoose2.default.connection.once('open', function () {
 require('./configs/passport.js')(_passport2.default);
 
 // Express Middleware
-app.use((0, _expressSession2.default)(process.env.SESSION_SECRET || config.session));
+app.use((0, _expressSession2.default)(process.env.SESSION_SECRET));
 app.use(_passport2.default.initialize());
 app.use(_passport2.default.session());
 app.use(_bodyParser2.default.json());
@@ -66,7 +68,7 @@ require('./foodtruck/FoodtruckRoute')(app);
 require('./review/ReviewRoute')(app);
 
 // Connections
-var port = process.env.PORT || config.port;
+var port = process.env.PORT;
 console.log(port);
 http.listen(port, function () {
     return console.log('listening on port ' + port);

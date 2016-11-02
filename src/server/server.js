@@ -7,18 +7,18 @@ import express from 'express';
 import expressSession from 'express-session';
 import mongoose from 'mongoose';
 import passport from 'passport';
-//import config from './configs/config'
+import config from './configs/config'
 
 // Express
 const app = express();
 
-mongoose.connect(process.env.MONGOLAB_URI || config.url);
+mongoose.connect(process.env.MONGOLAB_URI);
 mongoose.connection.once('open', () => console.log("Successfully connected to mongodb"));
 
 require('./configs/passport.js')(passport);
 
 // Express Middleware
-app.use(expressSession(process.env.SESSION_SECRET || config.session));
+app.use(expressSession(process.env.SESSION_SECRET));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json());
@@ -47,6 +47,6 @@ require('./foodtruck/FoodtruckRoute')(app);
 require('./review/ReviewRoute')(app);
 
 // Connections
-const port = process.env.PORT || config.port;
+const port = process.env.PORT;
 console.log(port);
 http.listen(port, () => console.log('listening on port ' + port));
