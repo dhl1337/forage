@@ -18,7 +18,7 @@ mongoose.connection.once('open', () => console.log("Successfully connected to mo
 require('./configs/passport.js')(passport);
 
 // Express Middleware
-app.use(expressSession(process.env.SESSION_SECRET));
+app.use(expressSession(process.env.SESSION_SECRET || config.session.secret));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json());
