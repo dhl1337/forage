@@ -24,7 +24,7 @@
   "devDependencies": {},
   "scripts": {
     "postinstall": "gulp Build",
-    "start": "nodemon"
+    "start": "node src/server/server.js"
   },
   "repository": {
     "type": "git",
