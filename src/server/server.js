@@ -18,10 +18,10 @@ mongoose.connection.once('open', () => console.log("Successfully connected to mo
 require('./configs/passport.js')(passport);
 
 // Express Middleware
-app.use(expressSession(process.env.SESSION_SECRET || config.session.secret));
+app.use(expressSession(config.session));
 app.use(passport.initialize());
 app.use(bodyParser.json());
-app.use(express.cookieParser(config.session.secret));
+app.use(cookieParser());
 app.use(passport.session());
 app.use(express.static(__dirname + '/../public'));
 
