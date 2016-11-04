@@ -26,7 +26,7 @@ app.use(passport.session());
 app.use(express.static(__dirname + '/../public'));
 
 // Socket.io connection
-const http = require('http').Server(app);
+const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
 io.on('connection', socket => {
