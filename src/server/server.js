@@ -21,7 +21,7 @@ require('./configs/passport.js')(passport);
 app.use(expressSession(process.env.SESSION_SECRET || config.session.secret));
 app.use(passport.initialize());
 app.use(bodyParser.json());
-app.use(cookieParser());
+app.use(express.cookieParser(config.session.secret));
 app.use(passport.session());
 app.use(express.static(__dirname + '/../public'));
 
