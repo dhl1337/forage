@@ -3,7 +3,7 @@
 // Dependencies
 import bodyParser from 'body-parser';
 import express from 'express';
-
+import cookieParser from 'cookie-parser';
 import expressSession from 'express-session';
 import mongoose from 'mongoose';
 import passport from 'passport';
@@ -20,8 +20,9 @@ require('./configs/passport.js')(passport);
 // Express Middleware
 app.use(expressSession(process.env.SESSION_SECRET || config.session.secret));
 app.use(passport.initialize());
-app.use(passport.session());
 app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(passport.session());
 app.use(express.static(__dirname + '/../public'));
 
 // Socket.io connection
