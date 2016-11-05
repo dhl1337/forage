@@ -31,7 +31,6 @@ const io = require('socket.io')(http);
 
 io.on('connection', socket => {
     socket.on('location', data => {
-        console.log(data);
         io.sockets.emit('location', data)
     })
 });

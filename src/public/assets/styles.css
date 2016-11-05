@@ -11,7 +11,7 @@ body, html {
     padding-left: 20%;
 }
 #homeMap {
-    min-height: 100vh;
+    height: 100%;
     width: 100%;
 }
 userlogin {
@@ -243,4 +243,11 @@ a, a:hover {
     cursor: pointer;
 }
 
+#favoriteFoodTruckList {
+    overflow-y:auto;
+}
+
+#homeContainer {
+    min-height: 100vh;
+}
 
