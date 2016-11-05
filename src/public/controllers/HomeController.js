@@ -108,8 +108,8 @@
             }
 
             // Setup Socket IO
-            const socket = io.connect('http://localhost:9999/');
-            //var socket = io.connect('https://goforage.herokuapp.com');
+            //const socket = io.connect('http://localhost:9999/');
+            var socket = io.connect('https://goforage.herokuapp.com');
             socket.on('connect', function () {
                 socket.on('location', function (location) {
                     if (location.id != userInfo.id) {
