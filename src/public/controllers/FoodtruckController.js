@@ -1,13 +1,11 @@
 (() => {
     angular
         .module('forageApp')
-        .controller('FoodtruckController', ['FoodtruckService', 'HomeService', '$stateParams', FoodtruckController]);
+        .controller('FoodtruckController', ['FoodtruckService', 'HomeService', '$stateParams', '$state', FoodtruckController]);
 
-    function FoodtruckController(FoodtruckService, HomeService, $stateParams) {
+    function FoodtruckController(FoodtruckService, HomeService, $stateParams, $state) {
         const vm = this;
         const currentFoodtruckId = $stateParams.id;
-
-        google.maps.visualRefresh = true;
 
         vm.menuItems = [];
 
@@ -90,7 +88,10 @@
                 healthScore: heathScore,
                 menu: menu
             };
-            FoodtruckService.updateFoodtruck(currentFoodtruckId, foodtruck);
+            console.log('hey!');
+            FoodtruckService.updateFoodtruck(currentFoodtruckId, foodtruck).then(function () {
+                $state.go('home.foodtruck', {id: currentFoodtruckId});
+            });
         };
 
         vm.addReview = (description) => {

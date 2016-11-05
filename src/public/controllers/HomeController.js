@@ -34,7 +34,6 @@
             }
         }
 
-
         vm.initMap = () => {
             const styles = [{
                 "featureType": "administrative",
@@ -109,8 +108,8 @@
             }
 
             // Setup Socket IO
-            //const socket = io.connect('http://localhost:9999/');
-            var socket = io.connect('https://goforage.herokuapp.com');
+            const socket = io.connect('http://localhost:9999/');
+            //var socket = io.connect('https://goforage.herokuapp.com');
             socket.on('connect', function () {
                 socket.on('location', function (location) {
                     if (location.id != userInfo.id) {
@@ -118,7 +117,6 @@
                     }
                 })
             });
-
 
             // Setup Geolocation
             if (!navigator.geolocation) {
@@ -166,8 +164,8 @@
 
         const refreshMarkers = () => {
             for (let id in users) {
-                const userInfo = users[id];
 
+                const userInfo = users[id];
                 if (userInfo.marker) {
 
                     //Move the markers
@@ -199,12 +197,14 @@
 
             // Refresh the markers every 10 seconds
             clearTimeout(refreshTimeout);
-            refreshTimeout = setTimeout(refreshMarkers, 1000 * 10);
+            refreshTimeout = setTimeout(refreshMarkers, 1000);
         };
 
         vm.logFoodtruck = () => currentUserInfo = initLocationSharing(userLocationUpdate);
 
-        google.maps.event.addDomListener(window, "load", vm.initMap);
+        //google.maps.event.addDomListener(window, "load", vm.initMap);
+        refreshMarkers();
+        vm.initMap();
 
         currentUserInfo = initLocationSharing(userLocationUpdate);
 

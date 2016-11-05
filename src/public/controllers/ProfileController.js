@@ -36,7 +36,7 @@
         });
 
 
-        $('#userMenu').on('click', 'div', () => {
+        $('#userMenu').on('click', 'div', function () {
             $(this).addClass('active').siblings().removeClass('active');
         });
     }

@@ -237,3 +237,10 @@ a, a:hover {
 #facebookBtn {
     margin-top: 25%;
 }
+
+#userMenu,
+#foodtruckFavoriteButton {
+    cursor: pointer;
+}
+
+
