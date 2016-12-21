@@ -51,3 +51,5 @@ require('./review/ReviewRoute')(app);
 // Connections
 const port = process.env.PORT || config.port;
 http.listen(port, () => console.log('listening on port ' + port));
+
+module.exports = app;
