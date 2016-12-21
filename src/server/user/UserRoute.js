@@ -1,4 +1,4 @@
-import {readUser, deleteUser, showUser, addFavorite, getFavorite, deleteFavorite,addReview} from './UserController'
+const {readUser, deleteUser, showUser, addFavorite, getFavorite, deleteFavorite,addReview} = require('./UserController');
 
 module.exports = (app) => {
     app.get('/api/users', readUser);

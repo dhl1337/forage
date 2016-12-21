@@ -1,6 +1,6 @@
-import {Strategy} from 'passport-facebook';
-import User from '../user/UserModel';
-// import { facebookAuth } from './auth';
+const {Strategy} = require('passport-facebook');
+const User = require('../user/UserModel');
+const { facebookAuth } = require('./auth');
 
 module.exports = function(passport) {
     passport.serializeUser((user, done) => done(null, user.id));

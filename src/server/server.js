@@ -1,13 +1,13 @@
 'use strict';
 
 // Dependencies
-import bodyParser from 'body-parser';
-import express from 'express';
-import cookieParser from 'cookie-parser';
-import expressSession from 'express-session';
-import mongoose from 'mongoose';
-import passport from 'passport';
-import config from './configs/config'
+const bodyParser = require('body-parser');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const expressSession = require('express-session');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const config = require('./configs/config');
 
 // Express
 const app = express();
@@ -23,7 +23,8 @@ app.use(passport.initialize());
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(passport.session());
-app.use(express.static(__dirname + '/../public'));
+app.use(express.static(__dirname + './../../build/public'));
+
 
 // Socket.io connection
 const http = require('http').Server(app);

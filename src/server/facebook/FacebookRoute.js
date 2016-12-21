@@ -1,5 +1,5 @@
-import passport from 'passport';
-import { logout, currentUser } from './FacebookController';
+const passport = require('passport');
+const { logout, currentUser } = require('./FacebookController');
 
 module.exports = (app) => {
     app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_location'] }));

@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import foodtruckSchema from '../foodtruck/FoodtruckModel';
+const mongoose = require('mongoose');
+const foodtruckSchema = require('../foodtruck/FoodtruckModel');
 
 var userSchema = mongoose.Schema({
     facebook : {

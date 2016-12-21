@@ -1,4 +1,4 @@
-import {create, read, deleteFoodtruck, current, updateFoodtruck} from './FoodtruckController';
+const {create, read, deleteFoodtruck, current, updateFoodtruck} = require('./FoodtruckController');
 
 module.exports = (app) => {
     app.get('/api/foodtrucks', read);

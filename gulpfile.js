@@ -24,16 +24,7 @@ gulp.task('css', () => {
         .pipe(gulp.dest('./build/public'))
 });
 
-gulp.task('server', () => {
-    return gulp
-        .src('./src/server/**/*.js')
-        .pipe(babel({
-            presets: ['es2015']
-        }))
-        .pipe(gulp.dest('./build/server'))
-});
-
-gulp.task('Build', ['public', 'html', 'css', 'server'], () => {
+gulp.task('Build', ['public', 'html', 'css'], () => {
     console.log('Building all the stuff');
 });
 
