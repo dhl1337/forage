@@ -4,6 +4,7 @@
   "description": "Forage is a web application that allows customers to locate food trucks near their area. It has one sign up page, that lets owners/users switch back and forth without having to make separate accounts. Users can send private messages, order online, receive updates on specials through text messages, and review different food trucks. Owners can turn on their location, adjust the menu, post hours of operation, and receive private messages. Forage makes it easier for food trucks to promote their business by customers seeing their location and being able to communicate with them through the website.",
   "main": "gulpfile.js",
   "dependencies": {
+    "assert": "^1.4.1",
     "babel-preset-es2015": "^6.18.0",
     "body-parser": "^1.15.2",
     "cookie-parser": "^1.4.3",
@@ -31,7 +32,7 @@
   "scripts": {
     "postinstall": "gulp Build",
     "start": "node src/server/server.js",
-    "test": "mocha --timeout 10000"
+    "test": "mocha src/test/foodtruck.js --timeout 10000"
   },
   "repository": {
     "type": "git",
