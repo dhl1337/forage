@@ -50,8 +50,7 @@ module.exports = {
     updateFoodtruck(req, res){
         Foodtruck
             .findByIdAndUpdate(req.params.id, {$set: req.body}, (err, result) => {
-                console.log('result', result);
-                err ? res.status(500).send() : res.json(result);
+                err ? res.status(500).send(err) : res.json(result);
             })
     }
 };

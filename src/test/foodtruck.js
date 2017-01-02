@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const FoodTruck = require('../server/foodtruck/FoodtruckModel');
 const chai = require('chai');
 const {expect, assert} = require('chai');
 const chaiHttp = require('chai-http');
@@ -17,8 +16,15 @@ let app = require('../server/server');
 let fbAuth = require('../server/facebook/FacebookRoute')(app);
 
 const User = require('../server/user/UserModel');
+const FoodTruck = require('../server/foodtruck/FoodtruckModel');
 
 describe('food truck', function () {
+
+    // beforeEach(done => {
+    //     FoodTruck.remove({}, err => {
+    //         done();
+    //     })
+    // });
 
     describe('fetched from default endpoint', function () {
         var strategy = new Strategy({
@@ -105,10 +111,10 @@ describe('food truck', function () {
             expect(profile._json).to.be.an('object');
         });
 
-        describe('Food truck user', function () {
+        describe('/POST Food Trucks', function () {
             it('should register a user to a food trucker', (done) => {
 
-                const foodTruck = {
+                let foodTruck = {
                     id: newUserProfile._id,
                     name: 'food truck name',
                     cuisine: 'chinese',
@@ -153,9 +159,9 @@ describe('food truck', function () {
                     })
             });
 
-            it('should update food truck', () => {
+            it('should update food truck', (done) => {
 
-                const foodTruck = {
+                let updateFoodTruck = {
                     name: 'Update food truck name',
                     cuisine: 'chinese',
                     phone: '1231231234',
@@ -174,11 +180,13 @@ describe('food truck', function () {
                     menu: [{name: 'RICE', price: '2'}]
                 };
 
+
                 chai.request(app)
-                    .put(`/api/foodtrucks/${newUserProfile.foodTruck}`)
-                    .send(foodTruck)
+                    .post(`/api/foodtrucks/${newUserProfile.foodTruck}`)
+                    .send(updateFoodTruck)
                     .end((err, res) => {
-                        //console.log('put', res.body);
+                        console.log('res', res.body);
+                        // expect(res.body.name).to.equal('Update food truck name');
                         //expect(res.body).to.equal('Successfully deleted record');
                         done();
                     })
