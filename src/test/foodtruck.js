@@ -153,16 +153,50 @@ describe('food truck', function () {
                     })
             });
 
-            it('should delete select food truck', (done) => {
+            it('should update food truck', () => {
+
+                const foodTruck = {
+                    name: 'Update food truck name',
+                    cuisine: 'chinese',
+                    phone: '1231231234',
+                    website: 'www.google.com',
+                    hours: {
+                        sunday: 'CLOSED',
+                        monday: 'CLOSED',
+                        tuesday: '12:00 PM - 1:00 PM',
+                        wednesday: '12:00 PM - 1:00 PM',
+                        thursday: '12:00 PM - 1:00 PM',
+                        friday: '12:00 PM - 1:00 PM',
+                        saturday: '12:00 PM - 1:00 PM'
+                    },
+                    price: {min: '1', max: '2'},
+                    healthScore: '12',
+                    menu: [{name: 'RICE', price: '2'}]
+                };
+
                 chai.request(app)
-                    .delete(`/api/foodtrucks/${newUserProfile.foodTruck}`)
+                    .put(`/api/foodtrucks/${newUserProfile.foodTruck}`)
+                    .send(foodTruck)
                     .end((err, res) => {
-                        console.log('delete', res.body);
+                        //console.log('put', res.body);
+                        //expect(res.body).to.equal('Successfully deleted record');
+                        done();
+                    })
+            });
+
+            it('should delete select food truck', () => {
+                chai.request(app)
+                    .del(`/api/foodtrucks/${newUserProfile.foodTruck}`)
+                    .end((err, res) => {
                         expect(res.body).to.equal('Successfully deleted record');
                         done();
                     })
             });
+
+
+
         });
+
 
     });
 
