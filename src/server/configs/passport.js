@@ -1,6 +1,6 @@
 const {Strategy} = require('passport-facebook');
 const User = require('../user/UserModel');
-const { facebookAuth } = require('./auth');
+const { FacebookAuth } = require('./auth');
 
 module.exports = function(passport) {
     passport.serializeUser((user, done) => done(null, user.id));
@@ -10,9 +10,9 @@ module.exports = function(passport) {
     });
 
     passport.use(new Strategy({
-            clientID: process.env.FACEBOOK_CLIENT_ID || facebookAuth.clientID,
-            clientSecret: process.env.FACEBOOK_CLIENT_SECRET || facebookAuth.clientSecret,
-            callbackURL: process.env.FACEBOOK_CALLBACK_URL || facebookAuth.callbackURL,
+            clientID: process.env.FACEBOOK_CLIENT_ID || FacebookAuth.clientID,
+            clientSecret: process.env.FACEBOOK_CLIENT_SECRET || FacebookAuth.clientSecret,
+            callbackURL: process.env.FACEBOOK_CALLBACK_URL || FacebookAuth.callbackURL,
             profileFields: ['emails', 'photos', 'name', 'location']
         },
         function (accessToken, refreshToken, profile, done) {

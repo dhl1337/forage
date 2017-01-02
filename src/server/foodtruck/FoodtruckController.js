@@ -3,11 +3,20 @@ const User = require('../user/UserModel');
 
 module.exports = {
     create(req, res){
-        console.log('req user', req.user);
-        let newFoodtruck = new Foodtruck(req.body);
+        var foodtruck = {
+            name: req.body.name,
+            cuisine: req.body.cuisine,
+            phone: req.body.phone,
+            website: req.body.website,
+            hours: req.body.hours,
+            price: req.body.price,
+            healthScore: req.body.healthScore,
+            menu: req.body.menu
+        };
+        let newFoodtruck = new Foodtruck(foodtruck);
         newFoodtruck.save((err, result) => {
             err ? res.status(500).send(err)
-                : User.findByIdAndUpdate(req.user._id, {$set: {'foodTruck': result._id}}, (err, updateResult) => {
+                : User.findByIdAndUpdate(req.body.id, {$set: {'foodTruck': result._id}}, (err, updateResult) => {
                 err ? res.status(500).send(err) : res.json(result);
             });
         })
