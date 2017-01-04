@@ -230,8 +230,7 @@ describe('food truck', function () {
                 chai.request(app)
                     .del(`/api/users/${newUserProfile._id}`)
                     .end((err, res) => {
-                        console.log(res.body);
-                        //expect(res.body).to.equal('Successfully deleted record');
+                        expect(res.body).to.equal('Successfully deleted record');
                         done();
                     })
             })
