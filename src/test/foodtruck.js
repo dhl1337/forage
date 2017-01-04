@@ -20,12 +20,6 @@ const FoodTruck = require('../server/foodtruck/FoodtruckModel');
 
 describe('food truck', function () {
 
-    // beforeEach(done => {
-    //     FoodTruck.remove({}, err => {
-    //         done();
-    //     })
-    // });
-
     describe('fetched from default endpoint', function () {
         var strategy = new Strategy({
             clientID: fb.FacebookAuth.clientID,
@@ -111,8 +105,8 @@ describe('food truck', function () {
             expect(profile._json).to.be.an('object');
         });
 
-        describe('/POST Food Trucks', function () {
-            it('should register a user to a food trucker', (done) => {
+        describe('/POST/:id Food Trucks', () => {
+            it('should create a food truck and add it to user', done => {
 
                 let foodTruck = {
                     id: newUserProfile._id,
@@ -159,7 +153,7 @@ describe('food truck', function () {
                     })
             });
 
-            it('should update food truck', (done) => {
+            it('should update food truck', done => {
 
                 let updateFoodTruck = {
                     name: 'Update food truck name',
@@ -180,19 +174,34 @@ describe('food truck', function () {
                     menu: [{name: 'RICE', price: '2'}]
                 };
 
-
                 chai.request(app)
                     .post(`/api/foodtrucks/${newUserProfile.foodTruck}`)
                     .send(updateFoodTruck)
                     .end((err, res) => {
-                        console.log('res', res.body);
-                        // expect(res.body.name).to.equal('Update food truck name');
-                        //expect(res.body).to.equal('Successfully deleted record');
+                        //console.log(res.body);
+                        //expect(res.body.name).to.equal('Update food truck name');
                         done();
                     })
             });
 
-            it('should delete select food truck', () => {
+        });
+
+        describe('/GET/:id Food Trucks', () => {
+            it('should GET current food truck by id', done => {
+                chai.request(app)
+                    .get(`/api/foodtrucks/${newUserProfile.foodTruck}`)
+                    .end((err, res) => {
+                        const foodTruck = res.body[0];
+
+                        expect(foodTruck.name).to.equal('Update food truck name');
+                        expect(foodTruck.cuisine).to.equal('chinese');
+                        done();
+                    })
+            });
+        });
+
+        describe('/DELETE/:id Food Trucks', () => {
+            it('should delete select food truck', done => {
                 chai.request(app)
                     .del(`/api/foodtrucks/${newUserProfile.foodTruck}`)
                     .end((err, res) => {
@@ -200,10 +209,33 @@ describe('food truck', function () {
                         done();
                     })
             });
-
-
-
         });
+
+        describe('/GET/:id User', () => {
+            it('should GET user by id', done => {
+                chai.request(app)
+                    .get(`/api/users/${newUserProfile._id}`)
+                    .end((err, res) => {
+                        const user = res.body[0];
+
+                        expect(user.facebook.email).to.equal('jaredhanson@example.com');
+                        expect(user.facebook.name).to.equal('Jared Hanson');
+                        done();
+                    })
+            })
+        });
+
+        describe('/DELETE/:id User', () => {
+            it('should DELETE user by id', done => {
+                chai.request(app)
+                    .del(`/api/users/${newUserProfile._id}`)
+                    .end((err, res) => {
+                        console.log(res.body);
+                        //expect(res.body).to.equal('Successfully deleted record');
+                        done();
+                    })
+            })
+        })
 
 
     });

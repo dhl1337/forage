@@ -12,8 +12,9 @@ const config = require('./configs/config');
 // Express
 const app = express();
 
+mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || config.url);
-mongoose.connection.once('open', () => console.log("Successfully connected to mongodb"));
+//mongoose.connection.once('open', () => console.log("Successfully connected to mongodb"));
 
 require('./configs/passport.js')(passport);
 
