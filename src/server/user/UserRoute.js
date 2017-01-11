@@ -5,7 +5,7 @@ module.exports = (app) => {
     app.get('/api/users/:id', showUser);
     app.get('/api/users/:id/favorite', getFavorite);
 
-    app.post('/api/users/favorite/:id', addFavorite);
+    app.post('/api/users/:id/favorite', addFavorite);
     app.post('/api/users/reviews/:id', addReview);
 
     app.delete('/api/users/:id', deleteUser);

@@ -137,14 +137,28 @@ describe('food truck', function () {
             expect(profile._json).to.be.an('object');
         });
 
-        describe('/POST/:id add favorites to user', () => {
+        describe('/POST/:id user', () => {
+            it('should POST favorites to user', done => {
+                var favorite = {
+                    foodtruckId: newFoodTruck._id,
+                    name: newFoodTruck.name,
+                    photo: 'this is a photo image',
+                    cuisine: newFoodTruck.cuisine
+                };
 
+                chai.request(app)
+                    .post(`/api/users/${newUserProfile._id}/favorite`)
+                    .send(favorite)
+                    .end((err, res) => {
+                        if (err) done(err);
+                        done();
+                    })
+            })
         });
 
 
         describe('/GET/:id Food Trucks', () => {
             it('should GET current food truck by id', done => {
-
                 chai.request(app)
                     .get(`/api/foodtrucks/${newFoodTruck._id}`)
                     .end((err, res) => {
@@ -175,12 +189,11 @@ describe('food truck', function () {
                 chai.request(app)
                     .get(`/api/users/${newUserProfile._id}/favorite`)
                     .end((err, res) => {
-                        const favorite = res.body[0];
+                        const favorite = res.body[0].favorites[0];
 
-                        console.log(favorite);
-
-                        // expect(user.facebook.email).to.equal('jaredhanson@example.com');
-                        // expect(user.facebook.name).to.equal('Jared Hanson');
+                        expect(favorite.cuisine).to.equal('chinese');
+                        expect(favorite.photo).to.equal('this is a photo image');
+                        expect(favorite.foodtruckId).to.equal(newFoodTruck._id.toString());
                         done();
                     })
             });
