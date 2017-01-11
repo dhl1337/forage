@@ -16,7 +16,7 @@ module.exports = {
         let newFoodtruck = new Foodtruck(foodtruck);
         newFoodtruck.save((err, result) => {
             err ? res.status(500).send(err)
-                : User.findByIdAndUpdate(req.body.id, {$set: {'foodTruck': result._id}}, (err, updateResult) => {
+                : User.findOneAndUpdate({'_id':req.body.userId}, {'$set': {'foodTruck': result._id}}, (err, updateResult) => {
                 err ? res.status(500).send(err) : res.json(result);
             });
         })
@@ -42,15 +42,12 @@ module.exports = {
         Foodtruck
             .find({_id: req.params.id})
             .populate('reviews.userId')
-            .exec((err, result) => {
-                err ? res.status(500).send('failed to find') : res.json(result);
-            })
+            .exec((err, result) => err ? res.status(500).send('failed to find') : res.json(result))
     },
 
     updateFoodtruck(req, res){
         Foodtruck
-            .findByIdAndUpdate(req.params.id, {$set: req.body}, (err, result) => {
-                err ? res.status(500).send(err) : res.json(result);
-            })
+            .findOneAndUpdate({'_id': req.params.id}, req.body)
+            .exec((err, result) => err ? res.status(500).send(err) : res.json(result));
     }
 };

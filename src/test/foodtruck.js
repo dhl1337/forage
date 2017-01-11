@@ -41,7 +41,8 @@ describe('food truck', function () {
         };
 
         var profile,
-            newUserProfile;
+            newUserProfile,
+            newFoodTruck;
 
 
         before(function (done) {
@@ -68,12 +69,43 @@ describe('food truck', function () {
 
                         // save our user to the database
                         newUser.save(err => {
-                            if (err)
+                            if (err) {
                                 throw err;
+                            }
 
                             // if successful, return the new user
                             newUserProfile = newUser;
-                            done();
+
+                            var foodtruck = {
+                                name: 'food truck name',
+                                cuisine: 'chinese',
+                                phone: '1231231234',
+                                website: 'www.google.com',
+                                hours: {
+                                    sunday: 'CLOSED',
+                                    monday: 'CLOSED',
+                                    tuesday: '12:00 PM - 1:00 PM',
+                                    wednesday: '12:00 PM - 1:00 PM',
+                                    thursday: '12:00 PM - 1:00 PM',
+                                    friday: '12:00 PM - 1:00 PM',
+                                    saturday: '12:00 PM - 1:00 PM'
+                                },
+                                price: {min: '1', max: '2'},
+                                healthScore: '12',
+                                menu: [{name: 'RICE', price: '2'}]
+                            };
+
+                            let newFoodtruck = new FoodTruck(foodtruck);
+
+                            newFoodtruck.save((err, truckResult) => {
+                                if (err) {
+                                    throw err;
+                                }
+
+                                newFoodTruck = truckResult;
+                                done();
+
+                            });
                         });
                     }
                 });
@@ -82,7 +114,7 @@ describe('food truck', function () {
             });
         });
 
-        it('should parse profile', () => {
+        it('should parse profile', function () {
             expect(profile.provider).to.equal('facebook');
 
             expect(profile.id).to.equal('500308595');
@@ -97,121 +129,36 @@ describe('food truck', function () {
             expect(profile.photos).to.be.undefined;
         });
 
-        it('should set raw property', () => {
+        it('should set raw property', function () {
             expect(profile._raw).to.be.a('string');
         });
 
-        it('should set json property', () => {
+        it('should set json property', function () {
             expect(profile._json).to.be.an('object');
         });
 
-        describe('/POST/:id Food Trucks', () => {
-            it('should create a food truck and add it to user', done => {
-
-                let foodTruck = {
-                    id: newUserProfile._id,
-                    name: 'food truck name',
-                    cuisine: 'chinese',
-                    phone: '1231231234',
-                    website: 'www.google.com',
-                    hours: {
-                        sunday: 'CLOSED',
-                        monday: 'CLOSED',
-                        tuesday: '12:00 PM - 1:00 PM',
-                        wednesday: '12:00 PM - 1:00 PM',
-                        thursday: '12:00 PM - 1:00 PM',
-                        friday: '12:00 PM - 1:00 PM',
-                        saturday: '12:00 PM - 1:00 PM'
-                    },
-                    price: {min: '1', max: '2'},
-                    healthScore: '12',
-                    menu: [{name: 'RICE', price: '2'}]
-                };
-
-                chai.request(app)
-                    .post('/api/foodtrucks')
-                    .send(foodTruck)
-                    .end((err, res) => {
-                        expect(res.status).to.equal(200);
-                        expect(res.body.name).to.equal('food truck name');
-                        expect(res.body.cuisine).to.equal('chinese');
-                        expect(res.body.phone).to.equal('1231231234');
-                        expect(res.body.website).to.equal('www.google.com');
-                        expect(res.body.hours.sunday).to.equal('CLOSED');
-                        expect(res.body.hours.monday).to.equal('CLOSED');
-                        expect(res.body.hours.tuesday).to.equal('12:00 PM - 1:00 PM');
-                        expect(res.body.hours.wednesday).to.equal('12:00 PM - 1:00 PM');
-                        expect(res.body.hours.thursday).to.equal('12:00 PM - 1:00 PM');
-                        expect(res.body.hours.friday).to.equal('12:00 PM - 1:00 PM');
-                        expect(res.body.hours.saturday).to.equal('12:00 PM - 1:00 PM');
-                        expect(res.body.price.min).to.equal(1);
-                        expect(res.body.price.max).to.equal(2);
-                        expect(res.body.healthScore).to.equal('12');
-                        expect(res.body.menu[0].name).to.equal('RICE');
-                        expect(res.body.menu[0].price).to.equal(2);
-                        done();
-                    })
-            });
-
-            it('should update food truck', done => {
-
-                let updateFoodTruck = {
-                    name: 'Update food truck name',
-                    cuisine: 'chinese',
-                    phone: '1231231234',
-                    website: 'www.google.com',
-                    hours: {
-                        sunday: 'CLOSED',
-                        monday: 'CLOSED',
-                        tuesday: '12:00 PM - 1:00 PM',
-                        wednesday: '12:00 PM - 1:00 PM',
-                        thursday: '12:00 PM - 1:00 PM',
-                        friday: '12:00 PM - 1:00 PM',
-                        saturday: '12:00 PM - 1:00 PM'
-                    },
-                    price: {min: '1', max: '2'},
-                    healthScore: '12',
-                    menu: [{name: 'RICE', price: '2'}]
-                };
-
-                chai.request(app)
-                    .post(`/api/foodtrucks/${newUserProfile.foodTruck}`)
-                    .send(updateFoodTruck)
-                    .end((err, res) => {
-                        //console.log(res.body);
-                        //expect(res.body.name).to.equal('Update food truck name');
-                        done();
-                    })
-            });
+        describe('/POST/:id add favorites to user', () => {
 
         });
 
+
         describe('/GET/:id Food Trucks', () => {
             it('should GET current food truck by id', done => {
+
                 chai.request(app)
-                    .get(`/api/foodtrucks/${newUserProfile.foodTruck}`)
+                    .get(`/api/foodtrucks/${newFoodTruck._id}`)
                     .end((err, res) => {
                         const foodTruck = res.body[0];
 
-                        expect(foodTruck.name).to.equal('Update food truck name');
+                        expect(foodTruck.name).to.equal('food truck name');
                         expect(foodTruck.cuisine).to.equal('chinese');
                         done();
                     })
             });
         });
 
-        describe('/DELETE/:id Food Trucks', () => {
-            it('should delete select food truck', done => {
-                chai.request(app)
-                    .del(`/api/foodtrucks/${newUserProfile.foodTruck}`)
-                    .end((err, res) => {
-                        expect(res.body).to.equal('Successfully deleted record');
-                        done();
-                    })
-            });
-        });
+        describe('/GET/:id User', function () {
 
-        describe('/GET/:id User', () => {
             it('should GET user by id', done => {
                 chai.request(app)
                     .get(`/api/users/${newUserProfile._id}`)
@@ -222,7 +169,32 @@ describe('food truck', function () {
                         expect(user.facebook.name).to.equal('Jared Hanson');
                         done();
                     })
-            })
+            });
+
+            it('should GET favorites user by id', done => {
+                chai.request(app)
+                    .get(`/api/users/${newUserProfile._id}/favorite`)
+                    .end((err, res) => {
+                        const favorite = res.body[0];
+
+                        console.log(favorite);
+
+                        // expect(user.facebook.email).to.equal('jaredhanson@example.com');
+                        // expect(user.facebook.name).to.equal('Jared Hanson');
+                        done();
+                    })
+            });
+        });
+
+        describe('/DELETE/:id Food Trucks', () => {
+            it('should delete select food truck', done => {
+                chai.request(app)
+                    .del(`/api/foodtrucks/${newFoodTruck._id}`)
+                    .end((err, res) => {
+                        expect(res.body).to.equal('Successfully deleted record');
+                        done();
+                    })
+            });
         });
 
         describe('/DELETE/:id User', () => {
