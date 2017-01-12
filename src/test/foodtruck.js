@@ -18,6 +18,7 @@ let fbAuth = require('../server/facebook/FacebookRoute')(app);
 const User = require('../server/user/UserModel');
 const FoodTruck = require('../server/foodtruck/FoodtruckModel');
 
+
 describe('food truck', function () {
 
     describe('fetched from default endpoint', function () {
@@ -153,6 +154,25 @@ describe('food truck', function () {
                         if (err) done(err);
                         done();
                     })
+            });
+
+            it('should POST review to user', (done) => {
+
+                var review = {
+                    foodtruckId: newFoodTruck._id,
+                    name: 'Dan',
+                    photo: 'Picture',
+                    description: 'this is a description',
+                    rating: 10
+                };
+
+                chai.request(app)
+                    .post(`/api/users/${newUserProfile._id}/reviews`)
+                    .send(review)
+                    .end((err, res) => {
+                        if (err) done(err);
+                        done();
+                    })
             })
         });
 
@@ -218,8 +238,8 @@ describe('food truck', function () {
                         expect(res.body).to.equal('Successfully deleted record');
                         done();
                     })
-            })
-        })
+            });
+        });
 
 
     });
