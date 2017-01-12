@@ -176,8 +176,27 @@ describe('food truck', function () {
             })
         });
 
+        describe('/POST/:id Food Truck', () => {
+            it('should POST review food truck by id', done => {
 
-        describe('/GET/:id Food Trucks', () => {
+                var review = {
+                    userId: newUserProfile._id,
+                    rating: 2,
+                    description: 'its ok',
+                    date: Date.now()
+                };
+
+                chai.request(app)
+                    .post(`/api/reviews/${newFoodTruck._id}`)
+                    .send(review)
+                    .end((err, res) => {
+                        done();
+                    })
+            })
+        });
+
+
+        describe('/GET/:id Food Truck', () => {
             it('should GET current food truck by id', done => {
                 chai.request(app)
                     .get(`/api/foodtrucks/${newFoodTruck._id}`)
@@ -189,6 +208,19 @@ describe('food truck', function () {
                         done();
                     })
             });
+
+            it('should GET review food truck by id', done => {
+                chai.request(app)
+                    .get(`/api/reviews/${newUserProfile._id}`)
+                    .end((err, res) => {
+                        const review = res.body[0].reviews[0];
+
+                        expect(review.description).to.equal('its ok');
+                        expect(review.rating).to.equal(2);
+
+                        done();
+                    })
+            })
         });
 
         describe('/GET/:id User', function () {
